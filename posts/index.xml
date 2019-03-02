@@ -209,6 +209,184 @@
 		</item>
 		
 		<item>
+			<title>2018-Round1A WaffleChoppers</title>
+			<link>https://aqweteddy.github.io/posts/codejam-2018-round1a-wafflechoppers/</link>
+			<pubDate>Sun, 03 Mar 2019 00:41:19 +0800</pubDate>
+			
+			<guid>https://aqweteddy.github.io/posts/codejam-2018-round1a-wafflechoppers/</guid>
+			<description>題目描述 URL Input: R: MAX_ROW, C: MAX_COL, H: 水平方向切幾刀 V: 垂直方向切幾刀 一個二維矩陣 [R*C]：每格為 1 or 0 在水平方向切 H 刀、垂直方向切 V 刀的情況下，問可否達到</description>
+			<content type="html"><![CDATA[
+
+<h3 id="題目描述">題目描述</h3>
+
+<ul>
+<li><p><a href="https://codingcompetitions.withgoogle.com/codejam/round/0000000000007883/000000000003005a">URL</a></p></li>
+
+<li><p>Input:</p>
+
+<ul>
+<li>R: MAX_ROW, C: MAX_COL, H: 水平方向切幾刀 V: 垂直方向切幾刀</li>
+<li>一個二維矩陣 [R*C]：每格為 1 or 0</li>
+</ul></li>
+
+<li><p>在水平方向切 H 刀、垂直方向切 V 刀的情況下，問可否達到每個區域都有相同數量的 1</p></li>
+
+<li><p>Output: 可否達成目標</p></li>
+</ul>
+
+<h3 id="解題思路">解題思路</h3>
+
+<ol>
+<li>先判斷出特殊解：
+
+<ul>
+<li>矩陣全為 0</li>
+</ul></li>
+<li>因為每格要相同數量，所以整張圖1的數量應要整除於 H+1 和 V+1</li>
+<li>計算每個 Row 的 1 的數量，記錄在一維陣列 r_tab</li>
+<li>計算每個 Col 的 1 的數量，記錄在一維陣列 c_tab</li>
+<li>因為每格要相同數量，所以直著切要可以平分成 H+1 等分
+
+<ul>
+<li>紀錄切點位置</li>
+<li>根據 r_tab 切分</li>
+<li>如果無粉平分，則無法達成目標</li>
+</ul></li>
+<li>因為每格要相同數量，所以橫著切要可以平分成 V+1 等分
+
+<ul>
+<li>紀錄切點位置</li>
+<li>根據 c_tab 切分</li>
+<li>如果無粉平分，則無法達成目標</li>
+</ul></li>
+<li>根據切點檢查每格是否是相同數量
+
+<ul>
+<li>若是，達成目標</li>
+<li>否則，無法達成</li>
+</ul></li>
+</ol>
+
+<h3 id="code">Code</h3>
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// AC
+</span><span class="c1"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">maze</span><span class="p">[</span><span class="mi">101</span><span class="p">][</span><span class="mi">101</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">R</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">V</span><span class="p">;</span> <span class="c1">// row, col, horizontal, vertical
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">cnt_all</span><span class="p">;</span> <span class="c1">// count for the number of chocolate chips.
+</span><span class="c1"></span>
+<span class="kt">bool</span> <span class="nf">bound_count</span><span class="p">(</span><span class="kt">int</span> <span class="n">min_h</span><span class="p">,</span> <span class="kt">int</span> <span class="n">min_v</span><span class="p">,</span> <span class="kt">int</span> <span class="n">max_h</span><span class="p">,</span> <span class="kt">int</span> <span class="n">max_v</span><span class="p">,</span> <span class="kt">int</span> <span class="n">per</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">min_h</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">max_h</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">min_v</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">max_v</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">maze</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="o">++</span><span class="n">cnt</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">cnt</span> <span class="o">==</span> <span class="n">per</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">solve</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">cnt_all</span> <span class="o">%</span> <span class="p">((</span><span class="n">H</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">V</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;IMPOSSIBLE</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">cnt_all</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;POSSIBLE</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">r_tab</span><span class="p">[</span><span class="mi">101</span><span class="p">],</span> <span class="n">c_tab</span><span class="p">[</span><span class="mi">101</span><span class="p">];</span>
+
+    <span class="c1">// generate table
+</span><span class="c1"></span>    <span class="n">memset</span><span class="p">(</span><span class="n">r_tab</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">r_tab</span><span class="p">);</span>
+    <span class="n">memset</span><span class="p">(</span><span class="n">c_tab</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">c_tab</span><span class="p">);</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">R</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">C</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
+            <span class="n">r_tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">maze</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">C</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">R</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
+            <span class="n">c_tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">maze</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="c1">// calculate
+</span><span class="c1"></span>    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">r_cut</span><span class="p">,</span> <span class="n">c_cut</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">r_per</span> <span class="o">=</span> <span class="n">cnt_all</span> <span class="o">/</span> <span class="p">(</span><span class="n">H</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="n">c_per</span> <span class="o">=</span> <span class="n">cnt_all</span> <span class="o">/</span> <span class="p">(</span><span class="n">V</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="n">now</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">R</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">now</span> <span class="o">+=</span> <span class="n">r_tab</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">now</span> <span class="o">==</span> <span class="n">r_per</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">now</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="n">r_cut</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">now</span> <span class="o">&gt;</span> <span class="n">r_per</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;IMPOSSIBLE</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">C</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">now</span> <span class="o">+=</span> <span class="n">c_tab</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">now</span> <span class="o">==</span> <span class="n">c_per</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">now</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="n">c_cut</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">now</span> <span class="o">&gt;</span> <span class="n">c_per</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;IMPOSSIBLE</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">per</span> <span class="o">=</span> <span class="n">r_per</span> <span class="o">/</span> <span class="p">(</span><span class="n">V</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">r_pre</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">c_pre</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">r_cut</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">c_cut</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">bound_count</span><span class="p">(</span><span class="n">r_pre</span><span class="p">,</span> <span class="n">c_pre</span><span class="p">,</span> <span class="n">r_cut</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">c_cut</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">per</span><span class="p">))</span> <span class="p">{</span>
+                <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;IMPOSSIBLE</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+                <span class="k">return</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">c_pre</span> <span class="o">=</span> <span class="n">c_cut</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">c_pre</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">r_pre</span> <span class="o">=</span> <span class="n">r_cut</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;POSSIBLE</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">ncase</span><span class="p">;</span>
+
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">ncase</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">ncase</span><span class="p">;</span> <span class="o">++</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">string</span> <span class="n">in</span><span class="p">;</span>
+        <span class="n">memset</span><span class="p">(</span><span class="n">maze</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">maze</span><span class="p">);</span>
+        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">R</span> <span class="o">&gt;&gt;</span> <span class="n">C</span> <span class="o">&gt;&gt;</span> <span class="n">H</span> <span class="o">&gt;&gt;</span> <span class="n">V</span><span class="p">;</span>
+        <span class="n">cnt_all</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">R</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">in</span><span class="p">;</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">in</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">in</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;@&#39;</span><span class="p">)</span>
+                    <span class="n">maze</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="o">++</span><span class="n">cnt_all</span><span class="p">;</span>
+                <span class="k">else</span>
+                    <span class="n">maze</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Case #&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;: &#34;</span><span class="p">;</span>
+        <span class="n">solve</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>]]></content>
+		</item>
+		
+		<item>
 			<title>Course</title>
 			<link>https://aqweteddy.github.io/posts/course/</link>
 			<pubDate>Wed, 27 Feb 2019 01:06:48 +0800</pubDate>
