@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Ubuntu on Teddy&#39;s Blog</title>
-    <link>http://aqweteddy.github.io/posts/ubuntu/</link>
-    <description>Recent content in Ubuntu on Teddy&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-tw</language>
-    <lastBuildDate>Thu, 21 Feb 2019 15:02:34 +0800</lastBuildDate>
-    
-	<atom:link href="http://aqweteddy.github.io/posts/ubuntu/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>set env on Ubuntu</title>
-      <link>http://aqweteddy.github.io/posts/ubuntu/env/</link>
-      <pubDate>Thu, 21 Feb 2019 13:16:27 +0800</pubDate>
-      
-      <guid>http://aqweteddy.github.io/posts/ubuntu/env/</guid>
-      <description>&lt;ul&gt;
+	<channel>
+		<title>Ubuntu on Teddy&#39;s Blog</title>
+		<link>http://aqweteddy.github.io/posts/ubuntu/</link>
+		<description>Recent content in Ubuntu on Teddy&#39;s Blog</description>
+		<generator>Hugo -- gohugo.io</generator>
+		<language>zh-tw</language>
+		<lastBuildDate>Thu, 21 Feb 2019 15:02:34 +0800</lastBuildDate>
+		<atom:link href="http://aqweteddy.github.io/posts/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>set env on Ubuntu</title>
+			<link>http://aqweteddy.github.io/posts/ubuntu/env/</link>
+			<pubDate>Thu, 21 Feb 2019 13:16:27 +0800</pubDate>
+			
+			<guid>http://aqweteddy.github.io/posts/ubuntu/env/</guid>
+			<description>&lt;ul&gt;
 &lt;li&gt;set environment on Ubuntu&lt;/li&gt;
 &lt;li&gt;zsh
 
@@ -26,7 +24,174 @@
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;.vimrc&lt;/li&gt;
 &lt;/ul&gt;</description>
-    </item>
-    
-  </channel>
+			<content type="html"><![CDATA[<ul>
+<li>set environment on Ubuntu</li>
+<li>zsh
+
+<ul>
+<li>syntax-highlight powerlevel9k auto-suggestions</li>
+</ul></li>
+<li>.vimrc</li>
+</ul>
+
+<h3 id="install-zsh">install zsh</h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get install zsh
+sudo apt-get install git
+chsh -s /bin/zsh
+sh -c <span class="s2">&#34;</span><span class="k">$(</span>wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -<span class="k">)</span><span class="s2">&#34;</span>
+git clone https://github.com/zsh-users/zsh-autosuggestions <span class="si">${</span><span class="nv">ZSH_CUSTOM</span><span class="k">:-</span><span class="p">~/.oh-my-zsh/custom</span><span class="si">}</span>/plugins/zsh-autosuggestions
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="si">${</span><span class="nv">ZSH_CUSTOM</span><span class="k">:-</span><span class="p">~/.oh-my-zsh/custom</span><span class="si">}</span>/plugins/zsh-syntax-highlighting</code></pre></div>
+<h3 id="zshrc">.zshrc</h3>
+
+<pre><code>POWERLEVEL9K_MODE='nerdfont-complete'
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to &quot;random&quot;
+# it'll load a random theme each time that oh-my-zsh is loaded.
+
+ZSH_THEME=&quot;powerlevel9k/powerlevel9k&quot;
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
+# ZSH_THEME_RANDOM_CANDIDATES=( &quot;robbyrussell&quot; &quot;agnoster&quot; )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE=&quot;true&quot;
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE=&quot;true&quot;
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE=&quot;true&quot;
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS=&quot;true&quot;
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE=&quot;true&quot;
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION=&quot;true&quot;
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS=&quot;true&quot;
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY=&quot;true&quot;
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: &quot;mm/dd/yyyy&quot;|&quot;dd.mm.yyyy&quot;|&quot;yyyy-mm-dd&quot;
+# HIST_STAMPS=&quot;mm/dd/yyyy&quot;
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
+# User configuration
+
+# export MANPATH=&quot;/usr/local/man:$MANPATH&quot;
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS=&quot;-arch x86_64&quot;
+
+# ssh
+# export SSH_KEY_PATH=&quot;~/.ssh/rsa_id&quot;
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig=&quot;mate ~/.zshrc&quot;
+# alias ohmyzsh=&quot;mate ~/.oh-my-zsh&quot;
+
+# PowerLevel9K theme
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=&quot;&quot;
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=&quot;$ &quot;
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_DISABLE_RPROMPT=true
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator ssh user virtualenv anaconda  dir dir_writable  vcs status battery load  time)
+
+
+alias cls='clear'
+alias gccw='gcc -Wextra -Werror -Wall'
+alias ll='ls -al'
+alias gpp='g++ -std=c++11 -Wshadow -DDEBUG -Wall'
+export PATH=&quot;/usr/local/mysql/bin:$PATH&quot;
+export PATH=&quot;/usr/local/opt/openssl/bin:$PATH&quot;
+</code></pre>
+
+<h3 id="vimrc">.vimrc</h3>
+
+<pre><code>&quot;set theme
+set t_Co=256
+set background=dark
+
+&quot;set indent linecnt tab backspace
+set nu
+set tabstop=4
+set shiftwidth=4
+set ruler
+set cursorline
+set backspace=indent,eol,start
+set nocompatible
+filetype indent on
+
+syntax on
+set showmatch
+
+&quot;encoding
+set encoding=utf-8
+
+&quot;auto complete
+inoremap ( ()&lt;LEFT&gt;
+inoremap [ []&lt;LEFT&gt;
+inoremap { {&lt;CR&gt;}&lt;LEFT&gt;&lt;Esc&gt;O
+inoremap &quot; &quot;&quot;&lt;LEFT&gt;
+inoremap ' ''&lt;LEFT&gt;
+
+&quot;&quot;
+&quot;End auto-complete
+
+</code></pre>]]></content>
+		</item>
+		
+	</channel>
 </rss>
