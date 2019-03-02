@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>Menu on Teddy&#39;s Blog</title>
-        <link>http://aqweteddy.github.io/posts/</link>
-        <description>Recent content in Menu on Teddy&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>zh-tw</language>
-        <lastBuildDate>Thu, 21 Feb 2019 15:02:35 +0800</lastBuildDate>
-        <atom:link href="http://aqweteddy.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
-        
-    </channel>
+  <channel>
+    <title>Menu on Teddy&#39;s Blog</title>
+    <link>http://aqweteddy.github.io/posts/</link>
+    <description>Recent content in Menu on Teddy&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Thu, 21 Feb 2019 15:02:35 +0800</lastBuildDate>
+    
+	<atom:link href="http://aqweteddy.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
 </rss>
