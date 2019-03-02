@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>NLP on Teddy&#39;s Blog</title>
+		<link>http://aqweteddy.github.io/posts/nlp/</link>
+		<description>Recent content in NLP on Teddy&#39;s Blog</description>
+		<generator>Hugo -- gohugo.io</generator>
+		<language>zh-tw</language>
+		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+		<lastBuildDate>Tue, 26 Feb 2019 15:02:34 +0800</lastBuildDate>
+		<atom:link href="http://aqweteddy.github.io/posts/nlp/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>名詞</title>
+			<link>http://aqweteddy.github.io/posts/nlp/technical_term/</link>
+			<pubDate>Sun, 20 Jan 2019 13:06:27 +0800</pubDate>
+			
+			<guid>http://aqweteddy.github.io/posts/nlp/technical_term/</guid>
+			<description>&lt;ul&gt;
+&lt;li&gt;紀錄專有名詞&lt;/li&gt;
+&lt;/ul&gt;</description>
+			<content type="html"><![CDATA[<ul>
+<li>紀錄專有名詞</li>
+</ul>
+
+<h3 id="名詞解釋">名詞解釋</h3>
+
+<ul>
+<li>詞向量：將 word 轉為 vector</li>
+<li>句向量：</li>
+<li>卷積神經網路(CNNs)：處理矩陣輸入任務，將高維度矩陣轉為一維向量，並保留有用訊息，注重全局的模糊感知</li>
+<li>循環神經網路(RNNs)：與CNN作用相同，但是注重鄰近位置重構(鄰近位置信息的整合)
+
+<ul>
+<li>LSTM:</li>
+<li><img src="https://kexue.fm/usr/uploads/2015/08/2067741257.png" alt="LSTM Model" /></li>
+</ul></li>
+</ul>]]></content>
+		</item>
+		
+		<item>
+			<title>Word2vec</title>
+			<link>http://aqweteddy.github.io/posts/nlp/word2vec/</link>
+			<pubDate>Sun, 20 Jan 2019 16:59:48 +0800</pubDate>
+			
+			<guid>http://aqweteddy.github.io/posts/nlp/word2vec/</guid>
+			<description>&lt;ul&gt;
+&lt;li&gt;將文字轉成向量&lt;/li&gt;
+&lt;li&gt;不論語言&lt;/li&gt;
+&lt;/ul&gt;</description>
+			<content type="html"><![CDATA[<ul>
+<li>將文字轉成向量</li>
+<li>不論語言</li>
+</ul>
+
+<h3 id="安裝方法">安裝方法</h3>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">pip install gensim</code></pre></div>
+<h3 id="使用方法">使用方法</h3>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">min_count</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+                 <span class="n">sg</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">hs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">iter</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;models/ptt_text.model&#39;</span><span class="p">)</span> <span class="c1"># save model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;word2vec.model&#39;</span><span class="p">)</span> <span class="c1"># load model</span></code></pre></div>
+<ul>
+<li>output: 斷詞後的語料 (2D Array)</li>
+<li>參數:
+
+<ul>
+<li>iter=5：訓練的回數，訓練過少會使得詞關係過為鬆散，訓練過度又會使得詞關係過為極</li>
+<li>size=100：詞向量的維度大小，維度太小會無法有效表達詞與詞的關係，維度太大會使關係太稀疏而難以找出規則</li>
+<li>verbose = True 是會印出 word2vec 執行的詳細狀況</li>
+<li>alpha:機器學習中的學習率，這東西會逐漸收斂到 min_alpha</li>
+<li>sg:sg=1表示採用skip-gram,sg=0 表示採用cbow</li>
+<li>window:能往左往右看幾個字</li>
+<li>workers:執行緒數目，建議別超過 4</li>
+<li>min_count:若這個詞出現的次數小於min_count，那他就不會被視為訓練對象</li>
+</ul></li>
+</ul>
+
+<h3 id="查詢">查詢</h3>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">model</span><span class="o">.</span><span class="n">similarity</span><span class="p">(</span><span class="n">word2</span><span class="p">,</span><span class="n">word1</span><span class="p">)</span> <span class="c1"># 兩字的相似度</span>
+<span class="n">model</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="c1"># word 的向量</span>
+<span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">([</span><span class="n">word</span><span class="p">,</span> <span class="o">...</span> <span class="p">],</span> <span class="n">topn</span><span class="o">=</span><span class="n">N</span><span class="p">)</span> <span class="c1"># 最有關前 Ｎ 字</span></code></pre></div>]]></content>
+		</item>
+		
+		<item>
+			<title>情緒分析</title>
+			<link>http://aqweteddy.github.io/posts/nlp/sentiment_anlysis/</link>
+			<pubDate>Sat, 02 Feb 2019 19:42:16 +0800</pubDate>
+			
+			<guid>http://aqweteddy.github.io/posts/nlp/sentiment_anlysis/</guid>
+			<description>&lt;ul&gt;
+&lt;li&gt;以 keras 建置 LSTM 模型做文字二元分類&lt;/li&gt;
+&lt;li&gt;data-set 來源：ptt&lt;/li&gt;
+&lt;/ul&gt;</description>
+			<content type="html"><![CDATA[<ul>
+<li>以 keras 建置 LSTM 模型做文字二元分類</li>
+<li>data-set 來源：ptt</li>
+</ul>
+
+<h3 id="github-code">Github Code</h3>
+
+<ul>
+<li><a href="https://github.com/aqweteddy/PttSentimentAnalyse">https://github.com/aqweteddy/PttSentimentAnalyse</a></li>
+</ul>
+
+<h3 id="目標">目標</h3>
+
+<ul>
+<li>輸入推文內容，回傳可能是「推」或「噓」</li>
+<li>輸入文章內容，判斷分類是否為「問卦」</li>
+<li>使用<a href="https://github.com/aqweteddy/PttScrapyMongoDB">這個Repo</a>爬取資料</li>
+</ul>
+
+<h3 id="方法">方法</h3>
+
+<ol>
+<li>將字串切割 (jieba)</li>
+<li>以 <a href="/nlp/word2vec">Word2Vec</a> 將單字轉為向量xw，再組成矩陣</li>
+<li>創建句子對應的id</li>
+<li>以 Keras train model</li>
+</ol>
+
+<h3 id="training-set">Training Set</h3>
+
+<h4 id="set1">Set1</h4>
+
+<ul>
+<li>取得資料庫中所有文章</li>
+<li>分為「問卦」或「非問卦」兩種</li>
+<li>name: <code>ptt_cut_text.txt</code> <code>models/ptt_text_w2v.model</code></li>
+</ul>
+
+<h4 id="set2">Set2</h4>
+
+<ul>
+<li>取得 <sup>2</sup>&frasl;<sub>20</sub> 前推噓文</li>
+<li>去除不推不噓，並隨機抽取1/3的「推」作為樣本，噓全取</li>
+<li>推: 27837 噓: 18564</li>
+<li>name: <code>ptt_cut_comment_tag.txt</code> <code>models/ptt_push.model</code></li>
+</ul>
+
+<h3 id="結果">結果</h3>
+
+<h3 id="training-set-1">Training Set 1</h3>
+
+<ul>
+<li><p>epoch = 2, stop_words=true, embedding_size=100, window=4, embedding_weight=True</p>
+
+<ul>
+<li>model code:</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Embedding</span><span class="p">(</span>
+        <span class="n">output_dim</span><span class="o">=</span><span class="n">EMBEDDING_WEIGHT_SIZE</span><span class="p">,</span>
+        <span class="n">input_dim</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w2id</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">mask_zero</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+        <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">],</span>
+        <span class="n">input_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">maxlen</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="n">output_dim</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.4</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span>
+
+<span class="n">model</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">,</span>
+    <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span><span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span></code></pre></div>
+<ul>
+<li>accuracy: 0.91</li>
+</ul></li>
+</ul>
+
+<h4 id="training-set2">Training Set2</h4>
+
+<ul>
+<li><p>epoch = 1, stop_words = false, size = 300, window = 5:</p>
+
+<ul>
+<li>accuracy: 0.73</li>
+<li>name: <code>ptt_sentiment_v1.model</code></li>
+</ul></li>
+
+<li><p>epoch = 2, stop_words = false, size = 100, window = 5:</p>
+
+<ul>
+<li>accuracy: 0.72</li>
+<li>name: <code>ptt_sentiment_v2.model</code></li>
+</ul></li>
+
+<li><p>epoch = 1, stop_words = true, size = 300, window = 5:</p>
+
+<ul>
+<li>accuracy: 0.76</li>
+<li>name: <code>ptt_sentiment_v3.model</code></li>
+</ul></li>
+
+<li><p>epoch = 1, stop_words = true, size = 300, window = 3:</p>
+
+<ul>
+<li>accuracy: 0.74</li>
+<li>name: <code>ptt_sentiment_v4.model</code></li>
+</ul></li>
+</ul>
+
+<h3 id="參考資料">參考資料</h3>
+
+<ul>
+<li><a href="https://www.jianshu.com/p/fba7df3a76fa">https://www.jianshu.com/p/fba7df3a76fa</a></li>
+<li><a href="https://kexue.fm/archives/3863">https://kexue.fm/archives/3863</a></li>
+</ul>]]></content>
+		</item>
+		
+	</channel>
+</rss>

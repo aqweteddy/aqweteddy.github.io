@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Teddy&#39;s Blog</title>
+    <link>http://aqweteddy.github.io/categories/</link>
+    <description>Recent content in Categories on Teddy&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    
+	<atom:link href="http://aqweteddy.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Course</title>
+      <link>http://aqweteddy.github.io/categories/course/</link>
+      <pubDate>Wed, 27 Feb 2019 01:06:48 +0800</pubDate>
+      
+      <guid>http://aqweteddy.github.io/categories/course/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>http://aqweteddy.github.io/categories/hugo/</link>
+      <pubDate>Thu, 21 Feb 2019 15:37:19 +0800</pubDate>
+      
+      <guid>http://aqweteddy.github.io/categories/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nlp</title>
+      <link>http://aqweteddy.github.io/categories/nlp/</link>
+      <pubDate>Sun, 20 Jan 2019 13:06:27 +0800</pubDate>
+      
+      <guid>http://aqweteddy.github.io/categories/nlp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubuntu</title>
+      <link>http://aqweteddy.github.io/categories/ubuntu/</link>
+      <pubDate>Thu, 21 Feb 2019 13:16:27 +0800</pubDate>
+      
+      <guid>http://aqweteddy.github.io/categories/ubuntu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Zsh</title>
+      <link>http://aqweteddy.github.io/categories/zsh/</link>
+      <pubDate>Thu, 21 Feb 2019 13:16:27 +0800</pubDate>
+      
+      <guid>http://aqweteddy.github.io/categories/zsh/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

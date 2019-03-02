@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nlp on Teddy&#39;s Blog</title>
+    <link>http://aqweteddy.github.io/categories/nlp/</link>
+    <description>Recent content in Nlp on Teddy&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sun, 20 Jan 2019 13:06:27 +0800</lastBuildDate>
+    
+	<atom:link href="http://aqweteddy.github.io/categories/nlp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>名詞</title>
+      <link>http://aqweteddy.github.io/posts/nlp/technical_term/</link>
+      <pubDate>Sun, 20 Jan 2019 13:06:27 +0800</pubDate>
+      
+      <guid>http://aqweteddy.github.io/posts/nlp/technical_term/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;紀錄專有名詞&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Word2vec</title>
+      <link>http://aqweteddy.github.io/posts/nlp/word2vec/</link>
+      <pubDate>Sun, 20 Jan 2019 16:59:48 +0800</pubDate>
+      
+      <guid>http://aqweteddy.github.io/posts/nlp/word2vec/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;將文字轉成向量&lt;/li&gt;
+&lt;li&gt;不論語言&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>情緒分析</title>
+      <link>http://aqweteddy.github.io/posts/nlp/sentiment_anlysis/</link>
+      <pubDate>Sat, 02 Feb 2019 19:42:16 +0800</pubDate>
+      
+      <guid>http://aqweteddy.github.io/posts/nlp/sentiment_anlysis/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;以 keras 建置 LSTM 模型做文字二元分類&lt;/li&gt;
+&lt;li&gt;data-set 來源：ptt&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

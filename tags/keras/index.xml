@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Keras on Teddy&#39;s Blog</title>
+    <link>http://aqweteddy.github.io/tags/keras/</link>
+    <description>Recent content in Keras on Teddy&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 02 Feb 2019 19:42:16 +0800</lastBuildDate>
+    
+	<atom:link href="http://aqweteddy.github.io/tags/keras/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>情緒分析</title>
+      <link>http://aqweteddy.github.io/posts/nlp/sentiment_anlysis/</link>
+      <pubDate>Sat, 02 Feb 2019 19:42:16 +0800</pubDate>
+      
+      <guid>http://aqweteddy.github.io/posts/nlp/sentiment_anlysis/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;以 keras 建置 LSTM 模型做文字二元分類&lt;/li&gt;
+&lt;li&gt;data-set 來源：ptt&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

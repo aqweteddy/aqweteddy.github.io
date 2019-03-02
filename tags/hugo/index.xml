@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on Teddy&#39;s Blog</title>
+    <link>http://aqweteddy.github.io/tags/hugo/</link>
+    <description>Recent content in Hugo on Teddy&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Thu, 21 Feb 2019 15:37:19 +0800</lastBuildDate>
+    
+	<atom:link href="http://aqweteddy.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Install</title>
+      <link>http://aqweteddy.github.io/posts/hugo/install/</link>
+      <pubDate>Thu, 21 Feb 2019 15:37:19 +0800</pubDate>
+      
+      <guid>http://aqweteddy.github.io/posts/hugo/install/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;安裝 Hugo&lt;/li&gt;
+&lt;li&gt;Hugo 基本指令&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Highlight Hugo Code</title>
+      <link>http://aqweteddy.github.io/posts/hugo/env/</link>
+      <pubDate>Thu, 21 Feb 2019 13:38:15 +0800</pubDate>
+      
+      <guid>http://aqweteddy.github.io/posts/hugo/env/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;add highlight to Hugo.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

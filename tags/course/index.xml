@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Course on Teddy&#39;s Blog</title>
+    <link>http://aqweteddy.github.io/tags/course/</link>
+    <description>Recent content in Course on Teddy&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Wed, 27 Feb 2019 01:06:48 +0800</lastBuildDate>
+    
+	<atom:link href="http://aqweteddy.github.io/tags/course/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Course</title>
+      <link>http://aqweteddy.github.io/posts/course/</link>
+      <pubDate>Wed, 27 Feb 2019 01:06:48 +0800</pubDate>
+      
+      <guid>http://aqweteddy.github.io/posts/course/</guid>
+      <description>說明 這是各學期在中正資工上課所保留下來的 Code 大一上 程式設計(一) 大一下 物件導向程式設計 大二下必修 程式設計(二) 大二上 組合語言 資料結構</description>
+    </item>
+    
+  </channel>
+</rss>
