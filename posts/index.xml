@@ -10,7 +10,7 @@
       <html lang="zh-tw">
         <head>
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <title>Hugo RSS | Teddy&#39;s blog</title>
+          <title>Posts RSS | Teddy&#39;s blog</title>
           <style>body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   line-height: 1.6;
@@ -181,7 +181,7 @@ code {
               <div class="u-padding">
                 <h2 class="Heading-title">
                   
-                  <a class="Heading-link u-clickable" href="/posts/index.xml" rel="bookmark">Hugo RSS</a>
+                  <a class="Heading-link u-clickable" href="/posts/index.xml" rel="bookmark">Posts RSS</a>
                   
                 </h2>
                 
@@ -206,9 +206,9 @@ code {
     </xsl:template>
   </xsl:stylesheet>
   <channel>
-    <title>Hugo on Teddy&#39;s blog</title>
+    <title>Posts on Teddy&#39;s blog</title>
     <link>https://aqweteddy.github.io/posts/</link>
-    <description>Recent content in Hugo on Teddy&#39;s blog</description>
+    <description>Recent content in Posts on Teddy&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <lastBuildDate>Thu, 21 Feb 2019 15:02:34 +0800</lastBuildDate>
