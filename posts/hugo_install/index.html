@@ -8,11 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
     
-    Nlp | Teddy&#39;s blog
+    Install | Teddy&#39;s blog
     
   </title>
-  
-  <link rel="alternate" type="application/rss+xml" href="/categories/nlp/index.xml" title="Teddy's blog">
   
   <style>
     body {
@@ -188,25 +186,88 @@ code {
       <div class="u-padding">
         
 
-<header class="Heading">
+<article>
+  <header class="Heading">
   <h2 class="Heading-title">
-    <a class="Heading-link u-clickable" href="/categories/nlp/" rel="bookmark">Nlp</a>
+    <a class="Heading-link u-clickable" href="/posts/hugo_install/" rel="bookmark">Install</a>
   </h2>
   
+  <time datetime="2019-02-21T15:37:19&#43;08:00">
+    21 February, 2019
+  </time>
+  
 </header>
-
-
-<h3>2019</h3>
-<ul>
-  
-  <li>2019-02-02 – <a href="/posts/sentiment_anlysis/">情緒分析</a></li>
-  
-  <li>2019-01-20 – <a href="/posts/word2vec/">Word2vec</a></li>
-  
-  <li>2019-01-20 – <a href="/posts/technical_term/">名詞</a></li>
-  
+  <ul>
+<li>安裝 Hugo</li>
+<li>Hugo 基本指令</li>
 </ul>
 
+<h3 id="install-hugo">Install Hugo</h3>
+
+<h4 id="environment">Environment</h4>
+
+<ul>
+<li>OS: MAC OS Mojave</li>
+<li>Package Manager: brew</li>
+</ul>
+
+<h4 id="step">Step</h4>
+
+<ol>
+<li><code>brew install hugo</code></li>
+</ol>
+
+<h4 id="create-new-blog">Create new blog</h4>
+
+<ol>
+<li><code>hugo new site [blog_name]</code></li>
+</ol>
+
+<h4 id="create-new-article">Create new article</h4>
+
+<ol>
+<li><code>hugo new [path][page_name]</code>
+
+<ul>
+<li>create <code>.md</code> in <code>[path_to_project]/content</code></li>
+</ul></li>
+</ol>
+
+<h4 id="run-server">Run server</h4>
+
+<ul>
+<li><code>hugo server -D</code></li>
+</ul>
+
+<h4 id="github-page">github Page</h4>
+
+<ol>
+<li>create a new empty project in github.</li>
+<li>use command <code>hugo</code> to save result in <code>[proj]/public</code></li>
+<li>do following command:</li>
+</ol>
+
+<pre><code class="language-bash">cd public
+git init
+git add .
+git commit -m &quot;first&quot;
+git push
+</code></pre>
+  
+<footer>
+  <ul class="Tags">
+    
+    
+    
+    <li class="Tags-item u-background">
+      <a class="Tags-link u-clickable" href="/tags/hugo/" rel="tag">hugo</a>
+    </li>
+    
+    
+  </ul>
+</footer>
+
+</article>
 
 
       </div>

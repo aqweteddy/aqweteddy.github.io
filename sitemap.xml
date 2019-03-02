@@ -3,191 +3,177 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://aqweteddy.github.io/posts/nlp/technical_term/</loc>
+    <loc>https://aqweteddy.github.io/posts/technical_term/</loc>
     <lastmod>2019-01-20T13:06:27+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/posts/nlp/word2vec/</loc>
+    <loc>https://aqweteddy.github.io/posts/word2vec/</loc>
     <lastmod>2019-01-20T16:59:48+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/posts/hugo/</loc>
+    <loc>https://aqweteddy.github.io/posts/</loc>
     <lastmod>2019-02-21T15:02:34+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/posts/nlp/sentiment_anlysis/</loc>
+    <loc>https://aqweteddy.github.io/posts/sentiment_anlysis/</loc>
     <lastmod>2019-02-02T19:42:16+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/posts/nlp/</loc>
-    <lastmod>2019-02-26T15:02:34+08:00</lastmod>
+    <loc>https://aqweteddy.github.io/about/</loc>
+    <lastmod>2019-03-02T16:52:45+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/posts/ubuntu/</loc>
-    <lastmod>2019-02-21T15:02:34+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://aqweteddy.github.io/</loc>
-    <lastmod>2019-02-21T15:02:35+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://aqweteddy.github.io/posts/</loc>
-    <lastmod>2019-02-21T15:02:35+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://aqweteddy.github.io/about/</loc>
-    <lastmod>2019-02-21T09:33:53+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://aqweteddy.github.io/posts/course/</loc>
+    <loc>https://aqweteddy.github.io/posts/course/</loc>
     <lastmod>2019-02-27T01:06:48+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/posts/hugo/install/</loc>
+    <loc>https://aqweteddy.github.io/posts/hugo_install/</loc>
     <lastmod>2019-02-21T15:37:19+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/posts/hugo/env/</loc>
+    <loc>https://aqweteddy.github.io/posts/env/</loc>
     <lastmod>2019-02-21T13:38:15+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/posts/ubuntu/env/</loc>
+    <loc>https://aqweteddy.github.io/posts/ubuntu_env/</loc>
     <lastmod>2019-02-21T13:16:27+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/tags/auto-suggestions/</loc>
+    <loc>https://aqweteddy.github.io/tags/auto-suggestions/</loc>
     <lastmod>2019-02-21T13:16:27+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/categories/</loc>
+    <loc>https://aqweteddy.github.io/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/tags/course/</loc>
+    <loc>https://aqweteddy.github.io/tags/course/</loc>
     <lastmod>2019-02-27T01:06:48+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/categories/course/</loc>
+    <loc>https://aqweteddy.github.io/categories/course/</loc>
     <lastmod>2019-02-27T01:06:48+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/tags/hugo/</loc>
+    <loc>https://aqweteddy.github.io/tags/hugo/</loc>
     <lastmod>2019-02-21T15:37:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/categories/hugo/</loc>
+    <loc>https://aqweteddy.github.io/categories/hugo/</loc>
     <lastmod>2019-02-21T15:37:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/tags/keras/</loc>
+    <loc>https://aqweteddy.github.io/tags/keras/</loc>
     <lastmod>2019-02-02T19:42:16+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/tags/nlp/</loc>
+    <loc>https://aqweteddy.github.io/tags/nlp/</loc>
     <lastmod>2019-01-20T13:06:27+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/categories/nlp/</loc>
+    <loc>https://aqweteddy.github.io/categories/nlp/</loc>
     <lastmod>2019-01-20T13:06:27+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/tags/powerlevel9k/</loc>
+    <loc>https://aqweteddy.github.io/tags/powerlevel9k/</loc>
     <lastmod>2019-02-21T13:16:27+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/tags/sentiment/</loc>
+    <loc>https://aqweteddy.github.io/tags/sentiment/</loc>
     <lastmod>2019-02-02T19:42:16+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/tags/syntax-highlight/</loc>
+    <loc>https://aqweteddy.github.io/tags/syntax-highlight/</loc>
     <lastmod>2019-02-21T13:16:27+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/tags/syntaxhighlight/</loc>
+    <loc>https://aqweteddy.github.io/tags/syntaxhighlight/</loc>
     <lastmod>2019-02-21T13:38:15+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/tags/</loc>
+    <loc>https://aqweteddy.github.io/tags/</loc>
     <lastmod>2019-02-21T13:16:27+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/tags/ubuntu/</loc>
-    <lastmod>2019-02-21T13:16:27+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://aqweteddy.github.io/categories/ubuntu/</loc>
-    <lastmod>2019-02-21T13:16:27+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://aqweteddy.github.io/tags/vimrc/</loc>
-    <lastmod>2019-02-21T13:16:27+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://aqweteddy.github.io/tags/word2vec/</loc>
-    <lastmod>2019-01-20T16:59:48+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://aqweteddy.github.io/tags/words/</loc>
+    <loc>https://aqweteddy.github.io/</loc>
     <lastmod>2019-01-20T13:06:27+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/tags/zsh/</loc>
+    <loc>https://aqweteddy.github.io/tags/ubuntu/</loc>
     <lastmod>2019-02-21T13:16:27+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://aqweteddy.github.io/categories/zsh/</loc>
+    <loc>https://aqweteddy.github.io/categories/ubuntu/</loc>
+    <lastmod>2019-02-21T13:16:27+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aqweteddy.github.io/tags/vimrc/</loc>
+    <lastmod>2019-02-21T13:16:27+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aqweteddy.github.io/tags/word2vec/</loc>
+    <lastmod>2019-01-20T16:59:48+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aqweteddy.github.io/tags/words/</loc>
+    <lastmod>2019-01-20T13:06:27+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aqweteddy.github.io/tags/zsh/</loc>
+    <lastmod>2019-02-21T13:16:27+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aqweteddy.github.io/categories/zsh/</loc>
     <lastmod>2019-02-21T13:16:27+08:00</lastmod>
     <priority>0</priority>
   </url>

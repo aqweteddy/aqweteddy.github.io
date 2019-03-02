@@ -1,27 +1,263 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+
+
+
+<?xml-stylesheet type="text/xsl" href="#stylesheet" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <xsl:stylesheet id="stylesheet" version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" exclude-result-prefixes="xsl">
+    <xsl:output method="html" doctype-system="about:legacy-compat" />
+    <xsl:template match="/rss">
+      <html lang="zh-tw">
+        <head>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Word2vec RSS | Teddy&#39;s blog</title>
+          <style>body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 0.2rem;
+}
+
+pre {
+  overflow-x: auto;
+  border: 0.1rem solid lightgray;
+  padding: 1rem;
+}
+
+code {
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.Banner {
+  list-style: none;
+  display: flex;
+  flex-flow: row-reverse wrap-reverse;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+.Banner-item:nth-child(1) {
+  order: 4;
+}
+
+
+
+.Banner-item:nth-child(2) {
+  order: 3;
+}
+
+
+
+.Banner-item:nth-child(3) {
+  order: 2;
+}
+
+
+
+.Banner-item:nth-child(4) {
+  order: 1;
+}
+
+
+
+.Banner-link {
+  font-size: 1.25rem;
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+.Heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.Heading-title {
+  margin: 1.5rem 0.5rem 0 0;
+}
+
+.Heading-link {
+  color: inherit;
+}
+
+.Tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1.5rem 0;
+  padding: 0;
+}
+
+.Tags-item {
+  border-radius: 0.2rem;
+  margin: 0.2rem;
+  padding: 0 0.3rem;
+}
+
+.Tags-link {
+  color: white;
+}
+
+.Pagination {
+  font-size: 1.25rem;
+  color: inherit;
+}
+
+.Pagination--right {
+  float: right;
+}
+
+.Footer {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.u-expand {
+  flex-grow: 1;
+}
+
+.u-wrapper {
+  max-width: 42rem;
+  margin: auto;
+}
+
+.u-padding {
+  padding: 0 1rem;
+}
+
+.u-background {
+  background: black;
+}
+
+.u-clickable {
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+}</style>
+        </head>
+        <body>
+          <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item u-expand">
+        <a class="Banner-link u-clickable" href="/">Teddy&#39;s blog</a>
+      </li>
+      
+      <li class="Banner-item">
+        <a class="Banner-link u-clickable" href="/about/">About</a>
+      </li>
+      
+      <li class="Banner-item">
+        <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+      </li>
+      
+      <li class="Banner-item">
+        <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+      </li>
+      
+      <li class="Banner-item">
+        <a class="Banner-link u-clickable" href="/categories/">Categories</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+          <main class="u-expand">
+            <div class="u-wrapper">
+              <div class="u-padding">
+                <h2 class="Heading-title">
+                  
+                  <a class="Heading-link u-clickable" href="/tags/word2vec/index.xml" rel="bookmark">Word2vec RSS</a>
+                  
+                </h2>
+                
+                <p>
+                  To subscribe to this RSS feed, copy its address and paste it into your favorite feed reader.
+                </p>
+                
+              </div>
+            </div>
+          </main>
+          
+<footer class="Footer">
+  <div class="u-wrapper">
+    <div class="u-padding">
+      <a href="http://creativecommons.org/licenses/by/4.0/" rel="license"> Creative Commons Attribution 4.0 International License</a>.
+    </div>
+  </div>
+</footer>
+
+        </body>
+      </html>
+    </xsl:template>
+  </xsl:stylesheet>
   <channel>
-    <title>Word2vec on Teddy&#39;s Blog</title>
-    <link>http://aqweteddy.github.io/tags/word2vec/</link>
-    <description>Recent content in Word2vec on Teddy&#39;s Blog</description>
+    <title>Word2vec on Teddy&#39;s blog</title>
+    <link>https://aqweteddy.github.io/tags/word2vec/</link>
+    <description>Recent content in Word2vec on Teddy&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <lastBuildDate>Sun, 20 Jan 2019 16:59:48 +0800</lastBuildDate>
-    
-	<atom:link href="http://aqweteddy.github.io/tags/word2vec/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://aqweteddy.github.io/tags/word2vec/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Word2vec</title>
-      <link>http://aqweteddy.github.io/posts/nlp/word2vec/</link>
+      <link>https://aqweteddy.github.io/posts/word2vec/</link>
       <pubDate>Sun, 20 Jan 2019 16:59:48 +0800</pubDate>
-      
-      <guid>http://aqweteddy.github.io/posts/nlp/word2vec/</guid>
+      <guid>https://aqweteddy.github.io/posts/word2vec/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;將文字轉成向量&lt;/li&gt;
 &lt;li&gt;不論語言&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;安裝方法&#34;&gt;安裝方法&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;pip install gensim
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;使用方法&#34;&gt;使用方法&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-py&#34;&gt;model = Word2Vec(output, window=5, min_count=5, size=300,
+                 sg=0, workers=3, hs=1, iter=5)
+model.save(&#39;models/ptt_text.model&#39;) # save model
+model = Word2Vec.load(&#39;word2vec.model&#39;) # load model
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;output: 斷詞後的語料 (2D Array)&lt;/li&gt;
+&lt;li&gt;參數:
+
+&lt;ul&gt;
+&lt;li&gt;iter=5：訓練的回數，訓練過少會使得詞關係過為鬆散，訓練過度又會使得詞關係過為極&lt;/li&gt;
+&lt;li&gt;size=100：詞向量的維度大小，維度太小會無法有效表達詞與詞的關係，維度太大會使關係太稀疏而難以找出規則&lt;/li&gt;
+&lt;li&gt;verbose = True 是會印出 word2vec 執行的詳細狀況&lt;/li&gt;
+&lt;li&gt;alpha:機器學習中的學習率，這東西會逐漸收斂到 min_alpha&lt;/li&gt;
+&lt;li&gt;sg:sg=1表示採用skip-gram,sg=0 表示採用cbow&lt;/li&gt;
+&lt;li&gt;window:能往左往右看幾個字&lt;/li&gt;
+&lt;li&gt;workers:執行緒數目，建議別超過 4&lt;/li&gt;
+&lt;li&gt;min_count:若這個詞出現的次數小於min_count，那他就不會被視為訓練對象&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;查詢&#34;&gt;查詢&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-py&#34;&gt;model.similarity(word2,word1) # 兩字的相似度
+model[word] # word 的向量
+model.most_similar([word, ... ], topn=N) # 最有關前 Ｎ 字
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
-    
   </channel>
 </rss>

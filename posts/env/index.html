@@ -8,11 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
     
-    Nlp | Teddy&#39;s blog
+    Highlight Hugo Code | Teddy&#39;s blog
     
   </title>
-  
-  <link rel="alternate" type="application/rss+xml" href="/categories/nlp/index.xml" title="Teddy's blog">
   
   <style>
     body {
@@ -188,25 +186,66 @@ code {
       <div class="u-padding">
         
 
-<header class="Heading">
+<article>
+  <header class="Heading">
   <h2 class="Heading-title">
-    <a class="Heading-link u-clickable" href="/categories/nlp/" rel="bookmark">Nlp</a>
+    <a class="Heading-link u-clickable" href="/posts/env/" rel="bookmark">Highlight Hugo Code</a>
   </h2>
   
+  <time datetime="2019-02-21T13:38:15&#43;08:00">
+    21 February, 2019
+  </time>
+  
 </header>
-
-
-<h3>2019</h3>
-<ul>
-  
-  <li>2019-02-02 – <a href="/posts/sentiment_anlysis/">情緒分析</a></li>
-  
-  <li>2019-01-20 – <a href="/posts/word2vec/">Word2vec</a></li>
-  
-  <li>2019-01-20 – <a href="/posts/technical_term/">名詞</a></li>
-  
+  <ul>
+<li>add highlight to Hugo.</li>
 </ul>
 
+<h2 id="step">Step</h2>
+
+<ul>
+<li><p>add behind code into <code>config.toml</code></p>
+
+<pre><code class="language-config"># use Chroma for syntax highlight
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+pygmentsStyle = &quot;vim&quot;
+</code></pre></li>
+</ul>
+
+<h2 id="code-highlight-example">Code Highlight Example</h2>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    cout &lt;&lt; 123 &lt;&lt; '\n';
+    return 0;
+}
+</code></pre>
+  
+<footer>
+  <ul class="Tags">
+    
+    
+    
+    <li class="Tags-item u-background">
+      <a class="Tags-link u-clickable" href="/tags/hugo/" rel="tag">hugo</a>
+    </li>
+    
+    
+    
+    
+    <li class="Tags-item u-background">
+      <a class="Tags-link u-clickable" href="/tags/syntaxhighlight/" rel="tag">SyntaxHighlight</a>
+    </li>
+    
+    
+  </ul>
+</footer>
+
+</article>
 
 
       </div>

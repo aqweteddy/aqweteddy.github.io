@@ -1,26 +1,240 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+
+
+
+<?xml-stylesheet type="text/xsl" href="#stylesheet" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <xsl:stylesheet id="stylesheet" version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" exclude-result-prefixes="xsl">
+    <xsl:output method="html" doctype-system="about:legacy-compat" />
+    <xsl:template match="/rss">
+      <html lang="zh-tw">
+        <head>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Words RSS | Teddy&#39;s blog</title>
+          <style>body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 0.2rem;
+}
+
+pre {
+  overflow-x: auto;
+  border: 0.1rem solid lightgray;
+  padding: 1rem;
+}
+
+code {
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.Banner {
+  list-style: none;
+  display: flex;
+  flex-flow: row-reverse wrap-reverse;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+.Banner-item:nth-child(1) {
+  order: 4;
+}
+
+
+
+.Banner-item:nth-child(2) {
+  order: 3;
+}
+
+
+
+.Banner-item:nth-child(3) {
+  order: 2;
+}
+
+
+
+.Banner-item:nth-child(4) {
+  order: 1;
+}
+
+
+
+.Banner-link {
+  font-size: 1.25rem;
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+.Heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.Heading-title {
+  margin: 1.5rem 0.5rem 0 0;
+}
+
+.Heading-link {
+  color: inherit;
+}
+
+.Tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1.5rem 0;
+  padding: 0;
+}
+
+.Tags-item {
+  border-radius: 0.2rem;
+  margin: 0.2rem;
+  padding: 0 0.3rem;
+}
+
+.Tags-link {
+  color: white;
+}
+
+.Pagination {
+  font-size: 1.25rem;
+  color: inherit;
+}
+
+.Pagination--right {
+  float: right;
+}
+
+.Footer {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.u-expand {
+  flex-grow: 1;
+}
+
+.u-wrapper {
+  max-width: 42rem;
+  margin: auto;
+}
+
+.u-padding {
+  padding: 0 1rem;
+}
+
+.u-background {
+  background: black;
+}
+
+.u-clickable {
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+}</style>
+        </head>
+        <body>
+          <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item u-expand">
+        <a class="Banner-link u-clickable" href="/">Teddy&#39;s blog</a>
+      </li>
+      
+      <li class="Banner-item">
+        <a class="Banner-link u-clickable" href="/about/">About</a>
+      </li>
+      
+      <li class="Banner-item">
+        <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+      </li>
+      
+      <li class="Banner-item">
+        <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+      </li>
+      
+      <li class="Banner-item">
+        <a class="Banner-link u-clickable" href="/categories/">Categories</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+          <main class="u-expand">
+            <div class="u-wrapper">
+              <div class="u-padding">
+                <h2 class="Heading-title">
+                  
+                  <a class="Heading-link u-clickable" href="/tags/words/index.xml" rel="bookmark">Words RSS</a>
+                  
+                </h2>
+                
+                <p>
+                  To subscribe to this RSS feed, copy its address and paste it into your favorite feed reader.
+                </p>
+                
+              </div>
+            </div>
+          </main>
+          
+<footer class="Footer">
+  <div class="u-wrapper">
+    <div class="u-padding">
+      <a href="http://creativecommons.org/licenses/by/4.0/" rel="license"> Creative Commons Attribution 4.0 International License</a>.
+    </div>
+  </div>
+</footer>
+
+        </body>
+      </html>
+    </xsl:template>
+  </xsl:stylesheet>
   <channel>
-    <title>Words on Teddy&#39;s Blog</title>
-    <link>http://aqweteddy.github.io/tags/words/</link>
-    <description>Recent content in Words on Teddy&#39;s Blog</description>
+    <title>Words on Teddy&#39;s blog</title>
+    <link>https://aqweteddy.github.io/tags/words/</link>
+    <description>Recent content in Words on Teddy&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <lastBuildDate>Sun, 20 Jan 2019 13:06:27 +0800</lastBuildDate>
-    
-	<atom:link href="http://aqweteddy.github.io/tags/words/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://aqweteddy.github.io/tags/words/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>名詞</title>
-      <link>http://aqweteddy.github.io/posts/nlp/technical_term/</link>
+      <link>https://aqweteddy.github.io/posts/technical_term/</link>
       <pubDate>Sun, 20 Jan 2019 13:06:27 +0800</pubDate>
-      
-      <guid>http://aqweteddy.github.io/posts/nlp/technical_term/</guid>
+      <guid>https://aqweteddy.github.io/posts/technical_term/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;紀錄專有名詞&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;名詞解釋&#34;&gt;名詞解釋&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;詞向量：將 word 轉為 vector&lt;/li&gt;
+&lt;li&gt;句向量：&lt;/li&gt;
+&lt;li&gt;卷積神經網路(CNNs)：處理矩陣輸入任務，將高維度矩陣轉為一維向量，並保留有用訊息，注重全局的模糊感知&lt;/li&gt;
+&lt;li&gt;循環神經網路(RNNs)：與CNN作用相同，但是注重鄰近位置重構(鄰近位置信息的整合)
+
+&lt;ul&gt;
+&lt;li&gt;LSTM:&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;https://kexue.fm/usr/uploads/2015/08/2067741257.png&#34; alt=&#34;LSTM Model&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
-    
   </channel>
 </rss>

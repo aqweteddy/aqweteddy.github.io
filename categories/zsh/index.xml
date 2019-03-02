@@ -1,22 +1,223 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+
+
+
+<?xml-stylesheet type="text/xsl" href="#stylesheet" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <xsl:stylesheet id="stylesheet" version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" exclude-result-prefixes="xsl">
+    <xsl:output method="html" doctype-system="about:legacy-compat" />
+    <xsl:template match="/rss">
+      <html lang="zh-tw">
+        <head>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Zsh RSS | Teddy&#39;s blog</title>
+          <style>body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 0.2rem;
+}
+
+pre {
+  overflow-x: auto;
+  border: 0.1rem solid lightgray;
+  padding: 1rem;
+}
+
+code {
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.Banner {
+  list-style: none;
+  display: flex;
+  flex-flow: row-reverse wrap-reverse;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+.Banner-item:nth-child(1) {
+  order: 4;
+}
+
+
+
+.Banner-item:nth-child(2) {
+  order: 3;
+}
+
+
+
+.Banner-item:nth-child(3) {
+  order: 2;
+}
+
+
+
+.Banner-item:nth-child(4) {
+  order: 1;
+}
+
+
+
+.Banner-link {
+  font-size: 1.25rem;
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+.Heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.Heading-title {
+  margin: 1.5rem 0.5rem 0 0;
+}
+
+.Heading-link {
+  color: inherit;
+}
+
+.Tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1.5rem 0;
+  padding: 0;
+}
+
+.Tags-item {
+  border-radius: 0.2rem;
+  margin: 0.2rem;
+  padding: 0 0.3rem;
+}
+
+.Tags-link {
+  color: white;
+}
+
+.Pagination {
+  font-size: 1.25rem;
+  color: inherit;
+}
+
+.Pagination--right {
+  float: right;
+}
+
+.Footer {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.u-expand {
+  flex-grow: 1;
+}
+
+.u-wrapper {
+  max-width: 42rem;
+  margin: auto;
+}
+
+.u-padding {
+  padding: 0 1rem;
+}
+
+.u-background {
+  background: black;
+}
+
+.u-clickable {
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+}</style>
+        </head>
+        <body>
+          <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item u-expand">
+        <a class="Banner-link u-clickable" href="/">Teddy&#39;s blog</a>
+      </li>
+      
+      <li class="Banner-item">
+        <a class="Banner-link u-clickable" href="/about/">About</a>
+      </li>
+      
+      <li class="Banner-item">
+        <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+      </li>
+      
+      <li class="Banner-item">
+        <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+      </li>
+      
+      <li class="Banner-item">
+        <a class="Banner-link u-clickable" href="/categories/">Categories</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+          <main class="u-expand">
+            <div class="u-wrapper">
+              <div class="u-padding">
+                <h2 class="Heading-title">
+                  
+                  <a class="Heading-link u-clickable" href="/categories/zsh/index.xml" rel="bookmark">Zsh RSS</a>
+                  
+                </h2>
+                
+                <p>
+                  To subscribe to this RSS feed, copy its address and paste it into your favorite feed reader.
+                </p>
+                
+              </div>
+            </div>
+          </main>
+          
+<footer class="Footer">
+  <div class="u-wrapper">
+    <div class="u-padding">
+      <a href="http://creativecommons.org/licenses/by/4.0/" rel="license"> Creative Commons Attribution 4.0 International License</a>.
+    </div>
+  </div>
+</footer>
+
+        </body>
+      </html>
+    </xsl:template>
+  </xsl:stylesheet>
   <channel>
-    <title>Zsh on Teddy&#39;s Blog</title>
-    <link>http://aqweteddy.github.io/categories/zsh/</link>
-    <description>Recent content in Zsh on Teddy&#39;s Blog</description>
+    <title>Zsh on Teddy&#39;s blog</title>
+    <link>https://aqweteddy.github.io/categories/zsh/</link>
+    <description>Recent content in Zsh on Teddy&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <lastBuildDate>Thu, 21 Feb 2019 13:16:27 +0800</lastBuildDate>
-    
-	<atom:link href="http://aqweteddy.github.io/categories/zsh/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="https://aqweteddy.github.io/categories/zsh/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>set env on Ubuntu</title>
-      <link>http://aqweteddy.github.io/posts/ubuntu/env/</link>
+      <link>https://aqweteddy.github.io/posts/ubuntu_env/</link>
       <pubDate>Thu, 21 Feb 2019 13:16:27 +0800</pubDate>
-      
-      <guid>http://aqweteddy.github.io/posts/ubuntu/env/</guid>
+      <guid>https://aqweteddy.github.io/posts/ubuntu_env/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;set environment on Ubuntu&lt;/li&gt;
 &lt;li&gt;zsh
@@ -25,8 +226,168 @@
 &lt;li&gt;syntax-highlight powerlevel9k auto-suggestions&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;.vimrc&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;install-zsh&#34;&gt;install zsh&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;sudo apt-get install zsh
+sudo apt-get install git
+chsh -s /bin/zsh
+sh -c &amp;quot;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&amp;quot;
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;zshrc&#34;&gt;.zshrc&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;POWERLEVEL9K_MODE=&#39;nerdfont-complete&#39;
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to &amp;quot;random&amp;quot;
+# it&#39;ll load a random theme each time that oh-my-zsh is loaded.
+
+ZSH_THEME=&amp;quot;powerlevel9k/powerlevel9k&amp;quot;
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
+# ZSH_THEME_RANDOM_CANDIDATES=( &amp;quot;robbyrussell&amp;quot; &amp;quot;agnoster&amp;quot; )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE=&amp;quot;true&amp;quot;
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE=&amp;quot;true&amp;quot;
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE=&amp;quot;true&amp;quot;
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS=&amp;quot;true&amp;quot;
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE=&amp;quot;true&amp;quot;
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION=&amp;quot;true&amp;quot;
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS=&amp;quot;true&amp;quot;
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY=&amp;quot;true&amp;quot;
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: &amp;quot;mm/dd/yyyy&amp;quot;|&amp;quot;dd.mm.yyyy&amp;quot;|&amp;quot;yyyy-mm-dd&amp;quot;
+# HIST_STAMPS=&amp;quot;mm/dd/yyyy&amp;quot;
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
+# User configuration
+
+# export MANPATH=&amp;quot;/usr/local/man:$MANPATH&amp;quot;
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR=&#39;vim&#39;
+# else
+#   export EDITOR=&#39;mvim&#39;
+# fi
+
+# Compilation flags
+# export ARCHFLAGS=&amp;quot;-arch x86_64&amp;quot;
+
+# ssh
+# export SSH_KEY_PATH=&amp;quot;~/.ssh/rsa_id&amp;quot;
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig=&amp;quot;mate ~/.zshrc&amp;quot;
+# alias ohmyzsh=&amp;quot;mate ~/.oh-my-zsh&amp;quot;
+
+# PowerLevel9K theme
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=&amp;quot;&amp;quot;
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=&amp;quot;$ &amp;quot;
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_DISABLE_RPROMPT=true
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator ssh user virtualenv anaconda  dir dir_writable  vcs status battery load  time)
+
+
+alias cls=&#39;clear&#39;
+alias gccw=&#39;gcc -Wextra -Werror -Wall&#39;
+alias ll=&#39;ls -al&#39;
+alias gpp=&#39;g++ -std=c++11 -Wshadow -DDEBUG -Wall&#39;
+export PATH=&amp;quot;/usr/local/mysql/bin:$PATH&amp;quot;
+export PATH=&amp;quot;/usr/local/opt/openssl/bin:$PATH&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;vimrc&#34;&gt;.vimrc&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;set theme
+set t_Co=256
+set background=dark
+
+&amp;quot;set indent linecnt tab backspace
+set nu
+set tabstop=4
+set shiftwidth=4
+set ruler
+set cursorline
+set backspace=indent,eol,start
+set nocompatible
+filetype indent on
+
+syntax on
+set showmatch
+
+&amp;quot;encoding
+set encoding=utf-8
+
+&amp;quot;auto complete
+inoremap ( ()&amp;lt;LEFT&amp;gt;
+inoremap [ []&amp;lt;LEFT&amp;gt;
+inoremap { {&amp;lt;CR&amp;gt;}&amp;lt;LEFT&amp;gt;&amp;lt;Esc&amp;gt;O
+inoremap &amp;quot; &amp;quot;&amp;quot;&amp;lt;LEFT&amp;gt;
+inoremap &#39; &#39;&#39;&amp;lt;LEFT&amp;gt;
+
+&amp;quot;&amp;quot;
+&amp;quot;End auto-complete
+
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,0 +1,362 @@
+
+
+
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    
+    情緒分析 | Teddy&#39;s blog
+    
+  </title>
+  
+  <style>
+    body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 0.2rem;
+}
+
+pre {
+  overflow-x: auto;
+  border: 0.1rem solid lightgray;
+  padding: 1rem;
+}
+
+code {
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.Banner {
+  list-style: none;
+  display: flex;
+  flex-flow: row-reverse wrap-reverse;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+.Banner-item:nth-child(1) {
+  order: 4;
+}
+
+
+
+.Banner-item:nth-child(2) {
+  order: 3;
+}
+
+
+
+.Banner-item:nth-child(3) {
+  order: 2;
+}
+
+
+
+.Banner-item:nth-child(4) {
+  order: 1;
+}
+
+
+
+.Banner-link {
+  font-size: 1.25rem;
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+.Heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.Heading-title {
+  margin: 1.5rem 0.5rem 0 0;
+}
+
+.Heading-link {
+  color: inherit;
+}
+
+.Tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1.5rem 0;
+  padding: 0;
+}
+
+.Tags-item {
+  border-radius: 0.2rem;
+  margin: 0.2rem;
+  padding: 0 0.3rem;
+}
+
+.Tags-link {
+  color: white;
+}
+
+.Pagination {
+  font-size: 1.25rem;
+  color: inherit;
+}
+
+.Pagination--right {
+  float: right;
+}
+
+.Footer {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.u-expand {
+  flex-grow: 1;
+}
+
+.u-wrapper {
+  max-width: 42rem;
+  margin: auto;
+}
+
+.u-padding {
+  padding: 0 1rem;
+}
+
+.u-background {
+  background: black;
+}
+
+.u-clickable {
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+}
+    
+  </style>
+  <meta name="generator" content="Hugo 0.54.0" />
+</head>
+<body>
+  <nav class="u-background">
+  <div class="u-wrapper">
+    <ul class="Banner">
+      <li class="Banner-item u-expand">
+        <a class="Banner-link u-clickable" href="/">Teddy&#39;s blog</a>
+      </li>
+      
+      <li class="Banner-item">
+        <a class="Banner-link u-clickable" href="/about/">About</a>
+      </li>
+      
+      <li class="Banner-item">
+        <a class="Banner-link u-clickable" href="/posts/">Posts</a>
+      </li>
+      
+      <li class="Banner-item">
+        <a class="Banner-link u-clickable" href="/tags/">Tags</a>
+      </li>
+      
+      <li class="Banner-item">
+        <a class="Banner-link u-clickable" href="/categories/">Categories</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+  <main class="u-expand">
+    <div class="u-wrapper">
+      <div class="u-padding">
+        
+
+<article>
+  <header class="Heading">
+  <h2 class="Heading-title">
+    <a class="Heading-link u-clickable" href="/posts/sentiment_anlysis/" rel="bookmark">情緒分析</a>
+  </h2>
+  
+  <time datetime="2019-02-02T19:42:16&#43;08:00">
+    2 February, 2019
+  </time>
+  
+</header>
+  <ul>
+<li>以 keras 建置 LSTM 模型做文字二元分類</li>
+<li>data-set 來源：ptt</li>
+</ul>
+
+<h3 id="github-code">Github Code</h3>
+
+<ul>
+<li><a href="https://github.com/aqweteddy/PttSentimentAnalyse">https://github.com/aqweteddy/PttSentimentAnalyse</a></li>
+</ul>
+
+<h3 id="目標">目標</h3>
+
+<ul>
+<li>輸入推文內容，回傳可能是「推」或「噓」</li>
+<li>輸入文章內容，判斷分類是否為「問卦」</li>
+<li>使用<a href="https://github.com/aqweteddy/PttScrapyMongoDB">這個Repo</a>爬取資料</li>
+</ul>
+
+<h3 id="方法">方法</h3>
+
+<ol>
+<li>將字串切割 (jieba)</li>
+<li>以 <a href="/nlp/word2vec">Word2Vec</a> 將單字轉為向量xw，再組成矩陣</li>
+<li>創建句子對應的id</li>
+<li>以 Keras train model</li>
+</ol>
+
+<h3 id="training-set">Training Set</h3>
+
+<h4 id="set1">Set1</h4>
+
+<ul>
+<li>取得資料庫中所有文章</li>
+<li>分為「問卦」或「非問卦」兩種</li>
+<li>name: <code>ptt_cut_text.txt</code> <code>models/ptt_text_w2v.model</code></li>
+</ul>
+
+<h4 id="set2">Set2</h4>
+
+<ul>
+<li>取得 <sup>2</sup>&frasl;<sub>20</sub> 前推噓文</li>
+<li>去除不推不噓，並隨機抽取1/3的「推」作為樣本，噓全取</li>
+<li>推: 27837 噓: 18564</li>
+<li>name: <code>ptt_cut_comment_tag.txt</code> <code>models/ptt_push.model</code></li>
+</ul>
+
+<h3 id="結果">結果</h3>
+
+<h3 id="training-set-1">Training Set 1</h3>
+
+<ul>
+<li><p>epoch = 2, stop_words=true, embedding_size=100, window=4, embedding_weight=True</p>
+
+<ul>
+<li>model code:</li>
+</ul>
+
+<pre><code class="language-python">model = Sequential()
+model.add(Embedding(
+        output_dim=EMBEDDING_WEIGHT_SIZE,
+        input_dim=len(self.w2id) + 1,
+        mask_zero=True,
+        weights=[self.weight],
+        input_length=self.maxlen))
+model.add(LSTM(output_dim=50, activation='sigmoid'))
+model.add(Dropout(0.4))
+model.add(Dense(1))
+model.add(Activation('sigmoid'))
+
+model.compile(loss='binary_crossentropy',
+    optimizer='adam',metrics=['accuracy'])
+</code></pre>
+
+<ul>
+<li>accuracy: 0.91</li>
+</ul></li>
+</ul>
+
+<h4 id="training-set2">Training Set2</h4>
+
+<ul>
+<li><p>epoch = 1, stop_words = false, size = 300, window = 5:</p>
+
+<ul>
+<li>accuracy: 0.73</li>
+<li>name: <code>ptt_sentiment_v1.model</code></li>
+</ul></li>
+
+<li><p>epoch = 2, stop_words = false, size = 100, window = 5:</p>
+
+<ul>
+<li>accuracy: 0.72</li>
+<li>name: <code>ptt_sentiment_v2.model</code></li>
+</ul></li>
+
+<li><p>epoch = 1, stop_words = true, size = 300, window = 5:</p>
+
+<ul>
+<li>accuracy: 0.76</li>
+<li>name: <code>ptt_sentiment_v3.model</code></li>
+</ul></li>
+
+<li><p>epoch = 1, stop_words = true, size = 300, window = 3:</p>
+
+<ul>
+<li>accuracy: 0.74</li>
+<li>name: <code>ptt_sentiment_v4.model</code></li>
+</ul></li>
+</ul>
+
+<h3 id="參考資料">參考資料</h3>
+
+<ul>
+<li><a href="https://www.jianshu.com/p/fba7df3a76fa">https://www.jianshu.com/p/fba7df3a76fa</a></li>
+<li><a href="https://kexue.fm/archives/3863">https://kexue.fm/archives/3863</a></li>
+</ul>
+  
+<footer>
+  <ul class="Tags">
+    
+    
+    
+    <li class="Tags-item u-background">
+      <a class="Tags-link u-clickable" href="/tags/nlp/" rel="tag">NLP</a>
+    </li>
+    
+    
+    
+    
+    <li class="Tags-item u-background">
+      <a class="Tags-link u-clickable" href="/tags/sentiment/" rel="tag">sentiment</a>
+    </li>
+    
+    
+    
+    
+    <li class="Tags-item u-background">
+      <a class="Tags-link u-clickable" href="/tags/keras/" rel="tag">keras</a>
+    </li>
+    
+    
+  </ul>
+</footer>
+
+</article>
+
+
+      </div>
+    </div>
+  </main>
+  
+<footer class="Footer">
+  <div class="u-wrapper">
+    <div class="u-padding">
+      <a href="http://creativecommons.org/licenses/by/4.0/" rel="license"> Creative Commons Attribution 4.0 International License</a>.
+    </div>
+  </div>
+</footer>
+
+  
+</body>
+</html>
