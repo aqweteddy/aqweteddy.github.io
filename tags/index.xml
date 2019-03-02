@@ -1,217 +1,106 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-
-
-
-<?xml-stylesheet type="text/xsl" href="#stylesheet" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <xsl:stylesheet id="stylesheet" version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" exclude-result-prefixes="xsl">
-    <xsl:output method="html" doctype-system="about:legacy-compat" />
-    <xsl:template match="/rss">
-      <html lang="zh-tw">
-        <head>
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <title>Tags RSS | Teddy&#39;s blog</title>
-          <style>body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  line-height: 1.6;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-}
-
-img {
-  max-width: 100%;
-  border-radius: 0.2rem;
-}
-
-pre {
-  overflow-x: auto;
-  border: 0.1rem solid lightgray;
-  padding: 1rem;
-}
-
-code {
-  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
-}
-
-.Banner {
-  list-style: none;
-  display: flex;
-  flex-flow: row-reverse wrap-reverse;
-  justify-content: space-between;
-  margin: 0;
-  padding: 0;
-}
-
-
-
-
-.Banner-item:nth-child(1) {
-  order: 4;
-}
-
-
-
-.Banner-item:nth-child(2) {
-  order: 3;
-}
-
-
-
-.Banner-item:nth-child(3) {
-  order: 2;
-}
-
-
-
-.Banner-item:nth-child(4) {
-  order: 1;
-}
-
-
-
-.Banner-link {
-  font-size: 1.25rem;
-  color: white;
-  padding: 0.5rem 1rem;
-}
-
-.Heading {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: baseline;
-}
-
-.Heading-title {
-  margin: 1.5rem 0.5rem 0 0;
-}
-
-.Heading-link {
-  color: inherit;
-}
-
-.Tags {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 1.5rem 0;
-  padding: 0;
-}
-
-.Tags-item {
-  border-radius: 0.2rem;
-  margin: 0.2rem;
-  padding: 0 0.3rem;
-}
-
-.Tags-link {
-  color: white;
-}
-
-.Pagination {
-  font-size: 1.25rem;
-  color: inherit;
-}
-
-.Pagination--right {
-  float: right;
-}
-
-.Footer {
-  text-align: center;
-  margin: 1rem 0;
-}
-
-.u-expand {
-  flex-grow: 1;
-}
-
-.u-wrapper {
-  max-width: 42rem;
-  margin: auto;
-}
-
-.u-padding {
-  padding: 0 1rem;
-}
-
-.u-background {
-  background: black;
-}
-
-.u-clickable {
-  font-weight: bold;
-  text-decoration: none;
-  display: inline-block;
-}</style>
-        </head>
-        <body>
-          <nav class="u-background">
-  <div class="u-wrapper">
-    <ul class="Banner">
-      <li class="Banner-item u-expand">
-        <a class="Banner-link u-clickable" href="/">Teddy&#39;s blog</a>
-      </li>
-      
-      <li class="Banner-item">
-        <a class="Banner-link u-clickable" href="/about/">About</a>
-      </li>
-      
-      <li class="Banner-item">
-        <a class="Banner-link u-clickable" href="/posts/">Posts</a>
-      </li>
-      
-      <li class="Banner-item">
-        <a class="Banner-link u-clickable" href="/tags/">Tags</a>
-      </li>
-      
-      <li class="Banner-item">
-        <a class="Banner-link u-clickable" href="/categories/">Categories</a>
-      </li>
-      
-    </ul>
-  </div>
-</nav>
-          <main class="u-expand">
-            <div class="u-wrapper">
-              <div class="u-padding">
-                <h2 class="Heading-title">
-                  
-                  <a class="Heading-link u-clickable" href="/tags/index.xml" rel="bookmark">Tags RSS</a>
-                  
-                </h2>
-                
-                <p>
-                  To subscribe to this RSS feed, copy its address and paste it into your favorite feed reader.
-                </p>
-                
-              </div>
-            </div>
-          </main>
-          
-<footer class="Footer">
-  <div class="u-wrapper">
-    <div class="u-padding">
-      <a href="http://creativecommons.org/licenses/by/4.0/" rel="license"> Creative Commons Attribution 4.0 International License</a>.
-    </div>
-  </div>
-</footer>
-
-        </body>
-      </html>
-    </xsl:template>
-  </xsl:stylesheet>
   <channel>
-    <title>Tags on Teddy&#39;s blog</title>
+    <title>Tags on Teddy&#39;s Blog</title>
     <link>https://aqweteddy.github.io/tags/</link>
-    <description>Recent content in Tags on Teddy&#39;s blog</description>
+    <description>Recent content in Tags on Teddy&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Thu, 21 Feb 2019 13:16:27 +0800</lastBuildDate>
-    <atom:link href="https://aqweteddy.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://aqweteddy.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Auto Suggestions</title>
+      <link>https://aqweteddy.github.io/tags/auto-suggestions/</link>
+      <pubDate>Thu, 21 Feb 2019 13:16:27 +0800</pubDate>
+      
+      <guid>https://aqweteddy.github.io/tags/auto-suggestions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Course</title>
+      <link>https://aqweteddy.github.io/tags/course/</link>
+      <pubDate>Wed, 27 Feb 2019 01:06:48 +0800</pubDate>
+      
+      <guid>https://aqweteddy.github.io/tags/course/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://aqweteddy.github.io/tags/hugo/</link>
+      <pubDate>Thu, 21 Feb 2019 15:37:19 +0800</pubDate>
+      
+      <guid>https://aqweteddy.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Keras</title>
+      <link>https://aqweteddy.github.io/tags/keras/</link>
+      <pubDate>Sat, 02 Feb 2019 19:42:16 +0800</pubDate>
+      
+      <guid>https://aqweteddy.github.io/tags/keras/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nlp</title>
+      <link>https://aqweteddy.github.io/tags/nlp/</link>
+      <pubDate>Sun, 20 Jan 2019 13:06:27 +0800</pubDate>
+      
+      <guid>https://aqweteddy.github.io/tags/nlp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Powerlevel9k</title>
+      <link>https://aqweteddy.github.io/tags/powerlevel9k/</link>
+      <pubDate>Thu, 21 Feb 2019 13:16:27 +0800</pubDate>
+      
+      <guid>https://aqweteddy.github.io/tags/powerlevel9k/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sentiment</title>
+      <link>https://aqweteddy.github.io/tags/sentiment/</link>
+      <pubDate>Sat, 02 Feb 2019 19:42:16 +0800</pubDate>
+      
+      <guid>https://aqweteddy.github.io/tags/sentiment/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Syntax Highlight</title>
+      <link>https://aqweteddy.github.io/tags/syntax-highlight/</link>
+      <pubDate>Thu, 21 Feb 2019 13:16:27 +0800</pubDate>
+      
+      <guid>https://aqweteddy.github.io/tags/syntax-highlight/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Syntaxhighlight</title>
+      <link>https://aqweteddy.github.io/tags/syntaxhighlight/</link>
+      <pubDate>Thu, 21 Feb 2019 13:38:15 +0800</pubDate>
+      
+      <guid>https://aqweteddy.github.io/tags/syntaxhighlight/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubuntu</title>
+      <link>https://aqweteddy.github.io/tags/ubuntu/</link>
+      <pubDate>Thu, 21 Feb 2019 13:16:27 +0800</pubDate>
+      
+      <guid>https://aqweteddy.github.io/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
