@@ -23,6 +23,11 @@
   </url>
   
   <url>
+    <loc>https://aqweteddy.github.io/posts/codejam-2018-round1a-bitparty/</loc>
+    <lastmod>2019-03-03T16:43:08+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://aqweteddy.github.io/posts/codejam-2018-round1a-wafflechoppers/</loc>
     <lastmod>2019-03-03T00:41:19+08:00</lastmod>
   </url>
@@ -59,7 +64,25 @@
   </url>
   
   <url>
+    <loc>https://aqweteddy.github.io/tags/binarysearch/</loc>
+    <lastmod>2019-03-03T16:43:08+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://aqweteddy.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aqweteddy.github.io/categories/codejam/</loc>
+    <lastmod>2019-03-03T16:43:08+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aqweteddy.github.io/tags/codejam-2018/</loc>
+    <lastmod>2019-03-03T16:43:08+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -72,18 +95,6 @@
   <url>
     <loc>https://aqweteddy.github.io/tags/course/</loc>
     <lastmod>2019-02-27T01:06:48+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://aqweteddy.github.io/categories/googlecodejam/</loc>
-    <lastmod>2019-03-03T00:41:19+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://aqweteddy.github.io/tags/googlecodejam/</loc>
-    <lastmod>2019-03-03T00:41:19+08:00</lastmod>
     <priority>0</priority>
   </url>
   

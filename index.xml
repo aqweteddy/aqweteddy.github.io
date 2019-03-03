@@ -48,7 +48,16 @@
     </item>
     
     <item>
-      <title>2018-Round1A WaffleChoppers</title>
+      <title>CodeJam 2018 Round1A BitParty</title>
+      <link>https://aqweteddy.github.io/posts/codejam-2018-round1a-bitparty/</link>
+      <pubDate>Sun, 03 Mar 2019 16:43:08 +0800</pubDate>
+      
+      <guid>https://aqweteddy.github.io/posts/codejam-2018-round1a-bitparty/</guid>
+      <description>題目描述 URL 有 C 台機器要平行處理 B 個物品，一次可啟用 R 台，其中每台機器最多可處理 M[i] 個物品，需要花費 (S[i] * N) + P[i], N &amp;lt;= M[i] 的時間，問：處理完 B 個物品，</description>
+    </item>
+    
+    <item>
+      <title>CodeJam 2018 Round1A WaffleChoppers</title>
       <link>https://aqweteddy.github.io/posts/codejam-2018-round1a-wafflechoppers/</link>
       <pubDate>Sun, 03 Mar 2019 00:41:19 +0800</pubDate>
       

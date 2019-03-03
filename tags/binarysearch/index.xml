@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Binarysearch on Teddy&#39;s Blog</title>
+    <link>https://aqweteddy.github.io/tags/binarysearch/</link>
+    <description>Recent content in Binarysearch on Teddy&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sun, 03 Mar 2019 16:43:08 +0800</lastBuildDate>
+    
+	<atom:link href="https://aqweteddy.github.io/tags/binarysearch/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CodeJam 2018 Round1A BitParty</title>
+      <link>https://aqweteddy.github.io/posts/codejam-2018-round1a-bitparty/</link>
+      <pubDate>Sun, 03 Mar 2019 16:43:08 +0800</pubDate>
+      
+      <guid>https://aqweteddy.github.io/posts/codejam-2018-round1a-bitparty/</guid>
+      <description>題目描述 URL 有 C 台機器要平行處理 B 個物品，一次可啟用 R 台，其中每台機器最多可處理 M[i] 個物品，需要花費 (S[i] * N) + P[i], N &amp;lt;= M[i] 的時間，問：處理完 B 個物品，</description>
+    </item>
+    
+  </channel>
+</rss>
