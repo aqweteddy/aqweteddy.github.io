@@ -2,40 +2,57 @@
 <html lang="zh-tw">
 
 <head>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css"
+		integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"
+		integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js"
+		integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc"
+		crossorigin="anonymous"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			renderMathInElement(document.body);
+		});
+	</script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="theme-color" content="#494f5c">
 	<meta name="msapplication-TileColor" content="#494f5c">
 
-<meta itemprop="name" content="Install">
+<meta itemprop="name" content="安裝 Hugo 建制部落格，並集成 LaTeX">
 <meta itemprop="description" content="
 安裝 Hugo
 Hugo 基本指令
+增加 LaTeX
 ">
 
 
 <meta itemprop="datePublished" content="2019-02-21T15:37:19&#43;08:00" />
 <meta itemprop="dateModified" content="2019-02-21T15:37:19&#43;08:00" />
-<meta itemprop="wordCount" content="77">
+<meta itemprop="wordCount" content="164">
 
 
 
-<meta itemprop="keywords" content="hugo," />
-<meta property="og:title" content="Install" />
+<meta itemprop="keywords" content="hugo,LaTeX," />
+<meta property="og:title" content="安裝 Hugo 建制部落格，並集成 LaTeX" />
 <meta property="og:description" content="
 安裝 Hugo
 Hugo 基本指令
+增加 LaTeX
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://aqweteddy.github.io/posts/hugo_install/" />
 <meta property="article:published_time" content="2019-02-21T15:37:19&#43;08:00"/>
 <meta property="article:modified_time" content="2019-02-21T15:37:19&#43;08:00"/>
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Install"/>
+<meta name="twitter:title" content="安裝 Hugo 建制部落格，並集成 LaTeX"/>
 <meta name="twitter:description" content="
 安裝 Hugo
 Hugo 基本指令
+增加 LaTeX
 "/>
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -45,8 +62,9 @@ Hugo 基本指令
 	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
 	<link rel="shortcut icon" href="/favicon.ico">
 
-	<title>Install</title>
-	<link rel="stylesheet" href="https://aqweteddy.github.io/css/style.min.645b14dc26ce57a45585b37a4ef11a96fee72376dcd62ffbcd5103cd5edf7f1c.css" integrity="sha256-ZFsU3CbOV6RVhbN6TvEalv7nI3bc1i/7zVEDzV7ffxw=">
+	<title>安裝 Hugo 建制部落格，並集成 LaTeX</title>
+	<link rel="stylesheet" href="https://aqweteddy.github.io/css/style.min.645b14dc26ce57a45585b37a4ef11a96fee72376dcd62ffbcd5103cd5edf7f1c.css"
+		integrity="sha256-ZFsU3CbOV6RVhbN6TvEalv7nI3bc1i/7zVEDzV7ffxw=">
 	
 </head>
 
@@ -84,12 +102,13 @@ Hugo 基本指令
 		<article class="thin">
 			<header class="post-header">
 				<div class="post-meta"><span>Feb 21, 2019</span></div>
-				<h1>Install</h1>
+				<h1>安裝 Hugo 建制部落格，並集成 LaTeX</h1>
 			</header>
 			<div class="content">
 				<ul>
 <li>安裝 Hugo</li>
 <li>Hugo 基本指令</li>
+<li>增加 LaTeX</li>
 </ul>
 
 <h3 id="install-hugo">Install Hugo<a href="#install-hugo" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
@@ -141,11 +160,40 @@ git init
 git add .
 git commit -m <span class="s2">&#34;first&#34;</span>
 git push</code></pre></div>
+<h3 id="latex">LaTeX<a href="#latex" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<h3 id="加入">加入<a href="#加入" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<ul>
+<li>主題包中，修改 <code>layouts/baseof.html</code>，在 head 標籤中最前面加入以下程式碼即可</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- KaTeX --&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css&#34;</span>
+		<span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei&#34;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js&#34;</span>
+		<span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq&#34;</span>
+		<span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js&#34;</span>
+		<span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc&#34;</span>
+		<span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></div>
+<h3 id="使用方法">使用方法<a href="#使用方法" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<ul>
+<li>Inline: <code>\\(</code>  內容 <code>\\)</code></li>
+<li>區塊: <code>$$</code> 內容 <code>$$</code></li>
+</ul>
+
+<h3 id="範例">範例<a href="#範例" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<ul>
+<li>\(2 \times3\)</li>
+<li>$$2\times3$$</li>
+</ul>
 			</div>
 			<hr class="post-end">
 			<footer class="post-info">
 				<p>
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://aqweteddy.github.io/tags/hugo">hugo</a></span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://aqweteddy.github.io/tags/hugo">hugo</a></span><span class="tag"><a href="https://aqweteddy.github.io/tags/latex">LaTeX</a></span>
 				</p>
 				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></p>
 				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2019-02-21 15:37 &#43;0800</p>

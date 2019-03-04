@@ -13,7 +13,7 @@
     
     
     <item>
-      <title>Install</title>
+      <title>安裝 Hugo 建制部落格，並集成 LaTeX</title>
       <link>https://aqweteddy.github.io/posts/hugo_install/</link>
       <pubDate>Thu, 21 Feb 2019 15:37:19 +0800</pubDate>
       
@@ -21,6 +21,7 @@
       <description>&lt;ul&gt;
 &lt;li&gt;安裝 Hugo&lt;/li&gt;
 &lt;li&gt;Hugo 基本指令&lt;/li&gt;
+&lt;li&gt;增加 LaTeX&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     

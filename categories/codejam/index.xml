@@ -18,7 +18,7 @@
       <pubDate>Mon, 04 Mar 2019 22:59:26 +0800</pubDate>
       
       <guid>https://aqweteddy.github.io/posts/codejam-2018-round1c/</guid>
-      <description>A. Saving The Universe Again 題目描述 URL 給定一個字元矩陣 N * L，每個 column 選一個字母組成一個新單字，但不和 row 成的單字重複，輸出任意一個單字，若無輸出“-” 解題思路</description>
+      <description>A. A Whole New Word 題目描述 URL 給定一個字元矩陣 \(N \times L\)，每個 column 選一個字母組成一個新單字，但不和 row 成的單字重複，輸出任意一個單字，若無輸出“-” 解題</description>
     </item>
     
     <item>

@@ -214,16 +214,16 @@
 			<pubDate>Mon, 04 Mar 2019 22:59:26 +0800</pubDate>
 			
 			<guid>https://aqweteddy.github.io/posts/codejam-2018-round1c/</guid>
-			<description>A. Saving The Universe Again 題目描述 URL 給定一個字元矩陣 N * L，每個 column 選一個字母組成一個新單字，但不和 row 成的單字重複，輸出任意一個單字，若無輸出“-” 解題思路</description>
+			<description>A. A Whole New Word 題目描述 URL 給定一個字元矩陣 \(N \times L\)，每個 column 選一個字母組成一個新單字，但不和 row 成的單字重複，輸出任意一個單字，若無輸出“-” 解題</description>
 			<content type="html"><![CDATA[
 
-<h2 id="a-saving-the-universe-again">A. Saving The Universe Again</h2>
+<h2 id="a-a-whole-new-word">A. A Whole New Word</h2>
 
 <h3 id="題目描述">題目描述</h3>
 
 <ul>
 <li><a href="https://codingcompetitions.withgoogle.com/codejam/round/0000000000007765/000000000003e064">URL</a></li>
-<li>給定一個字元矩陣 N * L，每個 column 選一個字母組成一個新單字，但不和 row 成的單字重複，輸出任意一個單字，若無輸出“-”</li>
+<li>給定一個字元矩陣 \(N \times L\)，每個 column 選一個字母組成一個新單字，但不和 row 成的單字重複，輸出任意一個單字，若無輸出“-”</li>
 </ul>
 
 <h3 id="解題思路">解題思路</h3>
@@ -800,7 +800,7 @@
 		</item>
 		
 		<item>
-			<title>Install</title>
+			<title>安裝 Hugo 建制部落格，並集成 LaTeX</title>
 			<link>https://aqweteddy.github.io/posts/hugo_install/</link>
 			<pubDate>Thu, 21 Feb 2019 15:37:19 +0800</pubDate>
 			
@@ -808,10 +808,12 @@
 			<description>&lt;ul&gt;
 &lt;li&gt;安裝 Hugo&lt;/li&gt;
 &lt;li&gt;Hugo 基本指令&lt;/li&gt;
+&lt;li&gt;增加 LaTeX&lt;/li&gt;
 &lt;/ul&gt;</description>
 			<content type="html"><![CDATA[<ul>
 <li>安裝 Hugo</li>
 <li>Hugo 基本指令</li>
+<li>增加 LaTeX</li>
 </ul>
 
 <h3 id="install-hugo">Install Hugo</h3>
@@ -862,7 +864,36 @@
 git init
 git add .
 git commit -m <span class="s2">&#34;first&#34;</span>
-git push</code></pre></div>]]></content>
+git push</code></pre></div>
+<h3 id="latex">LaTeX</h3>
+
+<h3 id="加入">加入</h3>
+
+<ul>
+<li>主題包中，修改 <code>layouts/baseof.html</code>，在 head 標籤中最前面加入以下程式碼即可</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- KaTeX --&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css&#34;</span>
+		<span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei&#34;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js&#34;</span>
+		<span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq&#34;</span>
+		<span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js&#34;</span>
+		<span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc&#34;</span>
+		<span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></div>
+<h3 id="使用方法">使用方法</h3>
+
+<ul>
+<li>Inline: <code>\\(</code>  內容 <code>\\)</code></li>
+<li>區塊: <code>$$</code> 內容 <code>$$</code></li>
+</ul>
+
+<h3 id="範例">範例</h3>
+
+<ul>
+<li>\(2 \times3\)</li>
+<li>$$2\times3$$</li>
+</ul>]]></content>
 		</item>
 		
 		<item>
