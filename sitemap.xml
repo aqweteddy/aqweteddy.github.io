@@ -23,13 +23,8 @@
   </url>
   
   <url>
-    <loc>https://aqweteddy.github.io/posts/codejam-2018-round1a-bitparty/</loc>
+    <loc>https://aqweteddy.github.io/posts/codejam-2018-round1ay/</loc>
     <lastmod>2019-03-03T16:43:08+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://aqweteddy.github.io/posts/codejam-2018-round1a-wafflechoppers/</loc>
-    <lastmod>2019-03-03T00:41:19+08:00</lastmod>
   </url>
   
   <url>
@@ -70,6 +65,12 @@
   </url>
   
   <url>
+    <loc>https://aqweteddy.github.io/tags/bit-party/</loc>
+    <lastmod>2019-03-03T16:43:08+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://aqweteddy.github.io/categories/</loc>
     <priority>0</priority>
   </url>
@@ -100,7 +101,7 @@
   
   <url>
     <loc>https://aqweteddy.github.io/tags/graph/</loc>
-    <lastmod>2019-03-03T00:41:19+08:00</lastmod>
+    <lastmod>2019-03-03T16:43:08+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -185,6 +186,12 @@
   <url>
     <loc>https://aqweteddy.github.io/tags/vimrc/</loc>
     <lastmod>2019-02-21T13:16:27+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aqweteddy.github.io/tags/waffle-choppers/</loc>
+    <lastmod>2019-03-03T16:43:08+08:00</lastmod>
     <priority>0</priority>
   </url>
   
