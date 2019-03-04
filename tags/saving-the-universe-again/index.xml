@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Codejam on Teddy&#39;s Blog</title>
-    <link>https://aqweteddy.github.io/categories/codejam/</link>
-    <description>Recent content in Codejam on Teddy&#39;s Blog</description>
+    <title>Saving the Universe Again on Teddy&#39;s Blog</title>
+    <link>https://aqweteddy.github.io/tags/saving-the-universe-again/</link>
+    <description>Recent content in Saving the Universe Again on Teddy&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Mon, 04 Mar 2019 20:57:18 +0800</lastBuildDate>
     
-	<atom:link href="https://aqweteddy.github.io/categories/codejam/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://aqweteddy.github.io/tags/saving-the-universe-again/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,15 +19,6 @@
       
       <guid>https://aqweteddy.github.io/posts/codejam-2018-qualificationround/</guid>
       <description>A. Saving The Universe Again 題目描述 URL 給一串只有 C 和 S 的字串和一個數字 K，C 表示累積能量 * 2，S 表示攻擊，輸出 swap 最少次數，使得每次攻擊所射出能量 &amp;lt;= K，若無法則</description>
-    </item>
-    
-    <item>
-      <title>CodeJam 2018 Round1A</title>
-      <link>https://aqweteddy.github.io/posts/codejam-2018-round1ay/</link>
-      <pubDate>Sun, 03 Mar 2019 16:43:08 +0800</pubDate>
-      
-      <guid>https://aqweteddy.github.io/posts/codejam-2018-round1ay/</guid>
-      <description>A. WaffleChoppers 題目描述 URL Input: R: MAX_ROW, C: MAX_COL, H: 水平方向切幾刀 V: 垂直方向切幾刀 一個二維矩陣 [R*C]：每格為 1 or 0 在水平方向切 H 刀、垂直方向切 V 刀的情況下，問可否</description>
     </item>
     
   </channel>

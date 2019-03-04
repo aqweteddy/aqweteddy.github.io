@@ -209,6 +209,159 @@
 		</item>
 		
 		<item>
+			<title>CodeJam 2018 Qualification Round</title>
+			<link>https://aqweteddy.github.io/posts/codejam-2018-qualificationround/</link>
+			<pubDate>Mon, 04 Mar 2019 20:57:18 +0800</pubDate>
+			
+			<guid>https://aqweteddy.github.io/posts/codejam-2018-qualificationround/</guid>
+			<description>A. Saving The Universe Again 題目描述 URL 給一串只有 C 和 S 的字串和一個數字 K，C 表示累積能量 * 2，S 表示攻擊，輸出 swap 最少次數，使得每次攻擊所射出能量 &amp;lt;= K，若無法則</description>
+			<content type="html"><![CDATA[
+
+<h2 id="a-saving-the-universe-again">A. Saving The Universe Again</h2>
+
+<h3 id="題目描述">題目描述</h3>
+
+<ul>
+<li><a href="https://codingcompetitions.withgoogle.com/codejam/round/00000000000000cb/0000000000007966">URL</a></li>
+<li>給一串只有 C 和 S 的字串和一個數字 K，C 表示累積能量 * 2，S 表示攻擊，輸出 swap 最少次數，使得每次攻擊所射出能量 &lt;= K，若無法則輸出<strong>IMPOSSIBLE</strong></li>
+<li>注意：
+
+<ul>
+<li>兩相鄰元素才能 swap</li>
+<li>C 是累積的，例如 SCCSS 所輸出的總能量是： 1 + 4 + 4 = 9</li>
+</ul></li>
+</ul>
+
+<h3 id="解題思路">解題思路</h3>
+
+<ul>
+<li>考慮長度只有 2 的情況下，要使輸出能量降低的交換只有 <em>CS</em> -&gt; <em>SC</em> 這個組合</li>
+<li>考慮長度為 N，則要降低輸出，就要盡量把 C 往後移</li>
+<li>如同 Bubble sort 一樣，重複檢查 A[i] = C、A[i+1] = S 的情況，SWAP 它，次數 + 1
+
+<ul>
+<li>考慮要從後往前或從前往後：</li>
+<li>要盡量把 C 往後擺，保證 C 後面沒有 S ＝&gt; 由後往前</li>
+<li>由前往後所造成的能量減少較少，因為交換後 C 後面不保證沒有 S</li>
+<li>注意每次交換後，要將迭代器初始至尾的位置</li>
+</ul></li>
+<li>若執行為 N ^ 2 次仍沒有結果，則為不可能(因為最左邊的 C 右邊已沒有 S)</li>
+</ul>
+
+<h3 id="code">Code</h3>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="c1">// AC
+</span><span class="c1"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
+<span class="n">ll</span> <span class="n">shield</span><span class="p">;</span>
+<span class="n">string</span> <span class="n">attack</span><span class="p">;</span>
+
+<span class="n">ll</span> <span class="nf">calc</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">in</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">ll</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">&amp;</span> <span class="nl">c</span> <span class="p">:</span> <span class="n">in</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">&#39;C&#39;</span><span class="p">)</span>
+            <span class="n">step</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="k">else</span>
+            <span class="n">sum</span> <span class="o">+=</span> <span class="n">step</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">sum</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">solve</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">calc</span><span class="p">(</span><span class="n">attack</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">shield</span><span class="p">){</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">attack</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">){</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">attack</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="o">--</span><span class="n">j</span><span class="p">){</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">attack</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;C&#39;</span> <span class="o">&amp;&amp;</span> <span class="n">attack</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;S&#39;</span><span class="p">){</span>
+                <span class="o">++</span> <span class="n">step</span><span class="p">;</span>
+                <span class="n">swap</span><span class="p">(</span><span class="n">attack</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">attack</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">calc</span><span class="p">(</span><span class="n">attack</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">shield</span><span class="p">){</span>
+                    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">step</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+                    <span class="k">return</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="n">j</span> <span class="o">=</span> <span class="n">attack</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;IMPOSSIBLE</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">nc</span><span class="p">;</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">nc</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">n</span><span class="o">&lt;=</span><span class="n">nc</span><span class="p">;</span> <span class="o">++</span><span class="n">n</span><span class="p">){</span>
+        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">shield</span> <span class="o">&gt;&gt;</span> <span class="n">attack</span><span class="p">;</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span><span class="s">&#34;Case #&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;: &#34;</span><span class="p">;</span>
+        <span class="n">solve</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="b-trouble-sort">B. Trouble Sort</h2>
+
+<h3 id="題目描述-1">題目描述</h3>
+
+<ul>
+<li><p><a href="https://codingcompetitions.withgoogle.com/codejam/round/00000000000000cb/00000000000079cb">URL</a></p></li>
+
+<li><p>定義一個錯誤的排序法，問其可否輸出正確的排序結果，若可以，輸出 <em>OK</em> ，不可以，輸出出現錯誤的處的 index</p></li>
+
+<li><p>排序法如下：</p>
+
+<ul>
+<li>抓取 L 中 [i, i+3) 的 element</li>
+<li>若  L[i] &gt; L[i + 2]，則 Swap(L[i], L[i + 2])</li>
+<li>其他則繼續執行下一組 [i+1, i+4)</li>
+</ul></li>
+</ul>
+
+<h3 id="解題思路-1">解題思路</h3>
+
+<ul>
+<li>觀察該排序法，可發現在 L 中，任一元素 L[i] 只會跟 L[i + 2] 比較</li>
+<li>若將 L 分為 L[0: -1 :2] 和 L[1: -1 :2] 的兩個子陣列，不論該演算法怎麼交換，兩子陣列的元素都不會交換到</li>
+<li>因此該演算法可以當作：
+
+<ol>
+<li>分別 sort L[0: -1 :2] 和 L[1: -1 :2]</li>
+<li>再交叉合併</li>
+<li>得到和執行該演算法相同結果</li>
+</ol></li>
+<li>如此一來 O(N^2) -&gt; O(N log N)</li>
+</ul>
+
+<h3 id="code-1">Code</h3>
+<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+    <span class="n">inp</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)))</span>
+    <span class="n">sub_a</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">inp</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">sub_b</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">inp</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inp</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">inp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub_a</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">inp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub_b</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">inp</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">inp</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">inp</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">return</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;OK&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">NC</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">NC</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Case #</span><span class="si">{}</span><span class="s1">: &#39;</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">main</span><span class="p">()</span></code></pre></div>]]></content>
+		</item>
+		
+		<item>
 			<title>CodeJam 2018 Round1A</title>
 			<link>https://aqweteddy.github.io/posts/codejam-2018-round1ay/</link>
 			<pubDate>Sun, 03 Mar 2019 16:43:08 +0800</pubDate>
