@@ -48,6 +48,15 @@
     </item>
     
     <item>
+      <title>CodeJam 2018 Round1C</title>
+      <link>https://aqweteddy.github.io/posts/codejam-2018-round1c/</link>
+      <pubDate>Mon, 04 Mar 2019 22:59:26 +0800</pubDate>
+      
+      <guid>https://aqweteddy.github.io/posts/codejam-2018-round1c/</guid>
+      <description>A. Saving The Universe Again 題目描述 URL 給定一個字元矩陣 N * L，每個 column 選一個字母組成一個新單字，但不和 row 成的單字重複，輸出任意一個單字，若無輸出“-” 解題思路</description>
+    </item>
+    
+    <item>
       <title>CodeJam 2018 Qualification Round</title>
       <link>https://aqweteddy.github.io/posts/codejam-2018-qualificationround/</link>
       <pubDate>Mon, 04 Mar 2019 20:57:18 +0800</pubDate>
@@ -103,23 +112,6 @@
       <guid>https://aqweteddy.github.io/posts/env/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;add highlight to Hugo.&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>set env on Ubuntu</title>
-      <link>https://aqweteddy.github.io/posts/ubuntu_env/</link>
-      <pubDate>Thu, 21 Feb 2019 13:16:27 +0800</pubDate>
-      
-      <guid>https://aqweteddy.github.io/posts/ubuntu_env/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;set environment on Ubuntu&lt;/li&gt;
-&lt;li&gt;zsh
-
-&lt;ul&gt;
-&lt;li&gt;syntax-highlight powerlevel9k auto-suggestions&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;.vimrc&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     

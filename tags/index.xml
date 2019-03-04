@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 21 Feb 2019 13:16:27 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 04 Mar 2019 22:59:26 +0800</lastBuildDate>
     
 	<atom:link href="https://aqweteddy.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>A Whole New Word</title>
+      <link>https://aqweteddy.github.io/tags/a-whole-new-word/</link>
+      <pubDate>Mon, 04 Mar 2019 22:59:26 +0800</pubDate>
+      
+      <guid>https://aqweteddy.github.io/tags/a-whole-new-word/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Auto Suggestions</title>
@@ -40,9 +49,18 @@
     </item>
     
     <item>
+      <title>Bruce</title>
+      <link>https://aqweteddy.github.io/tags/bruce/</link>
+      <pubDate>Mon, 04 Mar 2019 22:59:26 +0800</pubDate>
+      
+      <guid>https://aqweteddy.github.io/tags/bruce/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Codejam 2018</title>
       <link>https://aqweteddy.github.io/tags/codejam-2018/</link>
-      <pubDate>Mon, 04 Mar 2019 20:57:18 +0800</pubDate>
+      <pubDate>Mon, 04 Mar 2019 22:59:26 +0800</pubDate>
       
       <guid>https://aqweteddy.github.io/tags/codejam-2018/</guid>
       <description></description>
@@ -81,24 +99,6 @@
       <pubDate>Sat, 02 Feb 2019 19:42:16 +0800</pubDate>
       
       <guid>https://aqweteddy.github.io/tags/keras/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Nlp</title>
-      <link>https://aqweteddy.github.io/tags/nlp/</link>
-      <pubDate>Sun, 20 Jan 2019 13:06:27 +0800</pubDate>
-      
-      <guid>https://aqweteddy.github.io/tags/nlp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Powerlevel9k</title>
-      <link>https://aqweteddy.github.io/tags/powerlevel9k/</link>
-      <pubDate>Thu, 21 Feb 2019 13:16:27 +0800</pubDate>
-      
-      <guid>https://aqweteddy.github.io/tags/powerlevel9k/</guid>
       <description></description>
     </item>
     
