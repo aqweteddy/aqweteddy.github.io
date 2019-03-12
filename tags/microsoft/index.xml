@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Microsoft on Teddy&#39;s Blog</title>
+    <link>https://aqweteddy.github.io/tags/microsoft/</link>
+    <description>Recent content in Microsoft on Teddy&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Tue, 12 Mar 2019 21:11:58 +0800</lastBuildDate>
+    
+	<atom:link href="https://aqweteddy.github.io/tags/microsoft/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Microsoft CV - Side Project</title>
+      <link>https://aqweteddy.github.io/posts/microsoft_cv/</link>
+      <pubDate>Tue, 12 Mar 2019 21:11:58 +0800</pubDate>
+      
+      <guid>https://aqweteddy.github.io/posts/microsoft_cv/</guid>
+      <description>Side Project Ptt 資料爬取套件 由於我對於NLP相關有興趣，想要有大量對某項議題的討論，所以我寫了這個套件，將文章資訊寫入資料庫中，當需要分析時再取出。這</description>
+    </item>
+    
+  </channel>
+</rss>
