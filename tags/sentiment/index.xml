@@ -14,13 +14,15 @@
     
     <item>
       <title>情緒分析</title>
-      <link>https://aqweteddy.github.io/posts/sentiment_anlysis/</link>
+      <link>https://aqweteddy.github.io/posts/ptt_anlysis/</link>
       <pubDate>Sat, 02 Feb 2019 19:42:16 +0800</pubDate>
       
-      <guid>https://aqweteddy.github.io/posts/sentiment_anlysis/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;以 keras 建置 LSTM 模型做文字二元分類&lt;/li&gt;
-&lt;li&gt;data-set 來源：ptt&lt;/li&gt;
+      <guid>https://aqweteddy.github.io/posts/ptt_anlysis/</guid>
+      <description>&lt;h1 id=&#34;ptt-nlp-分析&#34;&gt;Ptt NLP 分析&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;以&lt;a href=&#34;https://github.com/aqweteddy/PttScrapyMongoDB&#34;&gt;PttScrapyMongoDB&lt;/a&gt;建立數據庫&lt;/li&gt;
+&lt;li&gt;以 keras 建立相關模型&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css"
+		integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"
+		integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js"
+		integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc"
+		crossorigin="anonymous"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			renderMathInElement(document.body);
+		});
+	</script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+
+<meta itemprop="name" content="情緒分析">
+<meta itemprop="description" content="Ptt NLP 分析
+
+
+以PttScrapyMongoDB建立數據庫
+以 keras 建立相關模型
+">
+
+
+<meta itemprop="datePublished" content="2019-02-02T19:42:16&#43;08:00" />
+<meta itemprop="dateModified" content="2019-02-02T19:42:16&#43;08:00" />
+<meta itemprop="wordCount" content="562">
+
+
+
+<meta itemprop="keywords" content="NLP,sentiment,classification,keras," />
+<meta property="og:title" content="情緒分析" />
+<meta property="og:description" content="Ptt NLP 分析
+
+
+以PttScrapyMongoDB建立數據庫
+以 keras 建立相關模型
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://aqweteddy.github.io/posts/ptt_anlysis/" />
+<meta property="article:published_time" content="2019-02-02T19:42:16&#43;08:00"/>
+<meta property="article:modified_time" content="2019-02-02T19:42:16&#43;08:00"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="情緒分析"/>
+<meta name="twitter:description" content="Ptt NLP 分析
+
+
+以PttScrapyMongoDB建立數據庫
+以 keras 建立相關模型
+"/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>情緒分析</title>
+	<link rel="stylesheet" href="https://aqweteddy.github.io/css/style.min.645b14dc26ce57a45585b37a4ef11a96fee72376dcd62ffbcd5103cd5edf7f1c.css"
+		integrity="sha256-ZFsU3CbOV6RVhbN6TvEalv7nI3bc1i/7zVEDzV7ffxw=">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp faster">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://aqweteddy.github.io">Teddy&#39;s Blog</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					<a href="https://aqweteddy.github.io/categories/">Categories</a>
+					<a href="https://aqweteddy.github.io/tags/">Tags</a>
+					<a href="https://aqweteddy.github.io/posts/">All Posts</a>
+					<a href="https://aqweteddy.github.io/about/">About</a>
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://github.com/aqweteddy" target="_blank" rel="noopener" title="Github"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://aqweteddy.github.io/categories/">Categories</a></li>
+			<li><a href="https://aqweteddy.github.io/tags/">Tags</a></li>
+			<li><a href="https://aqweteddy.github.io/posts/">All Posts</a></li>
+			<li><a href="https://aqweteddy.github.io/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Feb 2, 2019</span></div>
+				<h1>情緒分析</h1>
+			</header>
+			<div class="content">
+				<h1 id="ptt-nlp-分析">Ptt NLP 分析<a href="#ptt-nlp-分析" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+
+<ul>
+<li>以<a href="https://github.com/aqweteddy/PttScrapyMongoDB">PttScrapyMongoDB</a>建立數據庫</li>
+<li>以 keras 建立相關模型</li>
+</ul>
+
+<h2 id="推文噓文預測">推文噓文預測<a href="#推文噓文預測" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<h3 id="說明">說明<a href="#說明" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<ul>
+<li>輸入推文內容，回傳可能是「推」或「噓」</li>
+<li>LSTM 模型</li>
+<li>使用 sigmoid 作為二分激勵函數</li>
+<li><a href="https://github.com/aqweteddy/PttNlpAnalyse/blob/master/sentiment2.py">sentiment2.py</a></li>
+</ul>
+
+<h3 id="資料預處理">資料預處理<a href="#資料預處理" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<ul>
+<li>從 MongoDB 中取出八卦版一個月的推噓文</li>
+<li>去除不推不噓，由於「推」的數量過多，隨機抽取1/3的「推」作為樣本，噓全取</li>
+<li>推: 27837 噓: 18564</li>
+<li>以 jieba 分詞，並用 word2Vec 將單字轉為向量</li>
+</ul>
+
+<h3 id="結果紀錄">結果紀錄<a href="#結果紀錄" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<ul>
+<li>epoch = 1, stop_words = false, size = 300, window = 5:
+
+<ul>
+<li>accuracy: 0.73</li>
+</ul></li>
+<li>epoch = 2, stop_words = false, size = 100, window = 5:
+
+<ul>
+<li>accuracy: 0.72</li>
+</ul></li>
+<li><strong>epoch = 1, stop_words = true, size = 300, window = 5:</strong>
+
+<ul>
+<li><strong>accuracy: 0.76</strong></li>
+</ul></li>
+<li>epoch = 1, stop_words = true, size = 300, window = 3:
+
+<ul>
+<li>accuracy: 0.74</li>
+</ul></li>
+</ul>
+
+<h2 id="文章二分測試">文章二分測試<a href="#文章二分測試" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<h3 id="說明-1">說明<a href="#說明-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<ul>
+<li>輸入文章內容，判斷分類是否為「問卦」</li>
+<li>LSTM 模型 (和「推文噓文預測」相同)</li>
+<li>使用 sigmoid 作為二分激勵函數</li>
+<li><a href="https://github.com/aqweteddy/PttNlpAnalyse/blob/master/sentiment_text.py">sentiment_text.py</a></li>
+</ul>
+
+<h3 id="資料預處理-1">資料預處理<a href="#資料預處理-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<ul>
+<li>從 MongoDB 中取出八卦版 1151 篇文章</li>
+<li>以 jieba 分詞，並用 word2Vec 將單字轉為向量</li>
+</ul>
+
+<h3 id="最佳結果">最佳結果<a href="#最佳結果" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<ul>
+<li>accuracy: 0.91</li>
+</ul>
+
+<h2 id="文章推文數預測">文章推文數預測<a href="#文章推文數預測" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<ul>
+<li>輸入文章內容，推測推數區間 (<0, <20, >20)</li>
+</ul>
+
+<h2 id="文章看板分類">文章看板分類<a href="#文章看板分類" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<h3 id="說明-2">說明<a href="#說明-2" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<ul>
+<li>輸入文章，輸出文章最可能出現的板</li>
+<li>有六個板：<code>'Gossiping': '0', 'WomenTalk': '1', 'Baseball': '2', 'C_Chat': '3', 'LoL': '4', 'car': '5'</code></li>
+<li>Model Type: LSTM / Fast Text</li>
+<li>各板爬 100 頁，共 12551 篇文章</li>
+<li>90% 為 trainingSet，10% 為 Validation set</li>
+</ul>
+
+<h3 id="資料處理方式">資料處理方式<a href="#資料處理方式" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<ul>
+<li>以 jieba 中文斷詞</li>
+<li>以 keras.Tokenizer 將單字轉為 index</li>
+</ul>
+
+<h3 id="使用方式">使用方式<a href="#使用方式" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<h4 id="class-classifier">class <code>Classifier</code><a href="#class-classifier" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+
+<ul>
+<li>Member function:
+
+<ol>
+<li><code>build_lstm()</code>
+
+<ul>
+<li>build lstm Model</li>
+</ul></li>
+<li><code>fit()</code>
+
+<ul>
+<li>開始 train model</li>
+</ul></li>
+<li><code>get_acc()</code>
+
+<ul>
+<li>取得 accuracy</li>
+</ul></li>
+<li><code>save_model(file :: str)</code>
+
+<ul>
+<li>儲存 model 在 <code>file :: str</code> 中</li>
+</ul></li>
+<li><code>predict_board(text :: str)</code>
+
+<ul>
+<li>預測文章 (text) 是哪個板的</li>
+</ul></li>
+</ol></li>
+</ul>
+
+<h3 id="結果">結果<a href="#結果" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<h4 id="lstm">LSTM<a href="#lstm" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Embedding</span><span class="p">(</span><span class="n">embbeding_num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">128</span><span class="p">))</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">128</span><span class="p">))</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span></code></pre></div>
+<ul>
+<li>Accuracy: 0.83</li>
+</ul>
+
+<h4 id="fasttext">FastText<a href="#fasttext" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="n">Embedding</span><span class="p">(</span><span class="n">embbeding_num</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">input_length</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">GlobalMaxPooling1D</span><span class="p">())</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span></code></pre></div>
+<ul>
+<li>Accuracy: 0.91</li>
+</ul>
+
+<h2 id="一些問題">一些問題<a href="#一些問題" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<ol>
+<li>為何推文噓文預測和文章二分測試使用同樣模型準確度卻差非常多？
+
+<ul>
+<li>推噓文的每個樣本長度過短</li>
+<li>推噓文的特徵不明顯</li>
+</ul></li>
+</ol>
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://aqweteddy.github.io/tags/nlp">NLP</a></span><span class="tag"><a href="https://aqweteddy.github.io/tags/sentiment">sentiment</a></span><span class="tag"><a href="https://aqweteddy.github.io/tags/classification">classification</a></span><span class="tag"><a href="https://aqweteddy.github.io/tags/keras">keras</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2019-02-02 19:42 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://aqweteddy.github.io/posts/word2vec/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;</span><br><span>Word2vec</span>
+			</a>
+			<a class="prev-post" href="https://aqweteddy.github.io/posts/codejam-2018-round1c/">
+				<span class="post-nav-label">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>CodeJam 2018 Round1C</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2019 <a href="https://aqweteddy.github.io">Teddy</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			
+			
+		</p>
+	</footer>
+
+
+	<script src="https://aqweteddy.github.io/js/main.min.8f39f24808e9d0a9b02da58c2d2838da859dc0b7bdfadbdb1883aae8b6adacfe.js" integrity="sha256-jznySAjp0KmwLaWMLSg42oWdwLe9+tvbGIOq6LatrP4="></script>
+
+</body>
+
+</html>

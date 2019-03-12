@@ -84,128 +84,185 @@
 		
 		<item>
 			<title>情緒分析</title>
-			<link>https://aqweteddy.github.io/posts/sentiment_anlysis/</link>
+			<link>https://aqweteddy.github.io/posts/ptt_anlysis/</link>
 			<pubDate>Sat, 02 Feb 2019 19:42:16 +0800</pubDate>
 			
-			<guid>https://aqweteddy.github.io/posts/sentiment_anlysis/</guid>
-			<description>&lt;ul&gt;
-&lt;li&gt;以 keras 建置 LSTM 模型做文字二元分類&lt;/li&gt;
-&lt;li&gt;data-set 來源：ptt&lt;/li&gt;
-&lt;/ul&gt;</description>
-			<content type="html"><![CDATA[<ul>
-<li>以 keras 建置 LSTM 模型做文字二元分類</li>
-<li>data-set 來源：ptt</li>
-</ul>
+			<guid>https://aqweteddy.github.io/posts/ptt_anlysis/</guid>
+			<description>&lt;h1 id=&#34;ptt-nlp-分析&#34;&gt;Ptt NLP 分析&lt;/h1&gt;
 
-<h3 id="github-code">Github Code</h3>
+&lt;ul&gt;
+&lt;li&gt;以&lt;a href=&#34;https://github.com/aqweteddy/PttScrapyMongoDB&#34;&gt;PttScrapyMongoDB&lt;/a&gt;建立數據庫&lt;/li&gt;
+&lt;li&gt;以 keras 建立相關模型&lt;/li&gt;
+&lt;/ul&gt;</description>
+			<content type="html"><![CDATA[<h1 id="ptt-nlp-分析">Ptt NLP 分析</h1>
 
 <ul>
-<li><a href="https://github.com/aqweteddy/PttSentimentAnalyse">https://github.com/aqweteddy/PttSentimentAnalyse</a></li>
+<li>以<a href="https://github.com/aqweteddy/PttScrapyMongoDB">PttScrapyMongoDB</a>建立數據庫</li>
+<li>以 keras 建立相關模型</li>
 </ul>
 
-<h3 id="目標">目標</h3>
+<h2 id="推文噓文預測">推文噓文預測</h2>
+
+<h3 id="說明">說明</h3>
 
 <ul>
 <li>輸入推文內容，回傳可能是「推」或「噓」</li>
-<li>輸入文章內容，判斷分類是否為「問卦」</li>
-<li>使用<a href="https://github.com/aqweteddy/PttScrapyMongoDB">這個Repo</a>爬取資料</li>
+<li>LSTM 模型</li>
+<li>使用 sigmoid 作為二分激勵函數</li>
+<li><a href="https://github.com/aqweteddy/PttNlpAnalyse/blob/master/sentiment2.py">sentiment2.py</a></li>
 </ul>
 
-<h3 id="方法">方法</h3>
+<h3 id="資料預處理">資料預處理</h3>
+
+<ul>
+<li>從 MongoDB 中取出八卦版一個月的推噓文</li>
+<li>去除不推不噓，由於「推」的數量過多，隨機抽取1/3的「推」作為樣本，噓全取</li>
+<li>推: 27837 噓: 18564</li>
+<li>以 jieba 分詞，並用 word2Vec 將單字轉為向量</li>
+</ul>
+
+<h3 id="結果紀錄">結果紀錄</h3>
+
+<ul>
+<li>epoch = 1, stop_words = false, size = 300, window = 5:
+
+<ul>
+<li>accuracy: 0.73</li>
+</ul></li>
+<li>epoch = 2, stop_words = false, size = 100, window = 5:
+
+<ul>
+<li>accuracy: 0.72</li>
+</ul></li>
+<li><strong>epoch = 1, stop_words = true, size = 300, window = 5:</strong>
+
+<ul>
+<li><strong>accuracy: 0.76</strong></li>
+</ul></li>
+<li>epoch = 1, stop_words = true, size = 300, window = 3:
+
+<ul>
+<li>accuracy: 0.74</li>
+</ul></li>
+</ul>
+
+<h2 id="文章二分測試">文章二分測試</h2>
+
+<h3 id="說明-1">說明</h3>
+
+<ul>
+<li>輸入文章內容，判斷分類是否為「問卦」</li>
+<li>LSTM 模型 (和「推文噓文預測」相同)</li>
+<li>使用 sigmoid 作為二分激勵函數</li>
+<li><a href="https://github.com/aqweteddy/PttNlpAnalyse/blob/master/sentiment_text.py">sentiment_text.py</a></li>
+</ul>
+
+<h3 id="資料預處理-1">資料預處理</h3>
+
+<ul>
+<li>從 MongoDB 中取出八卦版 1151 篇文章</li>
+<li>以 jieba 分詞，並用 word2Vec 將單字轉為向量</li>
+</ul>
+
+<h3 id="最佳結果">最佳結果</h3>
+
+<ul>
+<li>accuracy: 0.91</li>
+</ul>
+
+<h2 id="文章推文數預測">文章推文數預測</h2>
+
+<ul>
+<li>輸入文章內容，推測推數區間 (<0, <20, >20)</li>
+</ul>
+
+<h2 id="文章看板分類">文章看板分類</h2>
+
+<h3 id="說明-2">說明</h3>
+
+<ul>
+<li>輸入文章，輸出文章最可能出現的板</li>
+<li>有六個板：<code>'Gossiping': '0', 'WomenTalk': '1', 'Baseball': '2', 'C_Chat': '3', 'LoL': '4', 'car': '5'</code></li>
+<li>Model Type: LSTM / Fast Text</li>
+<li>各板爬 100 頁，共 12551 篇文章</li>
+<li>90% 為 trainingSet，10% 為 Validation set</li>
+</ul>
+
+<h3 id="資料處理方式">資料處理方式</h3>
+
+<ul>
+<li>以 jieba 中文斷詞</li>
+<li>以 keras.Tokenizer 將單字轉為 index</li>
+</ul>
+
+<h3 id="使用方式">使用方式</h3>
+
+<h4 id="class-classifier">class <code>Classifier</code></h4>
+
+<ul>
+<li>Member function:
 
 <ol>
-<li>將字串切割 (jieba)</li>
-<li>以 <a href="/nlp/word2vec">Word2Vec</a> 將單字轉為向量xw，再組成矩陣</li>
-<li>創建句子對應的id</li>
-<li>以 Keras train model</li>
-</ol>
-
-<h3 id="training-set">Training Set</h3>
-
-<h4 id="set1">Set1</h4>
+<li><code>build_lstm()</code>
 
 <ul>
-<li>取得資料庫中所有文章</li>
-<li>分為「問卦」或「非問卦」兩種</li>
-<li>name: <code>ptt_cut_text.txt</code> <code>models/ptt_text_w2v.model</code></li>
-</ul>
-
-<h4 id="set2">Set2</h4>
+<li>build lstm Model</li>
+</ul></li>
+<li><code>fit()</code>
 
 <ul>
-<li>取得 <sup>2</sup>&frasl;<sub>20</sub> 前推噓文</li>
-<li>去除不推不噓，並隨機抽取1/3的「推」作為樣本，噓全取</li>
-<li>推: 27837 噓: 18564</li>
-<li>name: <code>ptt_cut_comment_tag.txt</code> <code>models/ptt_push.model</code></li>
+<li>開始 train model</li>
+</ul></li>
+<li><code>get_acc()</code>
+
+<ul>
+<li>取得 accuracy</li>
+</ul></li>
+<li><code>save_model(file :: str)</code>
+
+<ul>
+<li>儲存 model 在 <code>file :: str</code> 中</li>
+</ul></li>
+<li><code>predict_board(text :: str)</code>
+
+<ul>
+<li>預測文章 (text) 是哪個板的</li>
+</ul></li>
+</ol></li>
 </ul>
 
 <h3 id="結果">結果</h3>
 
-<h3 id="training-set-1">Training Set 1</h3>
-
+<h4 id="lstm">LSTM</h4>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Embedding</span><span class="p">(</span><span class="n">embbeding_num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">128</span><span class="p">))</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">128</span><span class="p">))</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span></code></pre></div>
 <ul>
-<li><p>epoch = 2, stop_words=true, embedding_size=100, window=4, embedding_weight=True</p>
-
-<ul>
-<li>model code:</li>
-</ul>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Embedding</span><span class="p">(</span>
-        <span class="n">output_dim</span><span class="o">=</span><span class="n">EMBEDDING_WEIGHT_SIZE</span><span class="p">,</span>
-        <span class="n">input_dim</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w2id</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="n">mask_zero</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-        <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">],</span>
-        <span class="n">input_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">maxlen</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="n">output_dim</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.4</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span>
-
-<span class="n">model</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">,</span>
-    <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span><span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span></code></pre></div>
-<ul>
-<li>accuracy: 0.91</li>
-</ul></li>
+<li>Accuracy: 0.83</li>
 </ul>
 
-<h4 id="training-set2">Training Set2</h4>
-
+<h4 id="fasttext">FastText</h4>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+    <span class="n">Embedding</span><span class="p">(</span><span class="n">embbeding_num</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">input_length</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">GlobalMaxPooling1D</span><span class="p">())</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span></code></pre></div>
 <ul>
-<li><p>epoch = 1, stop_words = false, size = 300, window = 5:</p>
-
-<ul>
-<li>accuracy: 0.73</li>
-<li>name: <code>ptt_sentiment_v1.model</code></li>
-</ul></li>
-
-<li><p>epoch = 2, stop_words = false, size = 100, window = 5:</p>
-
-<ul>
-<li>accuracy: 0.72</li>
-<li>name: <code>ptt_sentiment_v2.model</code></li>
-</ul></li>
-
-<li><p>epoch = 1, stop_words = true, size = 300, window = 5:</p>
-
-<ul>
-<li>accuracy: 0.76</li>
-<li>name: <code>ptt_sentiment_v3.model</code></li>
-</ul></li>
-
-<li><p>epoch = 1, stop_words = true, size = 300, window = 3:</p>
-
-<ul>
-<li>accuracy: 0.74</li>
-<li>name: <code>ptt_sentiment_v4.model</code></li>
-</ul></li>
+<li>Accuracy: 0.91</li>
 </ul>
 
-<h3 id="參考資料">參考資料</h3>
+<h2 id="一些問題">一些問題</h2>
+
+<ol>
+<li>為何推文噓文預測和文章二分測試使用同樣模型準確度卻差非常多？
 
 <ul>
-<li><a href="https://www.jianshu.com/p/fba7df3a76fa">https://www.jianshu.com/p/fba7df3a76fa</a></li>
-<li><a href="https://kexue.fm/archives/3863">https://kexue.fm/archives/3863</a></li>
-</ul>]]></content>
+<li>推噓文的每個樣本長度過短</li>
+<li>推噓文的特徵不明顯</li>
+</ul></li>
+</ol>]]></content>
 		</item>
 		
 		<item>
