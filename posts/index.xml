@@ -93,12 +93,14 @@
 &lt;ul&gt;
 &lt;li&gt;以&lt;a href=&#34;https://github.com/aqweteddy/PttScrapyMongoDB&#34;&gt;PttScrapyMongoDB&lt;/a&gt;建立數據庫&lt;/li&gt;
 &lt;li&gt;以 keras 建立相關模型&lt;/li&gt;
+&lt;li&gt;自己寫的斷詞 &lt;a href=&#34;https://github.com/aqweteddy/MandarinTokenizer&#34;&gt;MandarinTokenizer&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</description>
 			<content type="html"><![CDATA[<h1 id="ptt-nlp-分析">Ptt NLP 分析</h1>
 
 <ul>
 <li>以<a href="https://github.com/aqweteddy/PttScrapyMongoDB">PttScrapyMongoDB</a>建立數據庫</li>
 <li>以 keras 建立相關模型</li>
+<li>自己寫的斷詞 <a href="https://github.com/aqweteddy/MandarinTokenizer">MandarinTokenizer</a></li>
 </ul>
 
 <h2 id="推文噓文預測">推文噓文預測</h2>
@@ -240,7 +242,12 @@
 <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span></code></pre></div>
 <ul>
-<li>Accuracy: 0.83</li>
+<li>Accuracy:
+
+<ul>
+<li>Jieba 斷詞：0.83</li>
+<li>自己寫的斷詞：0.84</li>
+</ul></li>
 </ul>
 
 <h4 id="fasttext">FastText</h4>
@@ -250,7 +257,12 @@
 <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">GlobalMaxPooling1D</span><span class="p">())</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span></code></pre></div>
 <ul>
-<li>Accuracy: 0.91</li>
+<li>Accuracy:
+
+<ul>
+<li>Jieba 斷詞：0.91</li>
+<li>自己寫的斷詞：0.90</li>
+</ul></li>
 </ul>
 
 <h2 id="一些問題">一些問題</h2>

@@ -46,6 +46,7 @@
 &lt;ul&gt;
 &lt;li&gt;以&lt;a href=&#34;https://github.com/aqweteddy/PttScrapyMongoDB&#34;&gt;PttScrapyMongoDB&lt;/a&gt;建立數據庫&lt;/li&gt;
 &lt;li&gt;以 keras 建立相關模型&lt;/li&gt;
+&lt;li&gt;自己寫的斷詞 &lt;a href=&#34;https://github.com/aqweteddy/MandarinTokenizer&#34;&gt;MandarinTokenizer&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     

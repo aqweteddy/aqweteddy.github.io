@@ -28,12 +28,13 @@
 
 以PttScrapyMongoDB建立數據庫
 以 keras 建立相關模型
+自己寫的斷詞 MandarinTokenizer
 ">
 
 
 <meta itemprop="datePublished" content="2019-02-02T19:42:16&#43;08:00" />
 <meta itemprop="dateModified" content="2019-02-02T19:42:16&#43;08:00" />
-<meta itemprop="wordCount" content="562">
+<meta itemprop="wordCount" content="605">
 
 
 
@@ -44,6 +45,7 @@
 
 以PttScrapyMongoDB建立數據庫
 以 keras 建立相關模型
+自己寫的斷詞 MandarinTokenizer
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://aqweteddy.github.io/posts/ptt_anlysis/" />
@@ -56,6 +58,7 @@
 
 以PttScrapyMongoDB建立數據庫
 以 keras 建立相關模型
+自己寫的斷詞 MandarinTokenizer
 "/>
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -113,6 +116,7 @@
 <ul>
 <li>以<a href="https://github.com/aqweteddy/PttScrapyMongoDB">PttScrapyMongoDB</a>建立數據庫</li>
 <li>以 keras 建立相關模型</li>
+<li>自己寫的斷詞 <a href="https://github.com/aqweteddy/MandarinTokenizer">MandarinTokenizer</a></li>
 </ul>
 
 <h2 id="推文噓文預測">推文噓文預測<a href="#推文噓文預測" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
@@ -254,7 +258,12 @@
 <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span></code></pre></div>
 <ul>
-<li>Accuracy: 0.83</li>
+<li>Accuracy:
+
+<ul>
+<li>Jieba 斷詞：0.83</li>
+<li>自己寫的斷詞：0.84</li>
+</ul></li>
 </ul>
 
 <h4 id="fasttext">FastText<a href="#fasttext" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
@@ -264,7 +273,12 @@
 <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">GlobalMaxPooling1D</span><span class="p">())</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span></code></pre></div>
 <ul>
-<li>Accuracy: 0.91</li>
+<li>Accuracy:
+
+<ul>
+<li>Jieba 斷詞：0.91</li>
+<li>自己寫的斷詞：0.90</li>
+</ul></li>
 </ul>
 
 <h2 id="一些問題">一些問題<a href="#一些問題" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
