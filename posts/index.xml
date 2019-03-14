@@ -319,8 +319,18 @@
 <li>最佳準確率：
 
 <ul>
-<li>LSTM: 0.83</li>
-<li>FastText: 0.91</li>
+<li>LSTM:
+
+<ul>
+<li>Jieba 斷詞：0.83</li>
+<li>自己寫的斷詞：0.84</li>
+</ul></li>
+<li>FastText: 0.91
+
+<ul>
+<li>Jieba 斷詞：0.91</li>
+<li>自己寫的斷詞：0.9</li>
+</ul></li>
 </ul></li>
 </ul>
 
