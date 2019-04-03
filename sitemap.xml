@@ -23,6 +23,11 @@
   </url>
   
   <url>
+    <loc>https://aqweteddy.github.io/posts/ptt_analysis2/</loc>
+    <lastmod>2019-04-03T23:55:15+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://aqweteddy.github.io/posts/microsoft_cv/</loc>
     <lastmod>2019-03-12T21:11:58+08:00</lastmod>
   </url>
@@ -68,6 +73,10 @@
   </url>
   
   <url>
+    <loc>https://aqweteddy.github.io/posts/codejam-2018-qualificationround/</loc>
+  </url>
+  
+  <url>
     <loc>https://aqweteddy.github.io/tags/a-whole-new-word/</loc>
     <lastmod>2019-03-04T22:59:26+08:00</lastmod>
     <priority>0</priority>
@@ -76,6 +85,12 @@
   <url>
     <loc>https://aqweteddy.github.io/tags/auto-suggestions/</loc>
     <lastmod>2019-02-21T13:16:27+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aqweteddy.github.io/tags/bayesclassifier/</loc>
+    <lastmod>2019-04-03T23:55:15+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -139,6 +154,12 @@
   </url>
   
   <url>
+    <loc>https://aqweteddy.github.io/tags/dl/</loc>
+    <lastmod>2019-02-02T19:42:16+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://aqweteddy.github.io/tags/graph/</loc>
     <lastmod>2019-03-03T16:43:08+08:00</lastmod>
     <priority>0</priority>
@@ -171,6 +192,12 @@
   <url>
     <loc>https://aqweteddy.github.io/tags/microsoft/</loc>
     <lastmod>2019-03-12T21:11:58+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://aqweteddy.github.io/tags/ml/</loc>
+    <lastmod>2019-04-03T23:55:15+08:00</lastmod>
     <priority>0</priority>
   </url>
   

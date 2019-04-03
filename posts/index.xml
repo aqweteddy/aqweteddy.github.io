@@ -278,6 +278,259 @@
 		</item>
 		
 		<item>
+			<title>Ptt 文章分板判斷</title>
+			<link>https://aqweteddy.github.io/posts/ptt_analysis2/</link>
+			<pubDate>Wed, 03 Apr 2019 23:55:15 +0800</pubDate>
+			
+			<guid>https://aqweteddy.github.io/posts/ptt_analysis2/</guid>
+			<description>Data Set &amp;lsquo;Gossiping&amp;rsquo;, &amp;lsquo;WomenTalk&amp;rsquo;, &amp;lsquo;Baseball&amp;rsquo;, &amp;lsquo;C_Chat&amp;rsquo;, &amp;lsquo;Beauty&amp;rsquo; 各 50 頁的文章 jieba 斷詞 Fast text / LSTM Fast Text LSTM Title 0.93 0.87 Text 0.87 0.78 Code on GitHub Best: FastText + title Bayes Best: Title + CountVectorizer Code: Classify by text Classify by title Use Text no cut + CountVectorizer cut + CountVectorizer CountVectorizer + Tfidf with cut Tfidf with cut Accuracy 0.68 0.85 0.83 0.81</description>
+			<content type="html"><![CDATA[
+
+<h2 id="data-set">Data Set</h2>
+
+<ul>
+<li>&lsquo;Gossiping&rsquo;, &lsquo;WomenTalk&rsquo;, &lsquo;Baseball&rsquo;, &lsquo;C_Chat&rsquo;, &lsquo;Beauty&rsquo; 各 50 頁的文章</li>
+<li>jieba 斷詞</li>
+<li></li>
+</ul>
+
+<h2 id="fast-text-lstm">Fast text / LSTM</h2>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center">Fast Text</th>
+<th align="center">LSTM</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Title</td>
+<td align="center">0.93</td>
+<td align="center">0.87</td>
+</tr>
+
+<tr>
+<td>Text</td>
+<td align="center">0.87</td>
+<td align="center">0.78</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><p><a href="https://github.com/aqweteddy/PttNlpAnalyse/blob/master/guessBoard/keras_lstm_FastText.ipynb">Code on GitHub</a></p></li>
+
+<li><p>Best: FastText + title</p></li>
+
+<li><p><img src="https://i.imgur.com/pUkZ9n0.png" alt="" /></p></li>
+</ul>
+
+<h2 id="bayes">Bayes</h2>
+
+<ul>
+<li>Best: Title + CountVectorizer</li>
+<li>Code:
+
+<ul>
+<li><a href="https://github.com/aqweteddy/PttNlpAnalyse/blob/master/guessBoard/bayes_classifier_by_text.ipynb">Classify by text</a></li>
+<li><a href="https://github.com/aqweteddy/PttNlpAnalyse/blob/master/guessBoard/bayes_classifier_by_title.ipynb">Classify by title</a></li>
+</ul></li>
+</ul>
+
+<h3 id="use-text">Use Text</h3>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center">no cut + CountVectorizer</th>
+<th align="center">cut + CountVectorizer</th>
+<th align="center">CountVectorizer + Tfidf with cut</th>
+<th align="center">Tfidf with cut</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Accuracy</td>
+<td align="center">0.68</td>
+<td align="center">0.85</td>
+<td align="center">0.83</td>
+<td align="center">0.81</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="best-detail-cut-countvectorizer">Best detail (cut + CountVectorizer)</h4>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center">precision</th>
+<th align="center">recall</th>
+<th align="center">f1-score</th>
+<th align="center">support</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Baseball</td>
+<td align="center">0.96</td>
+<td align="center">0.96</td>
+<td align="center">0.96</td>
+<td align="center">100</td>
+</tr>
+
+<tr>
+<td>Beauty</td>
+<td align="center">0.91</td>
+<td align="center">0.94</td>
+<td align="center">0.92</td>
+<td align="center">98</td>
+</tr>
+
+<tr>
+<td>C_Chat</td>
+<td align="center">0.81</td>
+<td align="center">0.86</td>
+<td align="center">0.83</td>
+<td align="center">101</td>
+</tr>
+
+<tr>
+<td>Gossiping</td>
+<td align="center">0.85</td>
+<td align="center">0.55</td>
+<td align="center">0.67</td>
+<td align="center">85</td>
+</tr>
+
+<tr>
+<td>WomenTalk</td>
+<td align="center">0.69</td>
+<td align="center">0.84</td>
+<td align="center">0.76</td>
+<td align="center">89</td>
+</tr>
+
+<tr>
+<td>avg / total</td>
+<td align="center">0.85</td>
+<td align="center">0.84</td>
+<td align="center">0.84</td>
+<td align="center">473</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="use-title">Use Title</h3>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center">cut + CountVectorizer</th>
+<th align="center">CountVectorizer + Tfidf with cut</th>
+<th align="center">Tfidf with cut</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Accuracy</td>
+<td align="center">0.91</td>
+<td align="center">0.65</td>
+<td align="center">0.69</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="best-detail-cut-countvectorizer-1">Best detail (cut + CountVectorizer)</h4>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center">precision</th>
+<th align="center">recall</th>
+<th align="center">f1-score</th>
+<th align="center">support</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Baseball</td>
+<td align="center">0.96</td>
+<td align="center">0.86</td>
+<td align="center">0.91</td>
+<td align="center">80</td>
+</tr>
+
+<tr>
+<td>Beauty</td>
+<td align="center">0.96</td>
+<td align="center">0.98</td>
+<td align="center">0.97</td>
+<td align="center">109</td>
+</tr>
+
+<tr>
+<td>C_Chat</td>
+<td align="center">0.92</td>
+<td align="center">0.77</td>
+<td align="center">0.84</td>
+<td align="center">99</td>
+</tr>
+
+<tr>
+<td>Gossiping</td>
+<td align="center">0.96</td>
+<td align="center">0.98</td>
+<td align="center">0.97</td>
+<td align="center">91</td>
+</tr>
+
+<tr>
+<td>WomenTalk</td>
+<td align="center">0.75</td>
+<td align="center">0.91</td>
+<td align="center">0.83</td>
+<td align="center">94</td>
+</tr>
+
+<tr>
+<td>avg / total</td>
+<td align="center">0.91</td>
+<td align="center">0.90</td>
+<td align="center">0.90</td>
+<td align="center">473</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="經比對">經比對</h3>
+
+<ol>
+<li>Baseball 的準確率總是最高，可能跟專有名詞多有關</li>
+<li>WomenTalk 的準確率總是最低，可能和 Gossiping 搞混</li>
+</ol>
+
+<h2 id="結論">結論</h2>
+
+<ul>
+<li>使用 title 比 text 更準確，可能與資料清洗有關</li>
+<li>樣本數若再提高可能可以提高準確度</li>
+</ul>
+]]></content>
+		</item>
+		
+		<item>
 			<title>Microsoft CV - Side Project</title>
 			<link>https://aqweteddy.github.io/posts/microsoft_cv/</link>
 			<pubDate>Tue, 12 Mar 2019 21:11:58 +0800</pubDate>
@@ -1046,41 +1299,6 @@ git push</code></pre></div>
 <li>\(2 \times3\)</li>
 <li>$$2\times3$$</li>
 </ul>]]></content>
-		</item>
-		
-		<item>
-			<title>Highlight Hugo Code</title>
-			<link>https://aqweteddy.github.io/posts/env/</link>
-			<pubDate>Thu, 21 Feb 2019 13:38:15 +0800</pubDate>
-			
-			<guid>https://aqweteddy.github.io/posts/env/</guid>
-			<description>&lt;ul&gt;
-&lt;li&gt;add highlight to Hugo.&lt;/li&gt;
-&lt;/ul&gt;</description>
-			<content type="html"><![CDATA[<ul>
-<li>add highlight to Hugo.</li>
-</ul>
-
-<h2 id="step">Step</h2>
-
-<ul>
-<li><p>add behind code into <code>config.toml</code></p>
-<div class="highlight"><pre class="chroma"><code class="language-config" data-lang="config"># use Chroma for syntax highlight
-pygmentsCodeFences = true
-pygmentsCodefencesGuessSyntax = true
-pygmentsStyle = &#34;vim&#34;</code></pre></div></li>
-</ul>
-
-<h2 id="code-highlight-example">Code Highlight Example</h2>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="mi">123</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>]]></content>
 		</item>
 		
 	</channel>

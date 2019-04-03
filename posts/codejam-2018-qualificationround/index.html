@@ -1,274 +1,546 @@
 <!DOCTYPE html>
-<html lang="zh-tw">
+<html>
 
 <head>
-	
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css"
-		integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei" crossorigin="anonymous">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"
-		integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq"
-		crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js"
-		integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc"
-		crossorigin="anonymous"></script>
-	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-			renderMathInElement(document.body);
-		});
-	</script>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta name="theme-color" content="#494f5c">
-	<meta name="msapplication-TileColor" content="#494f5c">
+	<title>codeJam-2018-QualificationRound.md</title>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 
-<meta itemprop="name" content="CodeJam 2018 Qualification Round">
-<meta itemprop="description" content="A. Saving The Universe Again 題目描述 URL 給一串只有 C 和 S 的字串和一個數字 K，C 表示累積能量 * 2，S 表示攻擊，輸出 swap 最少次數，使得每次攻擊所射出能量 &lt;= K，若無法則">
+	<style>
+		 
+
+		body {
+			font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+			font-size: 14px;
+			padding: 0 12px;
+			line-height: 22px;
+			word-wrap: break-word;
+		}
+
+		#code-csp-warning {
+			position: fixed;
+			top: 0;
+			right: 0;
+			color: white;
+			margin: 16px;
+			text-align: center;
+			font-size: 12px;
+			font-family: sans-serif;
+			background-color: #444444;
+			cursor: pointer;
+			padding: 6px;
+			box-shadow: 1px 1px 1px rgba(0, 0, 0, .25);
+		}
+
+		#code-csp-warning:hover {
+			text-decoration: none;
+			background-color: #007acc;
+			box-shadow: 2px 2px 2px rgba(0, 0, 0, .25);
+		}
 
 
-<meta itemprop="datePublished" content="2019-03-04T20:57:18&#43;08:00" />
-<meta itemprop="dateModified" content="2019-03-04T20:57:18&#43;08:00" />
-<meta itemprop="wordCount" content="756">
+		body.scrollBeyondLastLine {
+			margin-bottom: calc(100vh - 22px);
+		}
 
+		body.showEditorSelection .code-line {
+			position: relative;
+		}
 
+		body.showEditorSelection .code-active-line:before,
+		body.showEditorSelection .code-line:hover:before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: -12px;
+			height: 100%;
+		}
 
-<meta itemprop="keywords" content="Saving The Universe Again,Trouble Sort,CodeJam 2018," />
-<meta property="og:title" content="CodeJam 2018 Qualification Round" />
-<meta property="og:description" content="A. Saving The Universe Again 題目描述 URL 給一串只有 C 和 S 的字串和一個數字 K，C 表示累積能量 * 2，S 表示攻擊，輸出 swap 最少次數，使得每次攻擊所射出能量 &lt;= K，若無法則" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://aqweteddy.github.io/posts/codejam-2018-qualificationround/" />
-<meta property="article:published_time" content="2019-03-04T20:57:18&#43;08:00"/>
-<meta property="article:modified_time" content="2019-03-04T20:57:18&#43;08:00"/>
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="CodeJam 2018 Qualification Round"/>
-<meta name="twitter:description" content="A. Saving The Universe Again 題目描述 URL 給一串只有 C 和 S 的字串和一個數字 K，C 表示累積能量 * 2，S 表示攻擊，輸出 swap 最少次數，使得每次攻擊所射出能量 &lt;= K，若無法則"/>
+		body.showEditorSelection li.code-active-line:before,
+		body.showEditorSelection li.code-line:hover:before {
+			left: -30px;
+		}
 
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
-	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
-	<link rel="shortcut icon" href="/favicon.ico">
+		.vscode-light.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(0, 0, 0, 0.15);
+		}
 
-	<title>CodeJam 2018 Qualification Round</title>
-	<link rel="stylesheet" href="https://aqweteddy.github.io/css/style.min.645b14dc26ce57a45585b37a4ef11a96fee72376dcd62ffbcd5103cd5edf7f1c.css"
-		integrity="sha256-ZFsU3CbOV6RVhbN6TvEalv7nI3bc1i/7zVEDzV7ffxw=">
-	
+		.vscode-light.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(0, 0, 0, 0.40);
+		}
+
+		.vscode-dark.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(255, 255, 255, 0.4);
+		}
+
+		.vscode-dark.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(255, 255, 255, 0.60);
+		}
+
+		.vscode-high-contrast.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(255, 160, 0, 0.7);
+		}
+
+		.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(255, 160, 0, 1);
+		}
+
+		img {
+			max-width: 100%;
+			max-height: 100%;
+		}
+
+		a {
+			color: #4080D0;
+			text-decoration: none;
+		}
+
+		a:focus,
+		input:focus,
+		select:focus,
+		textarea:focus {
+			outline: 1px solid -webkit-focus-ring-color;
+			outline-offset: -1px;
+		}
+
+		hr {
+			border: 0;
+			height: 2px;
+			border-bottom: 2px solid;
+		}
+
+		h1 {
+			padding-bottom: 0.3em;
+			line-height: 1.2;
+			border-bottom-width: 1px;
+			border-bottom-style: solid;
+		}
+
+		h1,
+		h2,
+		h3 {
+			font-weight: normal;
+		}
+
+		h1 code,
+		h2 code,
+		h3 code,
+		h4 code,
+		h5 code,
+		h6 code {
+			font-size: inherit;
+			line-height: auto;
+		}
+
+		a:hover {
+			color: #4080D0;
+			text-decoration: underline;
+		}
+
+		table {
+			border-collapse: collapse;
+		}
+
+		table>thead>tr>th {
+			text-align: left;
+			border-bottom: 1px solid;
+		}
+
+		table>thead>tr>th,
+		table>thead>tr>td,
+		table>tbody>tr>th,
+		table>tbody>tr>td {
+			padding: 5px 10px;
+		}
+
+		table>tbody>tr+tr>td {
+			border-top: 1px solid;
+		}
+
+		blockquote {
+			margin: 0 7px 0 5px;
+			padding: 0 16px 0 10px;
+			border-left: 5px solid;
+		}
+
+		code {
+			font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+			font-size: 14px;
+			line-height: 19px;
+		}
+
+		body.wordWrap pre {
+			white-space: pre-wrap;
+		}
+
+		.mac code {
+			font-size: 12px;
+			line-height: 18px;
+		}
+
+		pre:not(.hljs),
+		pre.hljs code>div {
+			padding: 16px;
+			border-radius: 3px;
+			overflow: auto;
+		}
+
+		 
+
+		.vscode-light,
+		.vscode-light pre code {
+			color: rgb(30, 30, 30);
+		}
+
+		.vscode-dark,
+		.vscode-dark pre code {
+			color: #DDD;
+		}
+
+		.vscode-high-contrast,
+		.vscode-high-contrast pre code {
+			color: white;
+		}
+
+		.vscode-light code {
+			color: #A31515;
+		}
+
+		.vscode-dark code {
+			color: #D7BA7D;
+		}
+
+		.vscode-light pre:not(.hljs),
+		.vscode-light code>div {
+			background-color: rgba(220, 220, 220, 0.4);
+		}
+
+		.vscode-dark pre:not(.hljs),
+		.vscode-dark code>div {
+			background-color: rgba(10, 10, 10, 0.4);
+		}
+
+		.vscode-high-contrast pre:not(.hljs),
+		.vscode-high-contrast code>div {
+			background-color: rgb(0, 0, 0);
+		}
+
+		.vscode-high-contrast h1 {
+			border-color: rgb(0, 0, 0);
+		}
+
+		.vscode-light table>thead>tr>th {
+			border-color: rgba(0, 0, 0, 0.69);
+		}
+
+		.vscode-dark table>thead>tr>th {
+			border-color: rgba(255, 255, 255, 0.69);
+		}
+
+		.vscode-light h1,
+		.vscode-light hr,
+		.vscode-light table>tbody>tr+tr>td {
+			border-color: rgba(0, 0, 0, 0.18);
+		}
+
+		.vscode-dark h1,
+		.vscode-dark hr,
+		.vscode-dark table>tbody>tr+tr>td {
+			border-color: rgba(255, 255, 255, 0.18);
+		}
+
+		.vscode-light blockquote,
+		.vscode-dark blockquote {
+			background: rgba(127, 127, 127, 0.1);
+			border-color: rgba(0, 122, 204, 0.5);
+		}
+
+		.vscode-high-contrast blockquote {
+			background: transparent;
+			border-color: #fff;
+		}
+	</style>
+
+	<style>
+		 
+		 
+		 
+
+		 
+		.hljs-comment,
+		.hljs-quote {
+			color: #8e908c;
+		}
+
+		 
+		.hljs-variable,
+		.hljs-template-variable,
+		.hljs-tag,
+		.hljs-name,
+		.hljs-selector-id,
+		.hljs-selector-class,
+		.hljs-regexp,
+		.hljs-deletion {
+			color: #c82829;
+		}
+
+		 
+		.hljs-number,
+		.hljs-built_in,
+		.hljs-builtin-name,
+		.hljs-literal,
+		.hljs-type,
+		.hljs-params,
+		.hljs-meta,
+		.hljs-link {
+			color: #f5871f;
+		}
+
+		 
+		.hljs-attribute {
+			color: #eab700;
+		}
+
+		 
+		.hljs-string,
+		.hljs-symbol,
+		.hljs-bullet,
+		.hljs-addition {
+			color: #718c00;
+		}
+
+		 
+		.hljs-title,
+		.hljs-section {
+			color: #4271ae;
+		}
+
+		 
+		.hljs-keyword,
+		.hljs-selector-tag {
+			color: #8959a8;
+		}
+
+		.hljs {
+			display: block;
+			overflow-x: auto;
+			color: #4d4d4c;
+			padding: 0.5em;
+		}
+
+		.hljs-emphasis {
+			font-style: italic;
+		}
+
+		.hljs-strong {
+			font-weight: bold;
+		}
+	</style>
+
+	<style>
+		 
+
+		body {
+			font-family: "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+		}
+
+		pre {
+			background-color: #f8f8f8;
+			border: 1px solid #cccccc;
+			border-radius: 3px;
+			overflow-x: auto;
+			white-space: pre-wrap;
+			overflow-wrap: break-word;
+		}
+
+		pre:not(.hljs) {
+			padding: 23px;
+			line-height: 19px;
+		}
+
+		blockquote {
+			background: rgba(127, 127, 127, 0.1);
+			border-color: rgba(0, 122, 204, 0.5);
+		}
+
+		.emoji {
+			height: 1.4em;
+		}
+
+		 
+		:not(pre):not(.hljs)>code {
+			color: #C9AE75;
+			 
+			font-size: inherit;
+		}
+
+		 
+		.page {
+			page-break-after: always;
+		}
+	</style>
+
 </head>
 
-<body id="page">
-	
-	<header id="site-header" class="animated slideInUp faster">
-		<div class="hdr-wrapper section-inner">
-			<div class="hdr-left">
-				<div class="site-branding">
-					<a href="https://aqweteddy.github.io">Teddy&#39;s Blog</a>
-				</div>
-				<nav class="site-nav hide-in-mobile">
-					<a href="https://aqweteddy.github.io/categories/">Categories</a>
-					<a href="https://aqweteddy.github.io/tags/">Tags</a>
-					<a href="https://aqweteddy.github.io/posts/">All Posts</a>
-					<a href="https://aqweteddy.github.io/about/">About</a>
-				</nav>
-			</div>
-			<div class="hdr-right hdr-icons">
-				<span class="hdr-social hide-in-mobile"><a href="https://github.com/aqweteddy" target="_blank" rel="noopener" title="Github"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
-			</div>
-		</div>
-	</header>
-	<div id="mobile-menu" class="animated fast">
-		<ul>
-			<li><a href="https://aqweteddy.github.io/categories/">Categories</a></li>
-			<li><a href="https://aqweteddy.github.io/tags/">Tags</a></li>
-			<li><a href="https://aqweteddy.github.io/posts/">All Posts</a></li>
-			<li><a href="https://aqweteddy.github.io/about/">About</a></li>
-		</ul>
-	</div>
+<body>
+	<hr>
+	<p>title: &quot;CodeJam 2018 Qualification Round&quot;
+		date: 2019-03-04T20:57:18+08:00
+		draft: false
+		toc: false
+		images:
+		tags:</p>
+	<ul>
+		<li>Saving The Universe Again</li>
+		<li>Trouble Sort</li>
+		<li>CodeJam 2018
+			categories:</li>
+		<li>CodeJam</li>
+	</ul>
+	<hr>
+	<h2 id="a-saving-the-universe-again">A. Saving The Universe Again</h2>
+	<h3 id="%E9%A1%8C%E7%9B%AE%E6%8F%8F%E8%BF%B0">題目描述</h3>
+	<ul>
+		<li><a href="https://codingcompetitions.withgoogle.com/codejam/round/00000000000000cb/0000000000007966">URL</a>
+		</li>
+		<li>給一串只有 C 和 S 的字串和一個數字 K，C 表示累積能量 * 2，S 表示攻擊，輸出 swap 最少次數，使得每次攻擊所射出能量 &lt;=
+			K，若無法則輸出<strong>IMPOSSIBLE</strong></li>
+		<li>注意：
+			<ul>
+				<li>兩相鄰元素才能 swap</li>
+				<li>C 是累積的，例如 SCCSS 所輸出的總能量是： 1 + 4 + 4 = 9</li>
+			</ul>
+		</li>
+	</ul>
+	<h3 id="%E8%A7%A3%E9%A1%8C%E6%80%9D%E8%B7%AF">解題思路</h3>
+	<ul>
+		<li>考慮長度只有 2 的情況下，要使輸出能量降低的交換只有 <em>CS</em> -&gt; <em>SC</em> 這個組合</li>
+		<li>考慮長度為 N，則要降低輸出，就要盡量把 C 往後移</li>
+		<li>如同 Bubble sort 一樣，重複檢查 A[i] = C、A[i+1] = S 的情況，SWAP 它，次數 + 1
+			<ul>
+				<li>考慮要從後往前或從前往後：
+					<ul>
+						<li>要盡量把 C 往後擺，保證 C 後面沒有 S ＝&gt; 由後往前</li>
+						<li>由前往後所造成的能量減少較少，因為交換後 C 後面不保證沒有 S</li>
+						<li>注意每次交換後，要將迭代器初始至尾的位置</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>若執行為 N ^ 2 次仍沒有結果，則為不可能(因為最左邊的 C 右邊已沒有 S)</li>
+	</ul>
+	<h3 id="code">Code</h3>
+	<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-comment">// AC</span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;
+ll shield;
+<span class="hljs-built_in">string</span> attack;
 
+<span class="hljs-function">ll <span class="hljs-title">calc</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span>&amp; in)</span>
+</span>{
+    ll sum = <span class="hljs-number">0</span>, step = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>&amp; c : in){
+        <span class="hljs-keyword">if</span>(c == <span class="hljs-string">'C'</span>)
+            step *= <span class="hljs-number">2</span>;
+        <span class="hljs-keyword">else</span>
+            sum += step;
+    }
+    <span class="hljs-keyword">return</span> sum;
+}
 
-	<main class="site-main section-inner animated fadeIn faster">
-		<article class="thin">
-			<header class="post-header">
-				<div class="post-meta"><span>Mar 4, 2019</span></div>
-				<h1>CodeJam 2018 Qualification Round</h1>
-			</header>
-			<div class="content">
-				
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">int</span> step = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span>(calc(attack) &lt;= shield){
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-number">0</span> &lt;&lt; <span class="hljs-string">'\n'</span>;
+        <span class="hljs-keyword">return</span>;
+    }
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;attack.size(); ++i){
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=attack.size()<span class="hljs-number">-1</span>; j&gt;= <span class="hljs-number">1</span>; --j){
+            <span class="hljs-keyword">if</span>(attack[j<span class="hljs-number">-1</span>] == <span class="hljs-string">'C'</span> &amp;&amp; attack[j] == <span class="hljs-string">'S'</span>){
+                ++ step;
+                swap(attack[j<span class="hljs-number">-1</span>], attack[j]);
+                <span class="hljs-keyword">if</span>(calc(attack) &lt;= shield){
+                    <span class="hljs-built_in">cout</span> &lt;&lt; step &lt;&lt; <span class="hljs-string">'\n'</span>;
+                    <span class="hljs-keyword">return</span>;
+                }
+                j = attack.size();
+            }
+        }
+    }
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"IMPOSSIBLE\n"</span>;
+}
 
-<h2 id="a-saving-the-universe-again">A. Saving The Universe Again<a href="#a-saving-the-universe-again" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">int</span> nc;
+    <span class="hljs-built_in">cin</span> &gt;&gt; nc;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> n=<span class="hljs-number">1</span>; n&lt;=nc; ++n){
+        <span class="hljs-built_in">cin</span> &gt;&gt; shield &gt;&gt; attack;
+        <span class="hljs-built_in">cout</span> &lt;&lt;<span class="hljs-string">"Case #"</span> &lt;&lt; n &lt;&lt; <span class="hljs-string">": "</span>;
+        solve();
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+	<h2 id="b-trouble-sort">B. Trouble Sort</h2>
+	<h3 id="%E9%A1%8C%E7%9B%AE%E6%8F%8F%E8%BF%B0">題目描述</h3>
+	<ul>
+		<li>
+			<p><a
+					href="https://codingcompetitions.withgoogle.com/codejam/round/00000000000000cb/00000000000079cb">URL</a>
+			</p>
+		</li>
+		<li>
+			<p>定義一個錯誤的排序法，問其可否輸出正確的排序結果，若可以，輸出 <em>OK</em> ，不可以，輸出出現錯誤的處的 index</p>
+		</li>
+		<li>
+			<p>排序法如下：</p>
+			<ul>
+				<li>抓取 L 中 [i, i+3) 的 element</li>
+				<li>若 L[i] &gt; L[i + 2]，則 Swap(L[i], L[i + 2])</li>
+				<li>其他則繼續執行下一組 [i+1, i+4)</li>
+			</ul>
+		</li>
+	</ul>
+	<h3 id="%E8%A7%A3%E9%A1%8C%E6%80%9D%E8%B7%AF">解題思路</h3>
+	<ul>
+		<li>觀察該排序法，可發現在 L 中，任一元素 L[i] 只會跟 L[i + 2] 比較</li>
+		<li>若將 L 分為 L[0: -1 :2] 和 L[1: -1 :2] 的兩個子陣列，不論該演算法怎麼交換，兩子陣列的元素都不會交換到</li>
+		<li>因此該演算法可以當作：
+			<ol>
+				<li>分別 sort L[0: -1 :2] 和 L[1: -1 :2]</li>
+				<li>再交叉合併</li>
+				<li>得到和執行該演算法相同結果</li>
+			</ol>
+		</li>
+		<li>如此一來 O(N^2) -&gt; O(N log N)</li>
+	</ul>
+	<h3 id="code">Code</h3>
+	<pre class="hljs"><code><div>def main():
+    N = int(input())
+    inp = list(map(int, input().split(' ')))
+    sub_a = sorted(inp[0::2])
+    sub_b = sorted(inp[1::2])
 
-<h3 id="題目描述">題目描述<a href="#題目描述" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+    for i in range(len(inp)):
+        if i % 2 == 0:
+            inp[i] = sub_a[int(i / 2)]
+        else:
+            inp[i] = sub_b[int(i / 2)]
+    for i in range(1, len(inp)):
+        if inp[i - 1] &gt; inp[i]:
+            print(i - 1)
+            return
+    print('OK')
 
-<ul>
-<li><a href="https://codingcompetitions.withgoogle.com/codejam/round/00000000000000cb/0000000000007966">URL</a></li>
-<li>給一串只有 C 和 S 的字串和一個數字 K，C 表示累積能量 * 2，S 表示攻擊，輸出 swap 最少次數，使得每次攻擊所射出能量 &lt;= K，若無法則輸出<strong>IMPOSSIBLE</strong></li>
-<li>注意：
-
-<ul>
-<li>兩相鄰元素才能 swap</li>
-<li>C 是累積的，例如 SCCSS 所輸出的總能量是： 1 + 4 + 4 = 9</li>
-</ul></li>
-</ul>
-
-<h3 id="解題思路">解題思路<a href="#解題思路" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-
-<ul>
-<li>考慮長度只有 2 的情況下，要使輸出能量降低的交換只有 <em>CS</em> -&gt; <em>SC</em> 這個組合</li>
-<li>考慮長度為 N，則要降低輸出，就要盡量把 C 往後移</li>
-<li>如同 Bubble sort 一樣，重複檢查 A[i] = C、A[i+1] = S 的情況，SWAP 它，次數 + 1
-
-<ul>
-<li>考慮要從後往前或從前往後：</li>
-<li>要盡量把 C 往後擺，保證 C 後面沒有 S ＝&gt; 由後往前</li>
-<li>由前往後所造成的能量減少較少，因為交換後 C 後面不保證沒有 S</li>
-<li>注意每次交換後，要將迭代器初始至尾的位置</li>
-</ul></li>
-<li>若執行為 N ^ 2 次仍沒有結果，則為不可能(因為最左邊的 C 右邊已沒有 S)</li>
-</ul>
-
-<h3 id="code">Code<a href="#code" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
-</span><span class="cp"></span><span class="c1">// AC
-</span><span class="c1"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-<span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
-<span class="n">ll</span> <span class="n">shield</span><span class="p">;</span>
-<span class="n">string</span> <span class="n">attack</span><span class="p">;</span>
-
-<span class="n">ll</span> <span class="nf">calc</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">in</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">ll</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">&amp;</span> <span class="nl">c</span> <span class="p">:</span> <span class="n">in</span><span class="p">){</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">&#39;C&#39;</span><span class="p">)</span>
-            <span class="n">step</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>
-        <span class="k">else</span>
-            <span class="n">sum</span> <span class="o">+=</span> <span class="n">step</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">sum</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">solve</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">calc</span><span class="p">(</span><span class="n">attack</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">shield</span><span class="p">){</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-        <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">attack</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">){</span>
-        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">attack</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="o">--</span><span class="n">j</span><span class="p">){</span>
-            <span class="k">if</span><span class="p">(</span><span class="n">attack</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;C&#39;</span> <span class="o">&amp;&amp;</span> <span class="n">attack</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;S&#39;</span><span class="p">){</span>
-                <span class="o">++</span> <span class="n">step</span><span class="p">;</span>
-                <span class="n">swap</span><span class="p">(</span><span class="n">attack</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">attack</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
-                <span class="k">if</span><span class="p">(</span><span class="n">calc</span><span class="p">(</span><span class="n">attack</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">shield</span><span class="p">){</span>
-                    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">step</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-                    <span class="k">return</span><span class="p">;</span>
-                <span class="p">}</span>
-                <span class="n">j</span> <span class="o">=</span> <span class="n">attack</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;IMPOSSIBLE</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">nc</span><span class="p">;</span>
-    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">nc</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">n</span><span class="o">&lt;=</span><span class="n">nc</span><span class="p">;</span> <span class="o">++</span><span class="n">n</span><span class="p">){</span>
-        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">shield</span> <span class="o">&gt;&gt;</span> <span class="n">attack</span><span class="p">;</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span><span class="s">&#34;Case #&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;: &#34;</span><span class="p">;</span>
-        <span class="n">solve</span><span class="p">();</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="b-trouble-sort">B. Trouble Sort<a href="#b-trouble-sort" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
-
-<h3 id="題目描述-1">題目描述<a href="#題目描述-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-
-<ul>
-<li><p><a href="https://codingcompetitions.withgoogle.com/codejam/round/00000000000000cb/00000000000079cb">URL</a></p></li>
-
-<li><p>定義一個錯誤的排序法，問其可否輸出正確的排序結果，若可以，輸出 <em>OK</em> ，不可以，輸出出現錯誤的處的 index</p></li>
-
-<li><p>排序法如下：</p>
-
-<ul>
-<li>抓取 L 中 [i, i+3) 的 element</li>
-<li>若  L[i] &gt; L[i + 2]，則 Swap(L[i], L[i + 2])</li>
-<li>其他則繼續執行下一組 [i+1, i+4)</li>
-</ul></li>
-</ul>
-
-<h3 id="解題思路-1">解題思路<a href="#解題思路-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-
-<ul>
-<li>觀察該排序法，可發現在 L 中，任一元素 L[i] 只會跟 L[i + 2] 比較</li>
-<li>若將 L 分為 L[0: -1 :2] 和 L[1: -1 :2] 的兩個子陣列，不論該演算法怎麼交換，兩子陣列的元素都不會交換到</li>
-<li>因此該演算法可以當作：
-
-<ol>
-<li>分別 sort L[0: -1 :2] 和 L[1: -1 :2]</li>
-<li>再交叉合併</li>
-<li>得到和執行該演算法相同結果</li>
-</ol></li>
-<li>如此一來 O(N^2) -&gt; O(N log N)</li>
-</ul>
-
-<h3 id="code-1">Code<a href="#code-1" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-<div class="highlight"><pre class="chroma"><code class="language-py3" data-lang="py3"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
-    <span class="n">inp</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)))</span>
-    <span class="n">sub_a</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">inp</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">])</span>
-    <span class="n">sub_b</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">inp</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">])</span>
-
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inp</span><span class="p">)):</span>
-        <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">inp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub_a</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">inp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub_b</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">inp</span><span class="p">)):</span>
-        <span class="k">if</span> <span class="n">inp</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">inp</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-            <span class="k">return</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;OK&#39;</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">NC</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">NC</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Case #</span><span class="si">{}</span><span class="s1">: &#39;</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-        <span class="n">main</span><span class="p">()</span></code></pre></div>
-			</div>
-			<hr class="post-end">
-			<footer class="post-info">
-				<p>
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://aqweteddy.github.io/tags/saving-the-universe-again">Saving The Universe Again</a></span><span class="tag"><a href="https://aqweteddy.github.io/tags/trouble-sort">Trouble Sort</a></span><span class="tag"><a href="https://aqweteddy.github.io/tags/codejam-2018">CodeJam 2018</a></span>
-				</p>
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></p>
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2019-03-04 20:57 &#43;0800</p>
-			</footer>
-		</article>
-		<div class="post-nav thin">
-			<a class="next-post" href="https://aqweteddy.github.io/posts/codejam-2018-round1c/">
-				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;</span><br><span>CodeJam 2018 Round1C</span>
-			</a>
-			<a class="prev-post" href="https://aqweteddy.github.io/posts/codejam-2018-round1ay/">
-				<span class="post-nav-label">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>CodeJam 2018 Round1A</span>
-			</a>
-		</div>
-		<div id="comments" class="thin">
-</div>
-	</main>
-
-	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-		<p>&copy; 2019 <a href="https://aqweteddy.github.io">Teddy</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
-		<p>
-			
-			
-		</p>
-	</footer>
-
-
-	<script src="https://aqweteddy.github.io/js/main.min.8f39f24808e9d0a9b02da58c2d2838da859dc0b7bdfadbdb1883aae8b6adacfe.js" integrity="sha256-jznySAjp0KmwLaWMLSg42oWdwLe9+tvbGIOq6LatrP4="></script>
+if __name__ == '__main__':
+    NC = int(input())
+    for i in range(1, NC+1):
+        print('Case #{}: '.format(i), end='')
+        main()
+</div></code></pre>
 
 </body>
 

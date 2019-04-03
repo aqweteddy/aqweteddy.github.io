@@ -1,31 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Keras on Teddy&#39;s Blog</title>
-    <link>https://aqweteddy.github.io/tags/keras/</link>
-    <description>Recent content in Keras on Teddy&#39;s Blog</description>
+    <title>Bayesclassifier on Teddy&#39;s Blog</title>
+    <link>https://aqweteddy.github.io/tags/bayesclassifier/</link>
+    <description>Recent content in Bayesclassifier on Teddy&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sat, 02 Feb 2019 19:42:16 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 03 Apr 2019 23:55:15 +0800</lastBuildDate>
     
-	<atom:link href="https://aqweteddy.github.io/tags/keras/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://aqweteddy.github.io/tags/bayesclassifier/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Ptt NLP Test</title>
-      <link>https://aqweteddy.github.io/posts/ptt_anlysis/</link>
-      <pubDate>Sat, 02 Feb 2019 19:42:16 +0800</pubDate>
-      
-      <guid>https://aqweteddy.github.io/posts/ptt_anlysis/</guid>
-      <description>&lt;h1 id=&#34;ptt-nlp-分析&#34;&gt;Ptt NLP 分析&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;以&lt;a href=&#34;https://github.com/aqweteddy/PttScrapyMongoDB&#34;&gt;PttScrapyMongoDB&lt;/a&gt;建立數據庫&lt;/li&gt;
-&lt;li&gt;以 keras 建立相關模型&lt;/li&gt;
-&lt;li&gt;自己寫的斷詞 &lt;a href=&#34;https://github.com/aqweteddy/MandarinTokenizer&#34;&gt;MandarinTokenizer&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
     
     <item>
       <title>Ptt 文章分板判斷</title>

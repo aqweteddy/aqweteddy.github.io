@@ -51,6 +51,15 @@
     </item>
     
     <item>
+      <title>Ptt 文章分板判斷</title>
+      <link>https://aqweteddy.github.io/posts/ptt_analysis2/</link>
+      <pubDate>Wed, 03 Apr 2019 23:55:15 +0800</pubDate>
+      
+      <guid>https://aqweteddy.github.io/posts/ptt_analysis2/</guid>
+      <description>Data Set &amp;lsquo;Gossiping&amp;rsquo;, &amp;lsquo;WomenTalk&amp;rsquo;, &amp;lsquo;Baseball&amp;rsquo;, &amp;lsquo;C_Chat&amp;rsquo;, &amp;lsquo;Beauty&amp;rsquo; 各 50 頁的文章 jieba 斷詞 Fast text / LSTM Fast Text LSTM Title 0.93 0.87 Text 0.87 0.78 Code on GitHub Best: FastText + title Bayes Best: Title + CountVectorizer Code: Classify by text Classify by title Use Text no cut + CountVectorizer cut + CountVectorizer CountVectorizer + Tfidf with cut Tfidf with cut Accuracy 0.68 0.85 0.83 0.81</description>
+    </item>
+    
+    <item>
       <title>Microsoft CV - Side Project</title>
       <link>https://aqweteddy.github.io/posts/microsoft_cv/</link>
       <pubDate>Tue, 12 Mar 2019 21:11:58 +0800</pubDate>
@@ -102,19 +111,6 @@
       
       <guid>https://aqweteddy.github.io/posts/course/</guid>
       <description>說明 這是各學期在中正資工上課所保留下來的 Code 大一上 程式設計(一) 大一下 物件導向程式設計 大二下必修 程式設計(二) 大二上 組合語言 資料結構</description>
-    </item>
-    
-    <item>
-      <title>安裝 Hugo 建制部落格，並集成 LaTeX</title>
-      <link>https://aqweteddy.github.io/posts/hugo_install/</link>
-      <pubDate>Thu, 21 Feb 2019 15:37:19 +0800</pubDate>
-      
-      <guid>https://aqweteddy.github.io/posts/hugo_install/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;安裝 Hugo&lt;/li&gt;
-&lt;li&gt;Hugo 基本指令&lt;/li&gt;
-&lt;li&gt;增加 LaTeX&lt;/li&gt;
-&lt;/ul&gt;</description>
     </item>
     
   </channel>
