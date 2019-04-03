@@ -283,7 +283,7 @@
 			<pubDate>Wed, 03 Apr 2019 23:55:15 +0800</pubDate>
 			
 			<guid>https://aqweteddy.github.io/posts/ptt_analysis2/</guid>
-			<description>Data Set &amp;lsquo;Gossiping&amp;rsquo;, &amp;lsquo;WomenTalk&amp;rsquo;, &amp;lsquo;Baseball&amp;rsquo;, &amp;lsquo;C_Chat&amp;rsquo;, &amp;lsquo;Beauty&amp;rsquo; 各 50 頁的文章 jieba 斷詞 Fast text / LSTM Fast Text LSTM Title 0.93 0.87 Text 0.87 0.78 Code on GitHub Best: FastText + title Bayes Best: Title + CountVectorizer Code: Classify by text Classify by title Use Text no cut + CountVectorizer cut + CountVectorizer CountVectorizer + Tfidf with cut Tfidf with cut Accuracy 0.68 0.85 0.83 0.81</description>
+			<description>Data Set &amp;lsquo;Gossiping&amp;rsquo;, &amp;lsquo;WomenTalk&amp;rsquo;, &amp;lsquo;Baseball&amp;rsquo;, &amp;lsquo;C_Chat&amp;rsquo;, &amp;lsquo;Beauty&amp;rsquo; 各 50 頁的文章 jieba 斷詞 使用 Model: DL: FastText / LSTM ML: BayesClassifier Fast text / LSTM Fast Text LSTM Title 0.93 0.87 Text 0.87 0.78 Code on GitHub Best: FastText + title Bayes Best: Title + CountVectorizer Code: Classify by text Classify by title Use Text no cut + CountVectorizer cut + CountVectorizer CountVectorizer + Tfidf with</description>
 			<content type="html"><![CDATA[
 
 <h2 id="data-set">Data Set</h2>
@@ -291,7 +291,12 @@
 <ul>
 <li>&lsquo;Gossiping&rsquo;, &lsquo;WomenTalk&rsquo;, &lsquo;Baseball&rsquo;, &lsquo;C_Chat&rsquo;, &lsquo;Beauty&rsquo; 各 50 頁的文章</li>
 <li>jieba 斷詞</li>
-<li></li>
+<li>使用 Model:
+
+<ul>
+<li>DL: FastText / LSTM</li>
+<li>ML: BayesClassifier</li>
+</ul></li>
 </ul>
 
 <h2 id="fast-text-lstm">Fast text / LSTM</h2>
