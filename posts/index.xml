@@ -283,7 +283,7 @@
 			<pubDate>Wed, 03 Apr 2019 23:55:15 +0800</pubDate>
 			
 			<guid>https://aqweteddy.github.io/posts/ptt_analysis2/</guid>
-			<description>Data Set &amp;lsquo;Gossiping&amp;rsquo;, &amp;lsquo;WomenTalk&amp;rsquo;, &amp;lsquo;Baseball&amp;rsquo;, &amp;lsquo;C_Chat&amp;rsquo;, &amp;lsquo;Beauty&amp;rsquo; 各 50 頁的文章 jieba 斷詞 使用 Model: DL: FastText / LSTM ML: BayesClassifier Fast text / LSTM Fast Text LSTM Title 0.93 0.87 Text 0.87 0.78 Code on GitHub Best: FastText + title Bayes Best: Title + CountVectorizer Code: Classify by text Classify by title Use Text no cut + CountVectorizer cut + CountVectorizer CountVectorizer + Tfidf with</description>
+			<description>Data Set &amp;lsquo;Gossiping&amp;rsquo;, &amp;lsquo;WomenTalk&amp;rsquo;, &amp;lsquo;Baseball&amp;rsquo;, &amp;lsquo;C_Chat&amp;rsquo;, &amp;lsquo;Beauty&amp;rsquo; 各 50 頁的文章 jieba 斷詞 Fast text / LSTM Fast Text LSTM Title 0.93 0.87 Text 0.87 0.78 Code on GitHub Best: FastText + title Bayes Best: Title + CountVectorizer Code: Classify by text Classify by title Use Text no cut + CountVectorizer cut + CountVectorizer CountVectorizer + Tfidf with cut Tfidf with cut Accuracy 0.68 0.85 0.83 0.81</description>
 			<content type="html"><![CDATA[
 
 <h2 id="data-set">Data Set</h2>
@@ -291,12 +291,7 @@
 <ul>
 <li>&lsquo;Gossiping&rsquo;, &lsquo;WomenTalk&rsquo;, &lsquo;Baseball&rsquo;, &lsquo;C_Chat&rsquo;, &lsquo;Beauty&rsquo; 各 50 頁的文章</li>
 <li>jieba 斷詞</li>
-<li>使用 Model:
-
-<ul>
-<li>DL: FastText / LSTM</li>
-<li>ML: BayesClassifier</li>
-</ul></li>
+<li></li>
 </ul>
 
 <h2 id="fast-text-lstm">Fast text / LSTM</h2>
@@ -532,6 +527,17 @@
 <li>使用 title 比 text 更準確，可能與資料清洗有關</li>
 <li>樣本數若再提高可能可以提高準確度</li>
 </ul>
+
+<h3 id="randomforestclassifier">RandomForestClassifier</h3>
+
+<p>|             | precision | recall | f1-score | support |
+   | &mdash;&mdash;&mdash;&ndash; | :&mdash;&mdash;-: | :&mdash;-: | :&mdash;&mdash;: | :&mdash;&ndash;: |
+   | Baseball    |   0.97    |  0.77  |   0.86   |   74    |
+   | Beauty      |   0.99    |  0.98  |   0.99   |   105   |
+   | C_Chat      |   0.86    |  0.73  |   0.79   |   97    |
+   | Gossiping   |   0.89    |  0.97  |   0.93   |   96    |
+   | WomenTalk   |   0.74    |  0.90  |   0.81   |   101   |
+   | avg / total |   0.89    |  0.88  |   0.88   |   473   |</p>
 ]]></content>
 		</item>
 		
