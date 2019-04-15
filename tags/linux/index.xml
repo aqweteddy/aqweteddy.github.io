@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Teddy&#39;s Blog</title>
+    <link>https://aqweteddy.github.io/tags/linux/</link>
+    <description>Recent content in Linux on Teddy&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Mon, 15 Apr 2019 14:07:12 +0800</lastBuildDate>
+    
+	<atom:link href="https://aqweteddy.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>System Programming1</title>
+      <link>https://aqweteddy.github.io/posts/system-programming1/</link>
+      <pubDate>Mon, 15 Apr 2019 14:07:12 +0800</pubDate>
+      
+      <guid>https://aqweteddy.github.io/posts/system-programming1/</guid>
+      <description>SP ch01 - Linux 安裝環境 PASS!!! ch02 - 編譯環境 PASSS!!!!! ch04 - 檔案輸入輸出 file hole: 邏輯意義 0 某先檔案系統不支援 節省磁碟空間 讀檔、寫檔 open file descriptor(fd): 0: stdin 1: stdout 2: stderr return value: fd::int flag: O_RDONLY: read only O_WRONLY: write only</description>
+    </item>
+    
+  </channel>
+</rss>

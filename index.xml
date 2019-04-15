@@ -51,6 +51,15 @@
     </item>
     
     <item>
+      <title>System Programming1</title>
+      <link>https://aqweteddy.github.io/posts/system-programming1/</link>
+      <pubDate>Mon, 15 Apr 2019 14:07:12 +0800</pubDate>
+      
+      <guid>https://aqweteddy.github.io/posts/system-programming1/</guid>
+      <description>SP ch01 - Linux 安裝環境 PASS!!! ch02 - 編譯環境 PASSS!!!!! ch04 - 檔案輸入輸出 file hole: 邏輯意義 0 某先檔案系統不支援 節省磁碟空間 讀檔、寫檔 open file descriptor(fd): 0: stdin 1: stdout 2: stderr return value: fd::int flag: O_RDONLY: read only O_WRONLY: write only</description>
+    </item>
+    
+    <item>
       <title>Ptt 文章分板判斷</title>
       <link>https://aqweteddy.github.io/posts/ptt_analysis2/</link>
       <pubDate>Wed, 03 Apr 2019 23:55:15 +0800</pubDate>
@@ -102,15 +111,6 @@
       
       <guid>https://aqweteddy.github.io/about/</guid>
       <description>就讀大二的資工系學生 github: github.com/aqweteddy This website is based on Hugo, and using Theme &amp;ldquo;Hermit&amp;rdquo;.</description>
-    </item>
-    
-    <item>
-      <title>Course</title>
-      <link>https://aqweteddy.github.io/posts/course/</link>
-      <pubDate>Wed, 27 Feb 2019 01:06:48 +0800</pubDate>
-      
-      <guid>https://aqweteddy.github.io/posts/course/</guid>
-      <description>說明 這是各學期在中正資工上課所保留下來的 Code 大一上 程式設計(一) 大一下 物件導向程式設計 大二下必修 程式設計(二) 大二上 組合語言 資料結構</description>
     </item>
     
   </channel>

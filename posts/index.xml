@@ -278,6 +278,265 @@
 		</item>
 		
 		<item>
+			<title>System Programming1</title>
+			<link>https://aqweteddy.github.io/posts/system-programming1/</link>
+			<pubDate>Mon, 15 Apr 2019 14:07:12 +0800</pubDate>
+			
+			<guid>https://aqweteddy.github.io/posts/system-programming1/</guid>
+			<description>SP ch01 - Linux 安裝環境 PASS!!! ch02 - 編譯環境 PASSS!!!!! ch04 - 檔案輸入輸出 file hole: 邏輯意義 0 某先檔案系統不支援 節省磁碟空間 讀檔、寫檔 open file descriptor(fd): 0: stdin 1: stdout 2: stderr return value: fd::int flag: O_RDONLY: read only O_WRONLY: write only</description>
+			<content type="html"><![CDATA[
+
+<h1 id="sp">SP</h1>
+
+<h2 id="ch01-linux-安裝環境">ch01 - Linux 安裝環境</h2>
+
+<ul>
+<li>PASS!!!</li>
+</ul>
+
+<h2 id="ch02-編譯環境">ch02 - 編譯環境</h2>
+
+<ul>
+<li>PASSS!!!!!</li>
+</ul>
+
+<h2 id="ch04-檔案輸入輸出">ch04 - 檔案輸入輸出</h2>
+
+<ul>
+<li>file hole:
+
+<ul>
+<li>邏輯意義 0</li>
+<li>某先檔案系統不支援</li>
+<li>節省磁碟空間</li>
+</ul></li>
+</ul>
+
+<h3 id="讀檔-寫檔">讀檔、寫檔</h3>
+
+<h4 id="open">open</h4>
+
+<ul>
+<li>file descriptor(fd):
+
+<ul>
+<li>0: stdin</li>
+<li>1: stdout</li>
+<li>2: stderr</li>
+</ul></li>
+<li>return value: fd::int</li>
+<li>flag:
+
+<ul>
+<li>O_RDONLY: read only</li>
+<li>O_WRONLY: write only</li>
+<li>O_CREATE: 若不在建立檔案</li>
+<li>O_APPEND:加到尾巴</li>
+<li>O_TRUNC:檔案大小歸零</li>
+</ul></li>
+<li>mode:
+
+<ul>
+<li>建立新檔案的讀寫屬性
+<code>c
+int open(const cahr* path, int flags);
+int open(const cahr* path, int flags, mode_t mode);
+</code></li>
+</ul></li>
+</ul>
+
+<h4 id="read">read</h4>
+
+<ul>
+<li>從 fd 讀取最多 count bytes 資料到 buf 中</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="n">ssize_t</span> <span class="nf">read</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">count</span><span class="p">);</span> 
+<span class="c1">// return:
+</span><span class="c1">// &gt;1：read n bytes
+</span><span class="c1">// =0: EOF
+</span><span class="c1"></span><span class="o">//</span> <span class="o">-</span><span class="mi">1</span><span class="o">:</span> <span class="n">error</span></code></pre></div>
+<h4 id="write">write</h4>
+
+<ul>
+<li>從 buf 寫入最多 count bytes 資料到 fd 中</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="n">ssize_t</span> <span class="nf">read</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">count</span><span class="p">);</span> 
+<span class="c1">// return:
+</span><span class="c1">// n: read n bytes
+</span><span class="c1"></span><span class="o">//</span> <span class="o">-</span><span class="mi">1</span><span class="o">:</span> <span class="n">error</span></code></pre></div>
+<h4 id="perror">perror</h4>
+
+<ul>
+<li>印出錯誤訊息</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="n">perror</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">str</span><span class="p">);</span>
+<span class="o">//</span> <span class="nl">Output</span><span class="p">:</span> <span class="n">str</span> <span class="n">ERROR</span></code></pre></div>
+<h4 id="close">close</h4>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="nf">close</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">);</span>
+<span class="o">//</span> <span class="k">return</span> <span class="mi">0</span><span class="p">(</span><span class="n">successful</span><span class="p">)</span> <span class="n">or</span> <span class="o">-</span><span class="mi">1</span><span class="p">(</span><span class="n">failed</span><span class="p">)</span></code></pre></div>
+<h4 id="pread-pwrite">pread &amp; pwrite</h4>
+
+<h3 id="lseek-holes">lseek &amp; holes</h3>
+
+<h4 id="lseek">lseek</h4>
+
+<ul>
+<li>fd的檔案指標，移動到從 whence 起算偏移 off_set 的位置</li>
+<li>whence:
+
+<ul>
+<li>SEEK_SET: 絕對位置</li>
+<li>SEEK_CUR: 從現在位置起算</li>
+<li>SEEK_END:從結束位置起算</li>
+<li>#define _GNU_SOURCE</li>
+<li>SEEK_HOLE: 移動到下一個洞最前面</li>
+<li>SEEK_DATA: 移動到下一個資料的最前面</li>
+</ul></li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="n">off_t</span> <span class="nf">lseek</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="n">off_t</span> <span class="n">offset</span><span class="p">,</span> <span class="kt">int</span> <span class="n">whence</span><span class="p">);</span>
+<span class="c1">// return value: 檔案開始的偏移值
+</span><span class="c1"></span><span class="o">//</span> <span class="k">if</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span> <span class="n">and</span> <span class="n">errno</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">:</span> <span class="n">error</span></code></pre></div>
+<h4 id="flock">flock</h4>
+
+<ul>
+<li>依参数operation所指定的方式对参数fd所指的文件做各种锁定或解除锁定的动作。此函数只能锁定整个文件，无法锁定文件的某一区域。</li>
+<li>如果另一行程沒有用 flock，該行程不遵循 flock</li>
+<li>fd:
+
+<ul>
+<li>LOCK_SH: 分享鎖，可多人同時存取</li>
+<li>LOCK_EX: 互斥鎖，只可以由這個行程存取</li>
+<li>LOCK_UN: 解鎖</li>
+</ul></li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="nf">flock</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">int</span> <span class="n">op</span><span class="p">);</span></code></pre></div>
+<h3 id="buffer-同步">Buffer 同步</h3>
+
+<ul>
+<li>同步次數越多，越能避免意外造成的問題，但是速度越慢</li>
+<li>function
+
+<ul>
+<li><code>sync(void)</code>: 所有資料寫回磁碟</li>
+<li><code>fsync(int fd)</code>: 將 fd 的檔案所有資料寫回磁碟(含 meta-data)</li>
+<li><code>fdatasync(int fd)</code>: 將 fd 的檔案所有資料寫回磁碟(不含 meta-data)</li>
+</ul></li>
+</ul>
+
+<h4 id="sync">sync</h4>
+
+<h2 id="ch06-檔案與目錄操作">ch06 - 檔案與目錄操作</h2>
+
+<h3 id="檔案和目錄權限">檔案和目錄權限</h3>
+
+<ol>
+<li>檔案：r w x</li>
+<li>目錄：
+
+<ol>
+<li>r: 讀取目錄</li>
+<li>w: 修改目錄(新增、刪除&hellip;)</li>
+<li>x: 進入目錄</li>
+</ol></li>
+</ol>
+
+<h4 id="process-id">process id</h4>
+
+<ol>
+<li>effective id(euid): 用來判斷權限的id</li>
+<li>real user id(ruid): 這個 process 的 owner 的 user id</li>
+<li>saved-user-id: 舊的 euid</li>
+</ol>
+
+<h4 id="setuid-setgid">setuid setgid</h4>
+
+<ul>
+<li>執行有setuid的程式時，可將一般使用者短暫轉為 owner 權限</li>
+<li>x -&gt; s</li>
+<li>大寫S:權限沒有啟用</li>
+<li>ex: passwd，owner 為 root</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="c1">// 切換當前執行的 c code 的 uid
+</span><span class="c1">// root 呼叫：euid = ruid = saved-user-id = new_uid
+</span><span class="c1">// normal user: uid 必為 ruid or saved-user-id 否則錯誤。將euid 設為 ruid or saved-user-id
+</span><span class="c1"></span><span class="kt">int</span> <span class="nf">setuid</span><span class="p">(</span><span class="n">uid_t</span> <span class="n">uid</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">setgid</span><span class="p">(</span><span class="n">gid_t</span> <span class="n">gid</span><span class="p">);</span>
+<span class="c1">// return 0 if successful
+</span><span class="c1">// return -1 if failed, detail in errno
+</span><span class="c1"></span>
+
+<span class="c1">//設定ruid euid
+</span><span class="c1"></span><span class="kt">int</span> <span class="nf">setreuid</span><span class="p">(</span><span class="n">uid_t</span> <span class="n">ruid</span><span class="p">,</span> <span class="n">uid_t</span> <span class="n">euid</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">setregid</span><span class="p">(</span><span class="n">gid_t</span> <span class="n">rgid</span><span class="p">,</span> <span class="n">gid_t</span> <span class="n">egid</span><span class="p">);</span>
+
+<span class="c1">// euid
+</span><span class="c1"></span><span class="kt">int</span> <span class="nf">seteuid</span><span class="p">(</span><span class="n">uid_t</span> <span class="n">euid</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">setegid</span><span class="p">(</span><span class="n">gid_t</span> <span class="n">egid</span><span class="p">);</span>
+
+<span class="c1">// get current uid
+</span><span class="c1"></span><span class="n">uid_t</span> <span class="nf">gettuid</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="n">uid_t</span> <span class="nf">geteuid</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="c1">// get ruid, euid, saved-user-uid
+</span><span class="c1"></span><span class="cp">#define _GNU_SOURCE
+</span><span class="cp"></span><span class="kt">int</span> <span class="nf">getresuid</span><span class="p">(</span><span class="n">uid_t</span><span class="o">*</span> <span class="n">ruid</span><span class="p">,</span> <span class="n">uid_t</span><span class="o">*</span> <span class="n">euid</span><span class="p">,</span> <span class="n">uid_t</span><span class="o">*</span> <span class="n">suid</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">getresgid</span><span class="p">(</span><span class="n">uid_t</span><span class="o">*</span> <span class="n">rgid</span><span class="p">,</span> <span class="n">uid_t</span><span class="o">*</span> <span class="n">egid</span><span class="p">,</span> <span class="n">uid_t</span><span class="o">*</span> <span class="n">sgid</span><span class="p">);</span></code></pre></div>
+<h4 id="sticky-bit">sticky-bit</h4>
+
+<ul>
+<li>only for 目錄</li>
+<li>只有 dir owner / file owner / root 可刪除檔案</li>
+<li>ex: /tmp</li>
+<li><code>chmod +t tmp</code>:為 tmp 加上 sticky bit</li>
+<li>other: x -&gt; t</li>
+</ul>
+
+<h3 id="soft-link-hard-link">soft link &amp; hard link</h3>
+
+<ul>
+<li>若 a 是 b 的 link，則 a 改變 b 也會跟著變，反之也是</li>
+</ul>
+
+<h4 id="hard-link">hard link</h4>
+
+<ul>
+<li>只可連向檔案</li>
+<li>必須在同一個 partition</li>
+<li>link 數量 (ls -l 第二欄) 為 0 才是真正刪除</li>
+<li>每個 hard link 權限可不同</li>
+<li>inode 不變</li>
+</ul>
+
+<h4 id="soft-link">soft link</h4>
+
+<ul>
+<li>捷徑</li>
+<li>可跨 partition、可用於資料夾</li>
+<li>需要擁有使用原始檔案、資料夾的權限</li>
+<li>不影響 link 數量</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">link</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">old_path</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">newpath</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">symlink</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">old_path</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">newpath</span><span class="p">);</span></code></pre></div>
+<h3 id="目錄操作">目錄操作</h3>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;sts/stat.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;sts/types.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="c1">// mode: mask，限制最高權限
+</span><span class="c1"></span><span class="kt">int</span> <span class="nf">mkdir</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">path</span><span class="p">,</span> <span class="n">mode_t</span> <span class="n">mode</span><span class="p">);</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="kt">int</span> <span class="nf">rmdir</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">path</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">chdir</span><span class="p">(</span><span class="n">cons</span> <span class="kt">char</span><span class="o">*</span> <span class="n">path</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">fchdir</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">);</span> <span class="c1">// 依據 file
+</span><span class="c1"></span>
+<span class="cp">#define _GUN_SORUCE
+</span><span class="cp"></span><span class="kt">char</span> <span class="o">*</span> <span class="nf">get_current_dir_name</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span> <span class="o">//</span> <span class="err">搭配</span> <span class="n">free</span></code></pre></div>]]></content>
+		</item>
+		
+		<item>
 			<title>Ptt 文章分板判斷</title>
 			<link>https://aqweteddy.github.io/posts/ptt_analysis2/</link>
 			<pubDate>Wed, 03 Apr 2019 23:55:15 +0800</pubDate>
@@ -1266,103 +1525,6 @@
 <li><a href="https://github.com/aqweteddy/DataStructure">資料結構</a></li>
 </ul>
 ]]></content>
-		</item>
-		
-		<item>
-			<title>安裝 Hugo 建制部落格，並集成 LaTeX</title>
-			<link>https://aqweteddy.github.io/posts/hugo_install/</link>
-			<pubDate>Thu, 21 Feb 2019 15:37:19 +0800</pubDate>
-			
-			<guid>https://aqweteddy.github.io/posts/hugo_install/</guid>
-			<description>&lt;ul&gt;
-&lt;li&gt;安裝 Hugo&lt;/li&gt;
-&lt;li&gt;Hugo 基本指令&lt;/li&gt;
-&lt;li&gt;增加 LaTeX&lt;/li&gt;
-&lt;/ul&gt;</description>
-			<content type="html"><![CDATA[<ul>
-<li>安裝 Hugo</li>
-<li>Hugo 基本指令</li>
-<li>增加 LaTeX</li>
-</ul>
-
-<h3 id="install-hugo">Install Hugo</h3>
-
-<h4 id="environment">Environment</h4>
-
-<ul>
-<li>OS: MAC OS Mojave</li>
-<li>Package Manager: brew</li>
-</ul>
-
-<h4 id="step">Step</h4>
-
-<ol>
-<li><code>brew install hugo</code></li>
-</ol>
-
-<h4 id="create-new-blog">Create new blog</h4>
-
-<ol>
-<li><code>hugo new site [blog_name]</code></li>
-</ol>
-
-<h4 id="create-new-article">Create new article</h4>
-
-<ol>
-<li><code>hugo new [path][page_name]</code>
-
-<ul>
-<li>create <code>.md</code> in <code>[path_to_project]/content</code></li>
-</ul></li>
-</ol>
-
-<h4 id="run-server">Run server</h4>
-
-<ul>
-<li><code>hugo server -D</code></li>
-</ul>
-
-<h4 id="github-page">github Page</h4>
-
-<ol>
-<li>create a new empty project in github.</li>
-<li>use command <code>hugo</code> to save result in <code>[proj]/public</code></li>
-<li>do following command:</li>
-</ol>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> public
-git init
-git add .
-git commit -m <span class="s2">&#34;first&#34;</span>
-git push</code></pre></div>
-<h3 id="latex">LaTeX</h3>
-
-<h3 id="加入">加入</h3>
-
-<ul>
-<li>主題包中，修改 <code>layouts/baseof.html</code>，在 head 標籤中最前面加入以下程式碼即可</li>
-</ul>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!-- KaTeX --&gt;</span>
-<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css&#34;</span>
-		<span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei&#34;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;</span>
-	<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js&#34;</span>
-		<span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq&#34;</span>
-		<span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-	<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js&#34;</span>
-		<span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc&#34;</span>
-		<span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span></code></pre></div>
-<h3 id="使用方法">使用方法</h3>
-
-<ul>
-<li>Inline: <code>\\(</code>  內容 <code>\\)</code></li>
-<li>區塊: <code>$$</code> 內容 <code>$$</code></li>
-</ul>
-
-<h3 id="範例">範例</h3>
-
-<ul>
-<li>\(2 \times3\)</li>
-<li>$$2\times3$$</li>
-</ul>]]></content>
 		</item>
 		
 	</channel>
