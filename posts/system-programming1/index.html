@@ -28,7 +28,7 @@
 
 <meta itemprop="datePublished" content="2019-04-15T14:07:12&#43;08:00" />
 <meta itemprop="dateModified" content="2019-04-15T14:07:12&#43;08:00" />
-<meta itemprop="wordCount" content="1032">
+<meta itemprop="wordCount" content="1793">
 
 
 
@@ -159,7 +159,7 @@ int open(const cahr* path, int flags, mode_t mode);
 <ul>
 <li>從 fd 讀取最多 count bytes 資料到 buf 中</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="n">ssize_t</span> <span class="nf">read</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">count</span><span class="p">);</span> 
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="n">size_t</span> <span class="nf">read</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">count</span><span class="p">);</span> 
 <span class="c1">// return:
 </span><span class="c1">// &gt;1：read n bytes
 </span><span class="c1">// =0: EOF
@@ -169,10 +169,19 @@ int open(const cahr* path, int flags, mode_t mode);
 <ul>
 <li>從 buf 寫入最多 count bytes 資料到 fd 中</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="n">ssize_t</span> <span class="nf">read</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">count</span><span class="p">);</span> 
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="n">size_t</span> <span class="nf">read</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">count</span><span class="p">);</span> 
 <span class="c1">// return:
 </span><span class="c1">// n: read n bytes
 </span><span class="c1"></span><span class="o">//</span> <span class="o">-</span><span class="mi">1</span><span class="o">:</span> <span class="n">error</span></code></pre></div>
+<h4 id="truncate">truncate<a href="#truncate" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+
+<p>#include <unistd.h></p>
+
+<ul>
+<li>truncate()会将参数path 指定的文件大小改为参数length 指定的大小. 如果原来的文件大小比参数length 大, 则超过的部分会被删去。</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="nf">truncate</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">path</span><span class="p">,</span> <span class="n">off_t</span> <span class="n">length</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">ftruncate</span><span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="n">off_t</span> <span class="n">length</span><span class="p">);</span></code></pre></div>
 <h4 id="perror">perror<a href="#perror" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
 
 <ul>
@@ -232,20 +241,142 @@ int open(const cahr* path, int flags, mode_t mode);
 </ul></li>
 </ul>
 
-<h4 id="sync">sync<a href="#sync" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+<h2 id="ch05-c-標準輸出入寒束褲與作業系統">ch05 - C 標準輸出入寒束褲與作業系統<a href="#ch05-c-標準輸出入寒束褲與作業系統" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<h3 id="read-write">read &amp; write<a href="#read-write" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="n">FILE</span><span class="o">*</span> <span class="n">file</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&#34;PATH&#34;</span><span class="p">,</span> <span class="s">&#34;w&#34;</span><span class="p">);</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s">&#34;This&#34;</span><span class="p">);</span></code></pre></div>
+<h3 id="檔案位置">檔案位置<a href="#檔案位置" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<ul>
+<li><code>int fseek(FILE* stream, long offset, int whence)</code>:
+
+<ul>
+<li>設定位置</li>
+<li>不會回傳目前位置</li>
+<li>可改變<strong>讀取</strong>位置，但寫入位置須看 fopen 時設定</li>
+<li>whence:</li>
+<li>SEEK_SET / SEEK_CUR / SEEK_END</li>
+</ul></li>
+<li><code>long ftell(FILE* stream)</code>:
+
+<ul>
+<li>回傳目前位置</li>
+</ul></li>
+</ul>
+
+<h3 id="io-buffer">IO / buffer<a href="#io-buffer" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<ul>
+<li>兩個buffer:
+
+<ul>
+<li>C 函式庫</li>
+<li>Linux Kernel</li>
+</ul></li>
+</ul>
+
+<h4 id="fflush">fflush<a href="#fflush" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+
+<ul>
+<li>C 函式庫同步到 Linux kernel</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="kt">int</span> <span class="nf">fflush</span><span class="p">(</span><span class="n">FILE</span><span class="o">*</span> <span class="n">stream</span><span class="p">);</span></code></pre></div>
+<h4 id="set-buffer-size">set buffer size<a href="#set-buffer-size" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+
+<ul>
+<li><code>#include &lt;stdio.h&gt;</code></li>
+<li><code>void setbuf(FILE* fp, char* buf)</code>:</li>
+<li><code>void setbuffer(FILE* fp, char* buf, size_t size)</code>:</li>
+<li><code>void setlinebuf(FILE* fp)</code>:</li>
+<li><code>void setvbuf(FILE* fp, char* buf, int mode, size_t size)</code>:
+
+<ul>
+<li>依 mode 指示設定 stream</li>
+<li>以 buf 為 buffer，大小為 size</li>
+<li>真正使用 stream 前設定才有效果</li>
+<li>記得 buf = malloc(size)</li>
+<li>mode:</li>
+<li>_IONBF: unbuffered, 立即寫入 fp</li>
+<li>_IOLBF: line buffered, 遇到 &lsquo;\n&rsquo; 再寫入 fp</li>
+<li>_IOFBF:fully buffered, buffer 滿了再寫入 fp</li>
+</ul></li>
+</ul>
+
+<h4 id="fread-fwrite">fread &amp; fwrite<a href="#fread-fwrite" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+
+<ul>
+<li><code>size_t fread(void* ptr, size_t size, size_t nmemb, FILE* fp)</code>: 從 fp 中讀取 nmemb 筆資料，每筆 size 大，存到 ptr 中</li>
+<li><code>size_t fwrite(const void* ptr, size_t size, size_t nmemb, FILE* fp)</code>:從 ptr 中讀取 nmemb 筆資料，每筆 size 大，寫到 fp 中</li>
+<li>return: n 筆資料</li>
+</ul>
+
+<h3 id="wide-char">wide char<a href="#wide-char" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<ul>
+<li>include: <code>wchar.h</code></li>
+<li>function: <code>wcslen / fwide / fgetws / fputws</code>
+
+<ul>
+<li><code>int fwide(FILE* fp, int mode)</code>:</li>
+<li>mode = 0: 回傳目前讀寫狀態</li>
+<li>mode &gt; 0: 讀寫寬字串</li>
+<li>mode &lt; 0: 一般字串</li>
+</ul></li>
+</ul>
+
+<h3 id="tmp-file">tmp file<a href="#tmp-file" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+
+<h4 id="create-tmp-file">create tmp file<a href="#create-tmp-file" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+
+<ul>
+<li><code>char* mktmp(char* template)</code>:
+
+<ul>
+<li>template 最後6個字母為 XXXXXX</li>
+<li>會被取代為一個唯一的字串</li>
+<li>需要再用 fopen 開檔</li>
+<li>若製造 tempname 後、還沒開檔案前，可能另一個程式使用了一樣 tempname，做同樣的事</li>
+</ul></li>
+<li><code>FILE* tmpfile(void)</code>:
+
+<ul>
+<li>一次搞定創檔案開檔案</li>
+</ul></li>
+</ul>
+
+<h4 id="fwrite-eof">fwrite &amp; EOF<a href="#fwrite-eof" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
+
+<ul>
+<li>feof(FILE* fp):1 if eof</li>
+<li>ferror(FILE* fp):1 if error</li>
+<li>clearerr(FILE* fp):</li>
+</ul>
 
 <h2 id="ch06-檔案與目錄操作">ch06 - 檔案與目錄操作<a href="#ch06-檔案與目錄操作" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 
 <h3 id="檔案和目錄權限">檔案和目錄權限<a href="#檔案和目錄權限" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 
 <ol>
-<li>檔案：r w x</li>
+<li>檔案：
+
+<ul>
+<li>r (read)：可讀取此一檔案的實際內容，如讀取文字檔的文字內容等；</li>
+<li>w (write)：可以編輯、新增或者是修改該檔案的內容(但不含刪除該檔案)；</li>
+<li>x (execute)：該檔案具有可以被系統執行的權限。</li>
+</ul></li>
 <li>目錄：
 
 <ol>
-<li>r: 讀取目錄</li>
-<li>w: 修改目錄(新增、刪除&hellip;)</li>
-<li>x: 進入目錄</li>
+<li>r: 表示具有讀取目錄結構清單的權限，所以當你具有讀取&reg;一個目錄的權限時，表示你可以查詢該目錄下的檔名資料。 所以你就可以利用 ls 這個指令將該目錄的內容列表顯示出來</li>
+<li>w: 具有異動該目錄結構清單的權限，也就是底下這些權限：</li>
+<li>建立新的檔案與目錄；</li>
+<li>刪除已經存在的檔案與目錄(不論該檔案的權限為何)</li>
+<li>將已存在的檔案或目錄進行更名；</li>
+<li>搬移該目錄內的檔案、目錄位置。</li>
+<li>x: 使用者能否進入該目錄成為工作目錄</li>
 </ol></li>
 </ol>
 
