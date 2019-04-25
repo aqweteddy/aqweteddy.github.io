@@ -51,6 +51,15 @@
     </item>
     
     <item>
+      <title>Pandas groupby 筆記</title>
+      <link>https://aqweteddy.github.io/posts/pandas_groupby/</link>
+      <pubDate>Wed, 24 Apr 2019 22:15:57 +0800</pubDate>
+      
+      <guid>https://aqweteddy.github.io/posts/pandas_groupby/</guid>
+      <description>一些準備 import numpy as np import pandas as pd df = pd.DataFrame({ &amp;#39;key&amp;#39;: [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;], &amp;#39;d1&amp;#39;: np.arange(6), &amp;#39;d2&amp;#39;: np.random.randint(0, 100, 6) }) 基本 groupby df.groupby(&amp;#39;key&amp;#39;) # 按 key 分類，return DataFrameGroupBy Object df.groupby(&amp;#39;key&amp;#39;).sum() # return 每一 col 的 sum df.groupby(&amp;#39;key&amp;#39;)[[&amp;#39;d1&amp;#39;, &amp;#39;d2&amp;#39;]].median() # return col a, b 的 median aggregate 對整體操作</description>
+    </item>
+    
+    <item>
       <title>System Programming1</title>
       <link>https://aqweteddy.github.io/posts/system-programming1/</link>
       <pubDate>Mon, 15 Apr 2019 14:07:12 +0800</pubDate>
@@ -102,15 +111,6 @@
       
       <guid>https://aqweteddy.github.io/posts/codejam-2018-round1ay/</guid>
       <description>A. WaffleChoppers 題目描述 URL Input: R: MAX_ROW, C: MAX_COL, H: 水平方向切幾刀 V: 垂直方向切幾刀 一個二維矩陣 [R*C]：每格為 1 or 0 在水平方向切 H 刀、垂直方向切 V 刀的情況下，問可否</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://aqweteddy.github.io/about/</link>
-      <pubDate>Sat, 02 Mar 2019 16:52:45 +0800</pubDate>
-      
-      <guid>https://aqweteddy.github.io/about/</guid>
-      <description>就讀大二的資工系學生 github: github.com/aqweteddy This website is based on Hugo, and using Theme &amp;ldquo;Hermit&amp;rdquo;.</description>
     </item>
     
   </channel>

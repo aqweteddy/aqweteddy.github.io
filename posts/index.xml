@@ -278,6 +278,119 @@
 		</item>
 		
 		<item>
+			<title>Pandas groupby 筆記</title>
+			<link>https://aqweteddy.github.io/posts/pandas_groupby/</link>
+			<pubDate>Wed, 24 Apr 2019 22:15:57 +0800</pubDate>
+			
+			<guid>https://aqweteddy.github.io/posts/pandas_groupby/</guid>
+			<description>一些準備 import numpy as np import pandas as pd df = pd.DataFrame({ &amp;#39;key&amp;#39;: [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;], &amp;#39;d1&amp;#39;: np.arange(6), &amp;#39;d2&amp;#39;: np.random.randint(0, 100, 6) }) 基本 groupby df.groupby(&amp;#39;key&amp;#39;) # 按 key 分類，return DataFrameGroupBy Object df.groupby(&amp;#39;key&amp;#39;).sum() # return 每一 col 的 sum df.groupby(&amp;#39;key&amp;#39;)[[&amp;#39;d1&amp;#39;, &amp;#39;d2&amp;#39;]].median() # return col a, b 的 median aggregate 對整體操作</description>
+			<content type="html"><![CDATA[
+
+<h2 id="一些準備">一些準備</h2>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;d1&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
+    <span class="s1">&#39;d2&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="p">})</span></code></pre></div>
+<h2 id="基本-groupby">基本 groupby</h2>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span> <span class="c1"># 按 key 分類，return DataFrameGroupBy Object</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span> <span class="c1"># return 每一 col 的 sum</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)[[</span><span class="s1">&#39;d1&#39;</span><span class="p">,</span> <span class="s1">&#39;d2&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span> <span class="c1"># return col a, b 的 median</span></code></pre></div>
+<h2 id="aggregate">aggregate</h2>
+
+<ol>
+<li>對整體操作</li>
+</ol>
+
+<ul>
+<li>傳 list</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">aggregate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="nb">min</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="nb">max</span><span class="p">])</span>
+
+<span class="c1"># output</span>
+      <span class="n">d1</span>               <span class="n">d2</span>            
+<span class="n">keys</span>  <span class="n">amin</span> <span class="n">median</span> <span class="n">amax</span> <span class="n">amin</span> <span class="n">median</span> <span class="n">amax</span>                                  
+<span class="n">a</span>      <span class="mi">0</span>    <span class="mf">1.5</span>    <span class="mi">3</span>    <span class="mi">2</span>    <span class="mf">9.0</span>   <span class="mi">16</span>
+<span class="n">b</span>      <span class="mi">1</span>    <span class="mf">2.5</span>    <span class="mi">4</span>    <span class="mi">7</span>   <span class="mf">17.5</span>   <span class="mi">28</span>
+<span class="n">c</span>      <span class="mi">2</span>    <span class="mf">3.5</span>    <span class="mi">5</span>   <span class="mi">16</span>   <span class="mf">50.5</span>   <span class="mi">85</span></code></pre></div>
+<ol>
+<li>分別對各項操作</li>
+</ol>
+
+<ul>
+<li>傳 dict</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">aggregate</span><span class="p">({</span><span class="s1">&#39;d1&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="nb">min</span><span class="p">,</span> <span class="s1">&#39;d2&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="nb">max</span><span class="p">})</span> <span class="c1"># d1: a類中max, d2: a類中min</span>
+
+<span class="c1"># output</span>
+<span class="n">key</span> <span class="n">d1</span> 	<span class="n">d2</span> 		
+<span class="n">a</span>   <span class="mi">0</span> 	<span class="mi">16</span>
+<span class="n">b</span>   <span class="mi">1</span> 	<span class="mi">28</span>
+<span class="n">c</span>   <span class="mi">2</span> 	<span class="mi">85</span></code></pre></div>
+<h2 id="filter">filter</h2>
+
+<ul>
+<li>基於群組特性丟棄資料</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="c1"># output</span>
+  <span class="n">key</span>  <span class="n">d1</span>  <span class="n">d2</span>
+<span class="mi">0</span>   <span class="n">a</span>   <span class="mi">0</span>  <span class="mi">16</span>
+<span class="mi">1</span>   <span class="n">b</span>   <span class="mi">1</span>   <span class="mi">7</span>
+<span class="mi">2</span>   <span class="n">c</span>   <span class="mi">2</span>  <span class="mi">16</span>
+<span class="mi">3</span>   <span class="n">a</span>   <span class="mi">3</span>   <span class="mi">2</span>
+<span class="mi">4</span>   <span class="n">b</span>   <span class="mi">4</span>  <span class="mi">28</span>
+<span class="mi">5</span>   <span class="n">c</span>   <span class="mi">5</span>  <span class="mi">85</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+<span class="c1"># output</span>
+<span class="n">key</span>    <span class="n">d1</span>         <span class="n">d2</span>             
+<span class="n">a</span>    <span class="mf">2.12132</span>   <span class="mf">9.899495</span>
+<span class="n">b</span>    <span class="mf">2.12132</span>  <span class="mf">14.849242</span>
+<span class="n">c</span>    <span class="mf">2.12132</span>  <span class="mf">48.790368</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;d2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">13</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">f</span><span class="p">))</span> <span class="c1"># 透過 x[&#39;d2&#39;] std &gt; 13 把 group a 過濾掉</span>
+<span class="c1"># output</span>
+   <span class="n">key</span>  <span class="n">d1</span>  <span class="n">d2</span>
+<span class="mi">1</span>   <span class="n">b</span>   <span class="mi">1</span>   <span class="mi">7</span>
+<span class="mi">2</span>   <span class="n">c</span>   <span class="mi">2</span>  <span class="mi">16</span>
+<span class="mi">4</span>   <span class="n">b</span>   <span class="mi">4</span>  <span class="mi">28</span>
+<span class="mi">5</span>   <span class="n">c</span>   <span class="mi">5</span>  <span class="mi">85</span></code></pre></div>
+<h2 id="transform">transform</h2>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+<span class="c1"># output</span>
+
+	  <span class="n">d1</span> 	  <span class="n">d2</span>
+<span class="mi">0</span> 	<span class="o">-</span><span class="mf">1.5</span> 	<span class="mf">7.0</span>
+<span class="mi">1</span> 	<span class="o">-</span><span class="mf">1.5</span> 	<span class="o">-</span><span class="mf">10.5</span>
+<span class="mi">2</span> 	<span class="o">-</span><span class="mf">1.5</span> 	<span class="o">-</span><span class="mf">34.5</span>
+<span class="mi">3</span> 	<span class="mf">1.5</span> 	<span class="o">-</span><span class="mf">7.0</span>
+<span class="mi">4</span> 	<span class="mf">1.5</span> 	<span class="mf">10.5</span>
+<span class="mi">5</span> 	<span class="mf">1.5</span> 	<span class="mf">34.5</span></code></pre></div>
+<h2 id="apply">apply</h2>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="k">def</span> <span class="nf">d1_sum</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">[</span><span class="s1">&#39;d3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;d1&#39;</span><span class="p">]</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">d1_sum</span><span class="p">))</span> <span class="c1"># d3: group a group b group c 的和</span>
+
+<span class="c1"># output</span>
+  <span class="n">key</span>  <span class="n">d1</span>  <span class="n">d2</span>  <span class="n">d3</span>
+<span class="mi">0</span>   <span class="n">a</span>   <span class="mi">0</span>  <span class="mi">16</span>   <span class="mi">3</span>
+<span class="mi">1</span>   <span class="n">b</span>   <span class="mi">1</span>   <span class="mi">7</span>   <span class="mi">5</span>
+<span class="mi">2</span>   <span class="n">c</span>   <span class="mi">2</span>  <span class="mi">16</span>   <span class="mi">7</span>
+<span class="mi">3</span>   <span class="n">a</span>   <span class="mi">3</span>   <span class="mi">2</span>   <span class="mi">3</span>
+<span class="mi">4</span>   <span class="n">b</span>   <span class="mi">4</span>  <span class="mi">28</span>   <span class="mi">5</span>
+<span class="mi">5</span>   <span class="n">c</span>   <span class="mi">5</span>  <span class="mi">85</span>   <span class="mi">7</span></code></pre></div>]]></content>
+		</item>
+		
+		<item>
 			<title>System Programming1</title>
 			<link>https://aqweteddy.github.io/posts/system-programming1/</link>
 			<pubDate>Mon, 15 Apr 2019 14:07:12 +0800</pubDate>
@@ -1617,45 +1730,6 @@ int open(const cahr* path, int flags, mode_t mode);
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>]]></content>
-		</item>
-		
-		<item>
-			<title>Course</title>
-			<link>https://aqweteddy.github.io/posts/course/</link>
-			<pubDate>Wed, 27 Feb 2019 01:06:48 +0800</pubDate>
-			
-			<guid>https://aqweteddy.github.io/posts/course/</guid>
-			<description>說明 這是各學期在中正資工上課所保留下來的 Code 大一上 程式設計(一) 大一下 物件導向程式設計 大二下必修 程式設計(二) 大二上 組合語言 資料結構</description>
-			<content type="html"><![CDATA[
-
-<hr />
-
-<h3 id="說明">說明</h3>
-
-<ul>
-<li>這是各學期在中正資工上課所保留下來的 Code</li>
-</ul>
-
-<h3 id="大一上">大一上</h3>
-
-<ul>
-<li><a href="https://github.com/aqweteddy/ProgreamDesign-1">程式設計(一)</a></li>
-</ul>
-
-<h3 id="大一下">大一下</h3>
-
-<ul>
-<li><a href="https://github.com/aqweteddy/OOP">物件導向程式設計</a> 大二下必修</li>
-<li><a href="https://github.com/aqweteddy/ProgramDesign-2">程式設計(二)</a></li>
-</ul>
-
-<h3 id="大二上">大二上</h3>
-
-<ul>
-<li><a href="https://github.com/aqweteddy/AssemblyLanguage">組合語言</a></li>
-<li><a href="https://github.com/aqweteddy/DataStructure">資料結構</a></li>
-</ul>
-]]></content>
 		</item>
 		
 	</channel>
