@@ -51,12 +51,21 @@
     </item>
     
     <item>
+      <title>Pandas Dataframe 一些使用方式</title>
+      <link>https://aqweteddy.github.io/posts/pandas_instruction/</link>
+      <pubDate>Sat, 27 Apr 2019 11:57:47 +0800</pubDate>
+      
+      <guid>https://aqweteddy.github.io/posts/pandas_instruction/</guid>
+      <description>一些準備 import pandas as pd import seaborn as sns pla = sns.load_dataset(&amp;#39;planets&amp;#39;) pla.head() # output method number orbital_period mass distance year 0 Radial Velocity 1 269.300 7.10 77.40 2006 1 Radial Velocity 1 874.774 2.21 56.95 2008 2 Radial Velocity 1 763.000 2.60 19.84 2011 3 Radial Velocity 1 326.030 19.40 110.62 2007 4 Radial Velocity 1 516.220 10.50 119.47 2009 df.values df.columns df.index pla.values # get</description>
+    </item>
+    
+    <item>
       <title>Pandas groupby 筆記</title>
       <link>https://aqweteddy.github.io/posts/pandas_groupby/</link>
       <pubDate>Wed, 24 Apr 2019 22:15:57 +0800</pubDate>
       
       <guid>https://aqweteddy.github.io/posts/pandas_groupby/</guid>
-      <description>一些準備 import numpy as np import pandas as pd df = pd.DataFrame({ &amp;#39;key&amp;#39;: [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;], &amp;#39;d1&amp;#39;: np.arange(6), &amp;#39;d2&amp;#39;: np.random.randint(0, 100, 6) }) 基本 groupby df.groupby(&amp;#39;key&amp;#39;) # 按 key 分類，return DataFrameGroupBy Object df.groupby(&amp;#39;key&amp;#39;).sum() # return 每一 col 的 sum df.groupby(&amp;#39;key&amp;#39;)[[&amp;#39;d1&amp;#39;, &amp;#39;d2&amp;#39;]].median() # return col a, b 的 median aggregate 對整體操作</description>
+      <description>一些準備 import numpy as np import pandas as pd df = pd.DataFrame({ &amp;#39;key&amp;#39;: [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;], &amp;#39;d1&amp;#39;: np.arange(6), &amp;#39;d2&amp;#39;: np.random.randint(0, 100, 6) }) 基本 groupby group = df.groupby(&amp;#39;key&amp;#39;) # 按 key 分類，return DataFrameGroupBy Object df.groupby(&amp;#39;key&amp;#39;).sum() # return 每一 col 的 sum df.groupby(&amp;#39;key&amp;#39;)[[&amp;#39;d1&amp;#39;, &amp;#39;d2&amp;#39;]].median() # return col a, b 的 median group.get_group(&amp;#39;a&amp;#39;) # 取出</description>
     </item>
     
     <item>
@@ -102,15 +111,6 @@
       
       <guid>https://aqweteddy.github.io/posts/codejam-2018-qualificationround/</guid>
       <description>A. Saving The Universe Again 題目描述 URL 給一串只有 C 和 S 的字串和一個數字 K，C 表示累積能量 * 2，S 表示攻擊，輸出 swap 最少次數，使得每次攻擊所射出能量 &amp;lt;= K，若無法則</description>
-    </item>
-    
-    <item>
-      <title>CodeJam 2018 Round1A</title>
-      <link>https://aqweteddy.github.io/posts/codejam-2018-round1ay/</link>
-      <pubDate>Sun, 03 Mar 2019 16:43:08 +0800</pubDate>
-      
-      <guid>https://aqweteddy.github.io/posts/codejam-2018-round1ay/</guid>
-      <description>A. WaffleChoppers 題目描述 URL Input: R: MAX_ROW, C: MAX_COL, H: 水平方向切幾刀 V: 垂直方向切幾刀 一個二維矩陣 [R*C]：每格為 1 or 0 在水平方向切 H 刀、垂直方向切 V 刀的情況下，問可否</description>
     </item>
     
   </channel>

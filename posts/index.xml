@@ -278,12 +278,96 @@
 		</item>
 		
 		<item>
+			<title>Pandas Dataframe 一些使用方式</title>
+			<link>https://aqweteddy.github.io/posts/pandas_instruction/</link>
+			<pubDate>Sat, 27 Apr 2019 11:57:47 +0800</pubDate>
+			
+			<guid>https://aqweteddy.github.io/posts/pandas_instruction/</guid>
+			<description>一些準備 import pandas as pd import seaborn as sns pla = sns.load_dataset(&amp;#39;planets&amp;#39;) pla.head() # output method number orbital_period mass distance year 0 Radial Velocity 1 269.300 7.10 77.40 2006 1 Radial Velocity 1 874.774 2.21 56.95 2008 2 Radial Velocity 1 763.000 2.60 19.84 2011 3 Radial Velocity 1 326.030 19.40 110.62 2007 4 Radial Velocity 1 516.220 10.50 119.47 2009 df.values df.columns df.index pla.values # get</description>
+			<content type="html"><![CDATA[
+
+<h2 id="一些準備">一些準備</h2>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
+
+<span class="n">pla</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;planets&#39;</span><span class="p">)</span>
+<span class="n">pla</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="c1"># output</span>
+ 	  <span class="n">method</span> 	<span class="n">number</span> 	<span class="n">orbital_period</span> 	<span class="n">mass</span> 	<span class="n">distance</span> 	<span class="n">year</span>
+<span class="mi">0</span> 	<span class="n">Radial</span> <span class="n">Velocity</span> 	<span class="mi">1</span> 	<span class="mf">269.300</span> 	<span class="mf">7.10</span> 	  <span class="mf">77.40</span> 	<span class="mi">2006</span>
+<span class="mi">1</span> 	<span class="n">Radial</span> <span class="n">Velocity</span> 	<span class="mi">1</span> 	<span class="mf">874.774</span> 	<span class="mf">2.21</span> 	  <span class="mf">56.95</span> 	<span class="mi">2008</span>
+<span class="mi">2</span> 	<span class="n">Radial</span> <span class="n">Velocity</span> 	<span class="mi">1</span> 	<span class="mf">763.000</span> 	<span class="mf">2.60</span> 	  <span class="mf">19.84</span> 	<span class="mi">2011</span>
+<span class="mi">3</span> 	<span class="n">Radial</span> <span class="n">Velocity</span> 	<span class="mi">1</span> 	<span class="mf">326.030</span> 	<span class="mf">19.40</span> 	<span class="mf">110.62</span> 	<span class="mi">2007</span>
+<span class="mi">4</span> 	<span class="n">Radial</span> <span class="n">Velocity</span> 	<span class="mi">1</span> 	<span class="mf">516.220</span> 	<span class="mf">10.50</span> 	<span class="mf">119.47</span> 	<span class="mi">2009</span></code></pre></div>
+<h2 id="df-values-df-columns-df-index">df.values df.columns df.index</h2>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">pla</span><span class="o">.</span><span class="n">values</span> <span class="c1"># get 2d np.array</span>
+<span class="n">pla</span><span class="o">.</span><span class="n">columns</span> <span class="c1"># get column name</span>
+<span class="n">pla</span><span class="o">.</span><span class="n">index</span> <span class="c1"># get index name</span>
+<span class="n">pla</span><span class="o">.</span><span class="n">T</span> <span class="c1"># 轉置</span></code></pre></div>
+<h2 id="df-loc-df-iloc-df-ix">df.loc, df.iloc df.ix</h2>
+
+<ul>
+<li>df.iloc: 索引基本陣列 (numpy array)</li>
+<li>df.loc: 以標籤名稱索引</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="c1"># pla.iloc[Row, Column]</span>
+<span class="n">pla</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># 索引</span>
+<span class="c1"># ouput</span>
+	        <span class="n">method</span> 	<span class="n">number</span>
+<span class="mi">0</span> 	<span class="n">Radial</span> <span class="n">Velocity</span> 	<span class="mi">1</span>
+<span class="mi">1</span> 	<span class="n">Radial</span> <span class="n">Velocity</span> 	<span class="mi">1</span>
+<span class="mi">2</span> 	<span class="n">Radial</span> <span class="n">Velocity</span> 	<span class="mi">1</span>
+
+<span class="c1"># pla.loc[Row, Column]</span>
+<span class="n">pla</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;number&#39;</span><span class="p">:</span><span class="s1">&#39;mass&#39;</span><span class="p">]</span>
+<span class="c1"># output</span>
+ 	<span class="n">number</span> 	<span class="n">orbital_period</span> 	<span class="n">mass</span>
+<span class="mi">1</span> 	<span class="mi">1</span> 	        <span class="mf">874.774</span> 	<span class="mf">2.21</span>
+<span class="mi">2</span> 	<span class="mi">1</span> 	        <span class="mf">763.000</span> 	<span class="mf">2.60</span>
+<span class="mi">3</span> 	<span class="mi">1</span> 	        <span class="mf">326.030</span> 	<span class="mf">19.40</span>
+
+<span class="c1"># 配合 mask and fancy indexing</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">pla</span><span class="o">.</span><span class="n">number</span> <span class="o">&gt;</span> <span class="mi">2</span>
+<span class="n">pla</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;number&#39;</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1"># output</span>
+ 	<span class="n">number</span> 	<span class="n">mass</span>
+<span class="mi">13</span> 	<span class="mi">3</span> 	  <span class="mf">2.53</span>
+<span class="mi">14</span> 	<span class="mi">3</span> 	  <span class="mf">0.54</span>
+<span class="mi">15</span> 	<span class="mi">3</span> 	  <span class="mf">1.64</span></code></pre></div>
+<h2 id="df-query">df.query()</h2>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">pla</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;number &gt; 1 and mass &lt; 7&#39;</span><span class="p">)</span> <span class="c1"># 符合條件 pla[&#39;number&#39;] &gt; 1 and pla[&#39;mass&#39;] &lt; 7</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">pla</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;number &gt; 1 and mass &lt; @a&#39;</span><span class="p">)</span> <span class="c1"># 引入變數 a</span>
+
+<span class="c1"># output</span>
+ 	<span class="n">method</span> 	<span class="n">number</span> 	<span class="n">orbital_period</span> 	<span class="n">mass</span> 	<span class="n">distance</span> 	<span class="n">year</span>
+<span class="mi">9</span> 	<span class="n">Radial</span> <span class="n">Velocity</span> 	<span class="mi">2</span> 	<span class="mf">452.8</span> 	  <span class="mf">1.99</span> 	<span class="mf">74.79</span> 	<span class="mi">2010</span>
+<span class="mi">10</span> 	<span class="n">Radial</span> <span class="n">Velocity</span> 	<span class="mi">2</span> 	<span class="mf">883.0</span> 	  <span class="mf">0.86</span> 	<span class="mf">74.79</span> 	<span class="mi">2010</span>
+<span class="mi">13</span> 	<span class="n">Radial</span> <span class="n">Velocity</span> 	<span class="mi">3</span> 	<span class="mf">1078.0</span> 	  <span class="mf">2.53</span> 	<span class="mf">14.08</span> 	<span class="mi">1996</span>
+<span class="mi">14</span> 	<span class="n">Radial</span> <span class="n">Velocity</span> 	<span class="mi">3</span> 	<span class="mf">2391.0</span> 	  <span class="mf">0.54</span> 	<span class="mf">14.08</span> 	<span class="mi">2001</span>
+<span class="mi">15</span> 	<span class="n">Radial</span> <span class="n">Velocity</span> 	<span class="mi">3</span> 	<span class="mf">14002.0</span> 	<span class="mf">1.64</span> 	<span class="mf">14.08</span> 	<span class="mi">2009</span></code></pre></div>
+<h2 id="df-eval">df.eval()</h2>
+
+<ul>
+<li>df.eval(運算式)</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">pla</span><span class="o">.</span><span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;mass / distance&#39;</span><span class="p">)</span> <span class="c1"># pla[&#39;mass&#39;] / pla[&#39;distance&#39;]</span>
+<span class="n">pla</span><span class="o">.</span><span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;s = mass / distance&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="c1"># 多一欄 pla[s] = pla[&#39;mass&#39;] / pla[&#39;distance&#39;]</span>
+<span class="n">pla</span><span class="o">.</span><span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;s = mass / distance&#39;</span><span class="p">)</span> <span class="c1"># 多一欄 pla[s] = pla[&#39;mass&#39;] / pla[&#39;distance&#39;]，但不會更動原始 pla</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">pla</span><span class="o">.</span><span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;s = mass / distance + @a&#39;</span><span class="p">)</span> <span class="c1"># 引入變數 a</span></code></pre></div>]]></content>
+		</item>
+		
+		<item>
 			<title>Pandas groupby 筆記</title>
 			<link>https://aqweteddy.github.io/posts/pandas_groupby/</link>
 			<pubDate>Wed, 24 Apr 2019 22:15:57 +0800</pubDate>
 			
 			<guid>https://aqweteddy.github.io/posts/pandas_groupby/</guid>
-			<description>一些準備 import numpy as np import pandas as pd df = pd.DataFrame({ &amp;#39;key&amp;#39;: [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;], &amp;#39;d1&amp;#39;: np.arange(6), &amp;#39;d2&amp;#39;: np.random.randint(0, 100, 6) }) 基本 groupby df.groupby(&amp;#39;key&amp;#39;) # 按 key 分類，return DataFrameGroupBy Object df.groupby(&amp;#39;key&amp;#39;).sum() # return 每一 col 的 sum df.groupby(&amp;#39;key&amp;#39;)[[&amp;#39;d1&amp;#39;, &amp;#39;d2&amp;#39;]].median() # return col a, b 的 median aggregate 對整體操作</description>
+			<description>一些準備 import numpy as np import pandas as pd df = pd.DataFrame({ &amp;#39;key&amp;#39;: [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;], &amp;#39;d1&amp;#39;: np.arange(6), &amp;#39;d2&amp;#39;: np.random.randint(0, 100, 6) }) 基本 groupby group = df.groupby(&amp;#39;key&amp;#39;) # 按 key 分類，return DataFrameGroupBy Object df.groupby(&amp;#39;key&amp;#39;).sum() # return 每一 col 的 sum df.groupby(&amp;#39;key&amp;#39;)[[&amp;#39;d1&amp;#39;, &amp;#39;d2&amp;#39;]].median() # return col a, b 的 median group.get_group(&amp;#39;a&amp;#39;) # 取出</description>
 			<content type="html"><![CDATA[
 
 <h2 id="一些準備">一些準備</h2>
@@ -296,9 +380,21 @@
     <span class="s1">&#39;d2&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
 <span class="p">})</span></code></pre></div>
 <h2 id="基本-groupby">基本 groupby</h2>
-<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span> <span class="c1"># 按 key 分類，return DataFrameGroupBy Object</span>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">group</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span> <span class="c1"># 按 key 分類，return DataFrameGroupBy Object</span>
 <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span> <span class="c1"># return 每一 col 的 sum</span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)[[</span><span class="s1">&#39;d1&#39;</span><span class="p">,</span> <span class="s1">&#39;d2&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span> <span class="c1"># return col a, b 的 median</span></code></pre></div>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)[[</span><span class="s1">&#39;d1&#39;</span><span class="p">,</span> <span class="s1">&#39;d2&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span> <span class="c1"># return col a, b 的 median</span>
+
+<span class="n">group</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="c1"># 取出 key = a 所有資料</span>
+<span class="c1"># output</span>
+  <span class="n">d1</span>	<span class="n">d2</span>	<span class="n">key</span>
+<span class="mi">0</span>	<span class="mi">0</span>	  <span class="mi">76</span>	<span class="n">a</span>
+<span class="mi">3</span>	<span class="mi">3</span>	  <span class="mi">28</span>	<span class="n">a</span>
+
+<span class="n">group</span><span class="o">.</span><span class="n">groups</span> <span class="c1"># 查看所有 group 名稱</span>
+<span class="c1"># output</span>
+<span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">Int64Index</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int64&#39;</span><span class="p">),</span>
+ <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">Int64Index</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int64&#39;</span><span class="p">),</span>
+ <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">Int64Index</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int64&#39;</span><span class="p">)}</span></code></pre></div>
 <h2 id="aggregate">aggregate</h2>
 
 <ol>
@@ -353,7 +449,7 @@
 <span class="n">c</span>    <span class="mf">2.12132</span>  <span class="mf">48.790368</span>
 
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;d2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">13</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;d2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">13</span> <span class="c1"># 每次傳入 group a, b, c 的資料</span>
 <span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span><span class="o">.</span><span class="nb">filter</span><span class="p">(</span><span class="n">f</span><span class="p">))</span> <span class="c1"># 透過 x[&#39;d2&#39;] std &gt; 13 把 group a 過濾掉</span>
 <span class="c1"># output</span>
    <span class="n">key</span>  <span class="n">d1</span>  <span class="n">d2</span>
@@ -378,7 +474,7 @@
     <span class="n">x</span><span class="p">[</span><span class="s1">&#39;d3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;d1&#39;</span><span class="p">]</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">x</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">d1_sum</span><span class="p">))</span> <span class="c1"># d3: group a group b group c 的和</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">d1_sum</span><span class="p">))</span> <span class="c1"># d3: group a group b group c 分別的和</span>
 
 <span class="c1"># output</span>
   <span class="n">key</span>  <span class="n">d1</span>  <span class="n">d2</span>  <span class="n">d3</span>
@@ -387,7 +483,53 @@
 <span class="mi">2</span>   <span class="n">c</span>   <span class="mi">2</span>  <span class="mi">16</span>   <span class="mi">7</span>
 <span class="mi">3</span>   <span class="n">a</span>   <span class="mi">3</span>   <span class="mi">2</span>   <span class="mi">3</span>
 <span class="mi">4</span>   <span class="n">b</span>   <span class="mi">4</span>  <span class="mi">28</span>   <span class="mi">5</span>
-<span class="mi">5</span>   <span class="n">c</span>   <span class="mi">5</span>  <span class="mi">85</span>   <span class="mi">7</span></code></pre></div>]]></content>
+<span class="mi">5</span>   <span class="n">c</span>   <span class="mi">5</span>  <span class="mi">85</span>   <span class="mi">7</span></code></pre></div>
+<h2 id="指定分割鍵">指定分割鍵</h2>
+
+<h3 id="list">List</h3>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">L</span><span class="p">)</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
+
+<span class="c1"># output</span>
+ 	  <span class="n">d1</span> 	<span class="n">d2</span>
+<span class="n">a</span> 	<span class="mi">2</span> 	<span class="mi">32</span>
+<span class="n">b</span> 	<span class="mi">4</span> 	<span class="mi">9</span>
+<span class="n">c</span> 	<span class="mi">9</span> 	<span class="mi">113</span></code></pre></div>
+<h3 id="dict">dict</h3>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span>
+<span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;vowel&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;consonant&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;consonant&#39;</span><span class="p">}</span> 
+<span class="k">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span><span class="o">.</span><span class="nb">sum</span><span class="p">())</span> <span class="c1"># 將 index -&gt; group</span>
+
+<span class="c1"># output</span>
+
+     <span class="n">d1</span>  <span class="n">d2</span>
+<span class="n">key</span>        
+<span class="n">a</span>     <span class="mi">0</span>  <span class="mi">16</span>
+<span class="n">b</span>     <span class="mi">1</span>   <span class="mi">7</span>
+<span class="n">c</span>     <span class="mi">2</span>  <span class="mi">16</span>
+<span class="n">a</span>     <span class="mi">3</span>   <span class="mi">2</span>
+<span class="n">b</span>     <span class="mi">4</span>  <span class="mi">28</span>
+<span class="n">c</span>     <span class="mi">5</span>  <span class="mi">85</span>
+           <span class="n">d1</span>   <span class="n">d2</span>
+<span class="n">consonant</span>  <span class="mi">12</span>  <span class="mi">136</span>
+<span class="n">vowel</span>       <span class="mi">3</span>   <span class="mi">18</span></code></pre></div>
+<h3 id="function">function</h3>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">upper</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="c1"># output</span>
+ 	  <span class="n">d1</span> 	  <span class="n">d2</span>
+<span class="n">A</span> 	<span class="mf">1.5</span> 	<span class="mf">9.0</span>
+<span class="n">B</span> 	<span class="mf">2.5</span> 	<span class="mf">17.5</span>
+<span class="n">C</span> 	<span class="mf">3.5</span> 	<span class="mf">50.5</span></code></pre></div>
+<h3 id="function-dict">function + dict</h3>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">df2</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="nb">str</span><span class="o">.</span><span class="n">upper</span><span class="p">,</span> <span class="n">mapping</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># output</span>
+
+		            <span class="n">d1</span> 	  <span class="n">d2</span>
+<span class="n">A</span> 	<span class="n">vowel</span> 	    <span class="mf">1.5</span> 	<span class="mf">9.0</span>
+<span class="n">B</span> 	<span class="n">consonant</span> 	<span class="mf">2.5</span> 	<span class="mf">17.5</span>
+<span class="n">C</span> 	<span class="n">consonant</span> 	<span class="mf">3.5</span> 	<span class="mf">50.5</span></code></pre></div>]]></content>
 		</item>
 		
 		<item>
@@ -1429,307 +1571,6 @@ int open(const cahr* path, int flags, mode_t mode);
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">NC</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Case #</span><span class="si">{}</span><span class="s1">: &#39;</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
         <span class="n">main</span><span class="p">()</span></code></pre></div>]]></content>
-		</item>
-		
-		<item>
-			<title>CodeJam 2018 Round1A</title>
-			<link>https://aqweteddy.github.io/posts/codejam-2018-round1ay/</link>
-			<pubDate>Sun, 03 Mar 2019 16:43:08 +0800</pubDate>
-			
-			<guid>https://aqweteddy.github.io/posts/codejam-2018-round1ay/</guid>
-			<description>A. WaffleChoppers 題目描述 URL Input: R: MAX_ROW, C: MAX_COL, H: 水平方向切幾刀 V: 垂直方向切幾刀 一個二維矩陣 [R*C]：每格為 1 or 0 在水平方向切 H 刀、垂直方向切 V 刀的情況下，問可否</description>
-			<content type="html"><![CDATA[
-
-<h2 id="a-wafflechoppers">A. WaffleChoppers</h2>
-
-<h3 id="題目描述">題目描述</h3>
-
-<ul>
-<li><p><a href="https://codingcompetitions.withgoogle.com/codejam/round/0000000000007883/000000000003005a">URL</a></p></li>
-
-<li><p>Input:</p>
-
-<ul>
-<li>R: MAX_ROW, C: MAX_COL, H: 水平方向切幾刀 V: 垂直方向切幾刀</li>
-<li>一個二維矩陣 [R*C]：每格為 1 or 0</li>
-</ul></li>
-
-<li><p>在水平方向切 H 刀、垂直方向切 V 刀的情況下，問可否達到每個區域都有相同數量的 1</p></li>
-
-<li><p>Output: 可否達成目標</p></li>
-</ul>
-
-<h3 id="解題思路">解題思路</h3>
-
-<ol>
-<li>先判斷出特殊解：
-
-<ul>
-<li>矩陣全為 0</li>
-</ul></li>
-<li>因為每格要相同數量，所以整張圖1的數量應要整除於 H+1 和 V+1</li>
-<li>計算每個 Row 的 1 的數量，記錄在一維陣列 r_tab</li>
-<li>計算每個 Col 的 1 的數量，記錄在一維陣列 c_tab</li>
-<li>因為每格要相同數量，所以直著切要可以平分成 H+1 等分
-
-<ul>
-<li>紀錄切點位置</li>
-<li>根據 r_tab 切分</li>
-<li>如果無粉平分，則無法達成目標</li>
-</ul></li>
-<li>因為每格要相同數量，所以橫著切要可以平分成 V+1 等分
-
-<ul>
-<li>紀錄切點位置</li>
-<li>根據 c_tab 切分</li>
-<li>如果無粉平分，則無法達成目標</li>
-</ul></li>
-<li>根據切點檢查每格是否是相同數量
-
-<ul>
-<li>若是，達成目標</li>
-<li>否則，無法達成</li>
-</ul></li>
-<li>演算法效率：O(R * C)，因為 Step 7 每個區域都要掃過一次</li>
-</ol>
-
-<h3 id="code">Code</h3>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// AC
-</span><span class="c1"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
-</span><span class="cp"></span>
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-<span class="kt">int</span> <span class="n">maze</span><span class="p">[</span><span class="mi">101</span><span class="p">][</span><span class="mi">101</span><span class="p">];</span>
-<span class="kt">int</span> <span class="n">R</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">V</span><span class="p">;</span> <span class="c1">// row, col, horizontal, vertical
-</span><span class="c1"></span><span class="kt">int</span> <span class="n">cnt_all</span><span class="p">;</span> <span class="c1">// count for the number of chocolate chips.
-</span><span class="c1"></span>
-<span class="kt">bool</span> <span class="nf">bound_count</span><span class="p">(</span><span class="kt">int</span> <span class="n">min_h</span><span class="p">,</span> <span class="kt">int</span> <span class="n">min_v</span><span class="p">,</span> <span class="kt">int</span> <span class="n">max_h</span><span class="p">,</span> <span class="kt">int</span> <span class="n">max_v</span><span class="p">,</span> <span class="kt">int</span> <span class="n">per</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">min_h</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">max_h</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">min_v</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">max_v</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">maze</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
-                <span class="o">++</span><span class="n">cnt</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">cnt</span> <span class="o">==</span> <span class="n">per</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">solve</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">cnt_all</span> <span class="o">%</span> <span class="p">((</span><span class="n">H</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">V</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;IMPOSSIBLE</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
-        <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">cnt_all</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;POSSIBLE</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
-        <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="kt">int</span> <span class="n">r_tab</span><span class="p">[</span><span class="mi">101</span><span class="p">],</span> <span class="n">c_tab</span><span class="p">[</span><span class="mi">101</span><span class="p">];</span>
-
-    <span class="c1">// generate table
-</span><span class="c1"></span>    <span class="n">memset</span><span class="p">(</span><span class="n">r_tab</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">r_tab</span><span class="p">);</span>
-    <span class="n">memset</span><span class="p">(</span><span class="n">c_tab</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">c_tab</span><span class="p">);</span>
-
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">R</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">C</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
-            <span class="n">r_tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">maze</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
-    <span class="p">}</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">C</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">R</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span>
-            <span class="n">c_tab</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">maze</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
-    <span class="p">}</span>
-    <span class="c1">// calculate
-</span><span class="c1"></span>    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">r_cut</span><span class="p">,</span> <span class="n">c_cut</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">r_per</span> <span class="o">=</span> <span class="n">cnt_all</span> <span class="o">/</span> <span class="p">(</span><span class="n">H</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
-        <span class="n">c_per</span> <span class="o">=</span> <span class="n">cnt_all</span> <span class="o">/</span> <span class="p">(</span><span class="n">V</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-
-    <span class="kt">int</span> <span class="n">now</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">R</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">now</span> <span class="o">+=</span> <span class="n">r_tab</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">now</span> <span class="o">==</span> <span class="n">r_per</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">now</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-            <span class="n">r_cut</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">now</span> <span class="o">&gt;</span> <span class="n">r_per</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;IMPOSSIBLE</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
-            <span class="k">return</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="n">now</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">C</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">now</span> <span class="o">+=</span> <span class="n">c_tab</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">now</span> <span class="o">==</span> <span class="n">c_per</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">now</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-            <span class="n">c_cut</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">now</span> <span class="o">&gt;</span> <span class="n">c_per</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;IMPOSSIBLE</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
-            <span class="k">return</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="kt">int</span> <span class="n">per</span> <span class="o">=</span> <span class="n">r_per</span> <span class="o">/</span> <span class="p">(</span><span class="n">V</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="n">r_pre</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">c_pre</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">r_cut</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">c_cut</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">bound_count</span><span class="p">(</span><span class="n">r_pre</span><span class="p">,</span> <span class="n">c_pre</span><span class="p">,</span> <span class="n">r_cut</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">c_cut</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">per</span><span class="p">))</span> <span class="p">{</span>
-                <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;IMPOSSIBLE</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
-                <span class="k">return</span><span class="p">;</span>
-            <span class="p">}</span>
-            <span class="n">c_pre</span> <span class="o">=</span> <span class="n">c_cut</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="n">c_pre</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="n">r_pre</span> <span class="o">=</span> <span class="n">r_cut</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;POSSIBLE</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">ncase</span><span class="p">;</span>
-
-    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">ncase</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">ncase</span><span class="p">;</span> <span class="o">++</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">string</span> <span class="n">in</span><span class="p">;</span>
-        <span class="n">memset</span><span class="p">(</span><span class="n">maze</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">maze</span><span class="p">);</span>
-        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">R</span> <span class="o">&gt;&gt;</span> <span class="n">C</span> <span class="o">&gt;&gt;</span> <span class="n">H</span> <span class="o">&gt;&gt;</span> <span class="n">V</span><span class="p">;</span>
-        <span class="n">cnt_all</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">R</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">in</span><span class="p">;</span>
-            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">in</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">in</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;@&#39;</span><span class="p">)</span>
-                    <span class="n">maze</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="o">++</span><span class="n">cnt_all</span><span class="p">;</span>
-                <span class="k">else</span>
-                    <span class="n">maze</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Case #&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;: &#34;</span><span class="p">;</span>
-        <span class="n">solve</span><span class="p">();</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="b-bitparty">B. BitParty</h2>
-
-<h3 id="題目描述-1">題目描述</h3>
-
-<ul>
-<li><p><a href="https://codingcompetitions.withgoogle.com/codejam/round/0000000000007883/000000000002fff6">URL</a></p></li>
-
-<li><p>有 C 台機器要平行處理 B 個物品，一次可啟用 R 台，其中每台機器最多可處理 M[i] 個物品，需要花費 <code>(S[i] * N) + P[i], N &lt;= M[i]</code> 的時間，問：處理完 B 個物品，最少花費多少時間？</p></li>
-</ul>
-
-<h3 id="解題思路-1">解題思路</h3>
-
-<ul>
-<li>二分搜時間 T(t)
-
-<ul>
-<li>若在 t 內可做到 mid = l</li>
-<li>若在 t 內不可做到 mid = r</li>
-</ul></li>
-<li>如何算「第 i 台機器在 t 秒內所能處理的最大物品數(N[i])」?
-
-<ol>
-<li>因為 <code>t = (S[i] * N) + P[i]</code></li>
-<li>所以 <code>N = (t - P[i]) / S[i]，其中 N &lt;= M[i]</code></li>
-<li>所以 <code>N[i] = min(M[i], (t - P[i]) / S[i])</code></li>
-<li>考慮 <code>t &lt; P[i]</code> 時值為負，<code>N[i] = max(0, min(M[i], (t - P[i]) / S[i]))</code></li>
-</ol></li>
-<li>遞增排序 Array N，持續將物品放入機器中，直到：
-
-<ul>
-<li>已放入物品數量 &gt;= B &ndash;&gt; return True</li>
-<li>已放入物品數量 &gt;= <code>min(R, C)</code> &ndash;&gt; return False</li>
-</ul></li>
-</ul>
-
-<h3 id="注意">注意</h3>
-
-<ol>
-<li>long long</li>
-<li>二分搜的 Initial Value</li>
-<li>INF 值:
-
-<ul>
-<li>int: <code>INT_MAX</code> or <code>0x3f3f3f3f</code></li>
-<li>long long: <code>__LONG_LONG_MAX__</code></li>
-</ul></li>
-<li>0ll: 將 int 轉為 long long</li>
-</ol>
-
-<h3 id="code-1">Code</h3>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
-</span><span class="cp"></span><span class="c1">// AC
-</span><span class="c1"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-<span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
-<span class="k">const</span> <span class="n">ll</span> <span class="n">INF</span> <span class="o">=</span> <span class="n">__LONG_LONG_MAX__</span><span class="p">;</span>
-<span class="n">ll</span> <span class="n">R</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">;</span>
-
-<span class="k">struct</span> <span class="n">Cashier</span>
-<span class="p">{</span>
-    <span class="n">ll</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">p</span><span class="p">;</span>
-    <span class="n">Cashier</span><span class="p">(</span><span class="n">ll</span> <span class="n">a</span><span class="p">,</span> <span class="n">ll</span> <span class="n">b</span><span class="p">,</span> <span class="n">ll</span> <span class="n">c</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">m</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-<span class="n">vector</span><span class="o">&lt;</span><span class="n">Cashier</span><span class="o">&gt;</span> <span class="n">inp</span><span class="p">;</span>
-
-<span class="kt">bool</span> <span class="nf">cmp</span><span class="p">(</span><span class="k">const</span> <span class="n">ll</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">ll</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">bool</span> <span class="nf">check</span><span class="p">(</span><span class="n">ll</span> <span class="n">t</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">vector</span><span class="o">&lt;</span><span class="n">ll</span><span class="o">&gt;</span> <span class="n">bit</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="k">const</span> <span class="n">Cashier</span><span class="o">&amp;</span> <span class="nl">c</span> <span class="p">:</span> <span class="n">inp</span><span class="p">){</span>
-        <span class="n">ll</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="mi">0ll</span><span class="p">,</span> <span class="n">min</span><span class="p">((</span><span class="n">t</span> <span class="o">-</span> <span class="n">c</span><span class="p">.</span><span class="n">p</span><span class="p">)</span> <span class="o">/</span> <span class="n">c</span><span class="p">.</span><span class="n">s</span><span class="p">,</span> <span class="n">c</span><span class="p">.</span><span class="n">m</span><span class="p">));</span>
-        <span class="n">bit</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">tmp</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="n">sort</span><span class="p">(</span><span class="n">bit</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">bit</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">cmp</span><span class="p">);</span>
-    <span class="n">ll</span> <span class="n">now</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="n">ll</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">bit</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">){</span>
-        <span class="n">now</span> <span class="o">+=</span> <span class="n">bit</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">now</span> <span class="o">&gt;=</span> <span class="n">B</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="n">R</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">solve</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">ll</span> <span class="n">l</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">INF</span><span class="p">,</span> <span class="n">ans</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">){</span>
-        <span class="n">ll</span> <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="k">if</span><span class="p">(</span> <span class="n">check</span><span class="p">(</span><span class="n">mid</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
-            <span class="n">r</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">else</span> <span class="n">l</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">r</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">nc</span><span class="p">;</span>
-    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">nc</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">n</span><span class="o">&lt;=</span><span class="n">nc</span><span class="p">;</span> <span class="o">++</span><span class="n">n</span><span class="p">){</span>
-        <span class="n">inp</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
-        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">R</span> <span class="o">&gt;&gt;</span> <span class="n">B</span> <span class="o">&gt;&gt;</span> <span class="n">C</span><span class="p">;</span>
-        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">C</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">){</span>
-            <span class="n">ll</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
-            <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">a</span> <span class="o">&gt;&gt;</span> <span class="n">b</span> <span class="o">&gt;&gt;</span> <span class="n">c</span><span class="p">;</span>
-            <span class="n">inp</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Cashier</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">));</span>
-        <span class="p">}</span>
-        <span class="n">cout</span> <span class="o">&lt;&lt;</span><span class="s">&#34;Case #&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;: &#34;</span><span class="p">;</span>
-        <span class="n">solve</span><span class="p">();</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>]]></content>
 		</item>
 		
 	</channel>
