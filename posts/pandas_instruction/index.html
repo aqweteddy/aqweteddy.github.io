@@ -23,25 +23,25 @@
 	<meta name="msapplication-TileColor" content="#494f5c">
 
 <meta itemprop="name" content="Pandas Dataframe 一些使用方式">
-<meta itemprop="description" content="一些準備 import pandas as pd import seaborn as sns pla = sns.load_dataset(&#39;planets&#39;) pla.head() # output method number orbital_period mass distance year 0 Radial Velocity 1 269.300 7.10 77.40 2006 1 Radial Velocity 1 874.774 2.21 56.95 2008 2 Radial Velocity 1 763.000 2.60 19.84 2011 3 Radial Velocity 1 326.030 19.40 110.62 2007 4 Radial Velocity 1 516.220 10.50 119.47 2009 df.values df.columns df.index pla.values # get">
+<meta itemprop="description" content="一些準備 import pandas as pd import seaborn as sns pla = sns.load_dataset(&#39;planets&#39;) pla.head() # output method number orbital_period mass distance year 0 Radial Velocity 1 269.300 7.10 77.40 2006 1 Radial Velocity 1 874.774 2.21 56.95 2008 2 Radial Velocity 1 763.000 2.60 19.84 2011 3 Radial Velocity 1 326.030 19.40 110.62 2007 4 Radial Velocity 1 516.220 10.50 119.47 2009 df.values df.columns df.index df.shape df.T pla.values">
 
 
 <meta itemprop="datePublished" content="2019-04-27T11:57:47&#43;08:00" />
 <meta itemprop="dateModified" content="2019-04-27T11:57:47&#43;08:00" />
-<meta itemprop="wordCount" content="360">
+<meta itemprop="wordCount" content="571">
 
 
 
 <meta itemprop="keywords" content="Pandas,dataframe," />
 <meta property="og:title" content="Pandas Dataframe 一些使用方式" />
-<meta property="og:description" content="一些準備 import pandas as pd import seaborn as sns pla = sns.load_dataset(&#39;planets&#39;) pla.head() # output method number orbital_period mass distance year 0 Radial Velocity 1 269.300 7.10 77.40 2006 1 Radial Velocity 1 874.774 2.21 56.95 2008 2 Radial Velocity 1 763.000 2.60 19.84 2011 3 Radial Velocity 1 326.030 19.40 110.62 2007 4 Radial Velocity 1 516.220 10.50 119.47 2009 df.values df.columns df.index pla.values # get" />
+<meta property="og:description" content="一些準備 import pandas as pd import seaborn as sns pla = sns.load_dataset(&#39;planets&#39;) pla.head() # output method number orbital_period mass distance year 0 Radial Velocity 1 269.300 7.10 77.40 2006 1 Radial Velocity 1 874.774 2.21 56.95 2008 2 Radial Velocity 1 763.000 2.60 19.84 2011 3 Radial Velocity 1 326.030 19.40 110.62 2007 4 Radial Velocity 1 516.220 10.50 119.47 2009 df.values df.columns df.index df.shape df.T pla.values" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://aqweteddy.github.io/posts/pandas_instruction/" />
 <meta property="article:published_time" content="2019-04-27T11:57:47&#43;08:00"/>
 <meta property="article:modified_time" content="2019-04-27T11:57:47&#43;08:00"/>
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Pandas Dataframe 一些使用方式"/>
-<meta name="twitter:description" content="一些準備 import pandas as pd import seaborn as sns pla = sns.load_dataset(&#39;planets&#39;) pla.head() # output method number orbital_period mass distance year 0 Radial Velocity 1 269.300 7.10 77.40 2006 1 Radial Velocity 1 874.774 2.21 56.95 2008 2 Radial Velocity 1 763.000 2.60 19.84 2011 3 Radial Velocity 1 326.030 19.40 110.62 2007 4 Radial Velocity 1 516.220 10.50 119.47 2009 df.values df.columns df.index pla.values # get"/>
+<meta name="twitter:description" content="一些準備 import pandas as pd import seaborn as sns pla = sns.load_dataset(&#39;planets&#39;) pla.head() # output method number orbital_period mass distance year 0 Radial Velocity 1 269.300 7.10 77.40 2006 1 Radial Velocity 1 874.774 2.21 56.95 2008 2 Radial Velocity 1 763.000 2.60 19.84 2011 3 Radial Velocity 1 326.030 19.40 110.62 2007 4 Radial Velocity 1 516.220 10.50 119.47 2009 df.values df.columns df.index df.shape df.T pla.values"/>
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -109,12 +109,13 @@
 <span class="mi">2</span> 	<span class="n">Radial</span> <span class="n">Velocity</span> 	<span class="mi">1</span> 	<span class="mf">763.000</span> 	<span class="mf">2.60</span> 	  <span class="mf">19.84</span> 	<span class="mi">2011</span>
 <span class="mi">3</span> 	<span class="n">Radial</span> <span class="n">Velocity</span> 	<span class="mi">1</span> 	<span class="mf">326.030</span> 	<span class="mf">19.40</span> 	<span class="mf">110.62</span> 	<span class="mi">2007</span>
 <span class="mi">4</span> 	<span class="n">Radial</span> <span class="n">Velocity</span> 	<span class="mi">1</span> 	<span class="mf">516.220</span> 	<span class="mf">10.50</span> 	<span class="mf">119.47</span> 	<span class="mi">2009</span></code></pre></div>
-<h2 id="df-values-df-columns-df-index">df.values df.columns df.index<a href="#df-values-df-columns-df-index" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<h2 id="df-values-df-columns-df-index-df-shape-df-t">df.values df.columns df.index df.shape df.T<a href="#df-values-df-columns-df-index-df-shape-df-t" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 <div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">pla</span><span class="o">.</span><span class="n">values</span> <span class="c1"># get 2d np.array</span>
 <span class="n">pla</span><span class="o">.</span><span class="n">columns</span> <span class="c1"># get column name</span>
 <span class="n">pla</span><span class="o">.</span><span class="n">index</span> <span class="c1"># get index name</span>
+<span class="n">pla</span><span class="o">.</span><span class="n">shape</span> <span class="c1"># 維度</span>
 <span class="n">pla</span><span class="o">.</span><span class="n">T</span> <span class="c1"># 轉置</span></code></pre></div>
-<h2 id="df-loc-df-iloc-df-ix">df.loc, df.iloc df.ix<a href="#df-loc-df-iloc-df-ix" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<h2 id="df-loc-df-iloc">df.loc, df.iloc<a href="#df-loc-df-iloc" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 
 <ul>
 <li>df.iloc: 索引基本陣列 (numpy array)</li>
@@ -129,14 +130,12 @@
 <span class="mi">2</span> 	<span class="n">Radial</span> <span class="n">Velocity</span> 	<span class="mi">1</span>
 
 <span class="c1"># pla.loc[Row, Column]</span>
-<span class="n">pla</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;number&#39;</span><span class="p">:</span><span class="s1">&#39;mass&#39;</span><span class="p">]</span>
+<span class="n">pla</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;number&#39;</span><span class="p">:</span><span class="s1">&#39;mass&#39;</span><span class="p">]</span>
 <span class="c1"># output</span>
- 	<span class="n">number</span> 	<span class="n">orbital_period</span> 	<span class="n">mass</span>
-<span class="mi">1</span> 	<span class="mi">1</span> 	        <span class="mf">874.774</span> 	<span class="mf">2.21</span>
-<span class="mi">2</span> 	<span class="mi">1</span> 	        <span class="mf">763.000</span> 	<span class="mf">2.60</span>
-<span class="mi">3</span> 	<span class="mi">1</span> 	        <span class="mf">326.030</span> 	<span class="mf">19.40</span>
-
-<span class="c1"># 配合 mask and fancy indexing</span>
+	<span class="n">number</span> 	<span class="n">orbital_period</span> 	<span class="n">mass</span>
+<span class="mi">1</span> 	<span class="mi">1</span> 	<span class="mf">874.774</span> 	<span class="mf">2.21</span>
+<span class="mi">3</span> 	<span class="mi">1</span> 	<span class="mf">326.030</span> 	<span class="mf">19.40</span>
+<span class="mi">5</span> 	<span class="mi">1</span> 	<span class="mf">185.840</span> 	<span class="mf">4.80</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="c1"># 配合 mask and fancy indexing</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">pla</span><span class="o">.</span><span class="n">number</span> <span class="o">&gt;</span> <span class="mi">2</span>
 <span class="n">pla</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;number&#39;</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="c1"># output</span>
@@ -144,6 +143,26 @@
 <span class="mi">13</span> 	<span class="mi">3</span> 	  <span class="mf">2.53</span>
 <span class="mi">14</span> 	<span class="mi">3</span> 	  <span class="mf">0.54</span>
 <span class="mi">15</span> 	<span class="mi">3</span> 	  <span class="mf">1.64</span></code></pre></div>
+<h2 id="缺失資料">缺失資料<a href="#缺失資料" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<ul>
+<li>NaN(float), None</li>
+<li>所有計算遇到 NaN 時，答案為 NaN</li>
+</ul>
+
+<h3 id="處理-null">處理 null<a href="#處理-null" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">pla</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span> <span class="c1"># 列出表格，null 為 True，其餘為false</span>
+<span class="n">pla</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="nb">any</span><span class="p">()</span> <span class="c1"># 列出任何包含 null 的 column 名</span>
+<span class="n">pla</span><span class="o">.</span><span class="n">notnull</span><span class="p">()</span> <span class="c1"># 列出表格，null 為 False，其餘為 True</span>
+
+<span class="n">pla</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span> <span class="c1"># 傳回一個過濾後的資料(移除任何出現null的那個row)</span>
+<span class="n">pla</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span> <span class="c1"># 傳回一個過濾後的資料(移除全部都是 null的那個row)</span>
+<span class="n">pla</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span> <span class="c1"># 移除任何出現null的那個 column</span>
+
+<span class="n">pla</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="c1"># 將 na 填入 k 值</span>
+<span class="n">pla</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;ffill&#39;</span><span class="p">)</span> <span class="c1"># 使用前一個值填入</span>
+<span class="n">pla</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;bfill&#39;</span><span class="p">)</span> <span class="c1"># 使用下一個值填入</span>
+<span class="n">pla</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;bfill&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span> <span class="c1"># 使用下一個值填入(對 column)</span></code></pre></div>
 <h2 id="df-query">df.query()<a href="#df-query" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 <div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"><span class="n">pla</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;number &gt; 1 and mass &lt; 7&#39;</span><span class="p">)</span> <span class="c1"># 符合條件 pla[&#39;number&#39;] &gt; 1 and pla[&#39;mass&#39;] &lt; 7</span>
 
@@ -168,6 +187,10 @@
 
 <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">pla</span><span class="o">.</span><span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;s = mass / distance + @a&#39;</span><span class="p">)</span> <span class="c1"># 引入變數 a</span></code></pre></div>
+<h2 id="資料合併-pd-merge">資料合併 pd.merge()<a href="#資料合併-pd-merge" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<h3 id="一對一">一對一<a href="#一對一" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre class="chroma"><code class="language-py" data-lang="py"></code></pre></div>
 			</div>
 			<hr class="post-end">
 			<footer class="post-info">

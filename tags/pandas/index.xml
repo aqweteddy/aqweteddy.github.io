@@ -18,7 +18,7 @@
       <pubDate>Sat, 27 Apr 2019 11:57:47 +0800</pubDate>
       
       <guid>https://aqweteddy.github.io/posts/pandas_instruction/</guid>
-      <description>一些準備 import pandas as pd import seaborn as sns pla = sns.load_dataset(&amp;#39;planets&amp;#39;) pla.head() # output method number orbital_period mass distance year 0 Radial Velocity 1 269.300 7.10 77.40 2006 1 Radial Velocity 1 874.774 2.21 56.95 2008 2 Radial Velocity 1 763.000 2.60 19.84 2011 3 Radial Velocity 1 326.030 19.40 110.62 2007 4 Radial Velocity 1 516.220 10.50 119.47 2009 df.values df.columns df.index pla.values # get</description>
+      <description>一些準備 import pandas as pd import seaborn as sns pla = sns.load_dataset(&amp;#39;planets&amp;#39;) pla.head() # output method number orbital_period mass distance year 0 Radial Velocity 1 269.300 7.10 77.40 2006 1 Radial Velocity 1 874.774 2.21 56.95 2008 2 Radial Velocity 1 763.000 2.60 19.84 2011 3 Radial Velocity 1 326.030 19.40 110.62 2007 4 Radial Velocity 1 516.220 10.50 119.47 2009 df.values df.columns df.index df.shape df.T pla.values</description>
     </item>
     
     <item>
